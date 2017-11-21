@@ -1,0 +1,3 @@
+1. Controller: /barcode ?Barcode=13123&Allergene-Liste => res: Objekt mit Allergen: boolean   - Erklärung: Zeigt an ob Produkt Allergene enthält
+2. Controller: /productcategory ?Category&Allergen-Liste => res: Liste von Objekten mit Barcode und Name   - Erklärung: Produktkategorie + Allergene => Namen und Barcodes von möglichen Produkten - beschränkt auf 10
+3. Controller: /ingredients  Liste von Zutaten + Liste von Allergenen => % Anzeige welche Zutat welches Allergen mit welcher Wahrscheinlich
