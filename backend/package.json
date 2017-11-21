@@ -1,0 +1,15 @@
+{
+  "name": "alertgen",
+  "version": "1.0.0",
+  "description": "allergen checker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://r-n-d.informatik.hs-augsburg.de:8080/nodejs-ws1718/allergy-check-group/allergy-check.git"
+  },
+  "author": "Andreas Kottre, André Fiedler, David Yesil",
+  "license": "ISC"
+}
