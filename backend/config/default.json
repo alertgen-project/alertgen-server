@@ -1,0 +1,9 @@
+{
+  "Allergens": {
+    "dbConfig": {
+      "host": "allergy-check.informatik.hs-augsburg.de",
+      "port": 5984,
+      "dbName": "allergens"
+    }
+  }
+}
