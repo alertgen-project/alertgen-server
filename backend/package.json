@@ -13,6 +13,7 @@
   "author": "Andreas Kottre, André Fiedler, David Yesil",
   "license": "ISC",
   "dependencies": {
-    "config": "^1.28.1"
+    "config": "^1.28.1",
+    "express": "^4.16.2"
   }
 }
