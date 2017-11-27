@@ -11,5 +11,8 @@
     "url": "https://r-n-d.informatik.hs-augsburg.de:8080/nodejs-ws1718/allergy-check-group/allergy-check.git"
   },
   "author": "Andreas Kottre, André Fiedler, David Yesil",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "config": "^1.28.1"
+  }
 }
