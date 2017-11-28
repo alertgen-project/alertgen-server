@@ -1,7 +1,16 @@
-const express = require('express');
+const Koa = require('koa');
+const Router = require('koa-router');
+
+const router = new Router();
 const config = require('config');
-const server = express();
 
-server.get('/', (req, res) => res.send('Hello World!'));
+router.get('/', async (ctx, next) => {
+    ctx.body = "Hello World!";
+});
 
-server.listen(config.get('alertgen.serverConfig.port'), () => console.log('Server listening on port ' + config.get('alertgen.serverConfig.port') + '!'));
+router.get('/service', async (ctx, next) => {
+    ctx.body = "Hello World!";
+    console.log(ctx.query.parametername);
+});
+
+new Koa().use(router.routes()).use(router.allowedMethods()).listen(config.get('alertgen.serverConfig.port'));
