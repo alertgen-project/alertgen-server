@@ -13,7 +13,7 @@ By sending a request to the route "/product", barcodes or products can be checke
 GET-Request with barcode or product name and list of allergens as query parameters.
 
 ```
-GET /product?product=12324234&allergens=[gluten,lactose] :speak_no_evil:
+GET /product?product=12324234&allergens=[gluten,lactose] 
 ```
 
 ### /productCategory
@@ -25,7 +25,7 @@ The route "/productcategory" can be used to request substitute products for prod
 GET-Request with product category and list of allergens as query parameters.
 
 ```
-GET /productcategory?productCategory=pizza&allergens=[gluten,lactose] :speak_no_evil:
+GET /productcategory?productCategory=pizza&allergens=[gluten,lactose] 
 ```
 
 
@@ -38,7 +38,7 @@ Via the route "/ingredients" ingredients can be checked for specific allergens. 
 GET-Request with list of ingredients and list of allergens as query parameters.
 
 ```
-GET /ingredients?ingredients=[water,sugar,milk,wheat]&allergens=[gluten,lactose] :speak_no_evil:
+GET /ingredients?ingredients=[water,sugar,milk,wheat]&allergens=[gluten,lactose]
 ```
 
 
@@ -56,4 +56,4 @@ We downloaded a dumb of the OFF Database on 11/27/2017. Most of the data will be
 - MongoDB (Database)
 - Docker
 
-
+ :speak_no_evil:
