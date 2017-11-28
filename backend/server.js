@@ -1,6 +1,5 @@
 const express = require('express');
 const config = require('config');
-
 const server = express();
 
 server.get('/', (req, res) => res.send('Hello World!'));

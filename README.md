@@ -41,6 +41,14 @@ GET-Request with list of ingredients and list of allergens as query parameters.
 GET /ingredients?ingredients=[water,sugar,milk,wheat]&allergens=[gluten,lactose]
 ```
 
+### /helpus
+
+POST-Request with ingredient and allergen as query parameters.
+
+```
+POST /helpus?ingredient=wheat&allergen=gluten
+```
+
 
 ## Data Sources
 
