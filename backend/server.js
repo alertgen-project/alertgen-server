@@ -1,8 +1,8 @@
 const Koa = require('koa');
 const Router = require('koa-router');
+const config = require('config');
 
 const router = new Router();
-const config = require('config');
 
 router.get('/', async (ctx, next) => {
     ctx.body = "Hello World!";
