@@ -19,3 +19,4 @@ server
     .use(router.allowedMethods())
     .listen(config.get('alertgen.serverConfig.port'));
 
+console.log("Server listening at port: " + config.get("alertgen.serverConfig.port"));
