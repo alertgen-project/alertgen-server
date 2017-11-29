@@ -61,6 +61,8 @@ We downloaded a dumb of the OFF Database on 11/27/2017. Most of the data will be
 ## Tech Stack
 
 - Node.js (Backend)
+    - Koa (API, Routing)
+    - node-config (Configuration)
 - MongoDB (Database)
 - Docker
 

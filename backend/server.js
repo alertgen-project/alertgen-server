@@ -1,7 +1,10 @@
-const express = require('express');
+const Koa = require('koa');
 const config = require('config');
-const server = express();
+const server = new Koa();
 
-server.get('/', (req, res) => res.send('Hello World!'));
+server.use(async ctx => {
+    ctx.body = 'Hello World';
+});
 
-server.listen(config.get('alertgen.serverConfig.port'), () => console.log('Server listening on port ' + config.get('alertgen.serverConfig.port') + '!'));
+server.listen(config.get('alertgen.serverConfig.port'));
+console.log('Server listening on port ' + config.get('alertgen.serverConfig.port') + '!');
