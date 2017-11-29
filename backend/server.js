@@ -1,10 +1,16 @@
 const Koa = require('koa');
+const Router = require('koa-router');
 const config = require('config');
-const server = new Koa();
 
-server.use(async ctx => {
-    ctx.body = 'Hello World';
+const router = new Router();
+
+router.get('/', async (ctx, next) => {
+    ctx.body = "Hello World!";
 });
 
-server.listen(config.get('alertgen.serverConfig.port'));
-console.log('Server listening on port ' + config.get('alertgen.serverConfig.port') + '!');
+router.get('/service', async (ctx, next) => {
+    ctx.body = "Hello World!";
+    console.log(ctx.query.parametername);
+});
+
+new Koa().use(router.routes()).use(router.allowedMethods()).listen(config.get('alertgen.serverConfig.port'));

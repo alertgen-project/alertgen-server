@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "config": "^1.28.1",
-    "express": "^4.16.2",
-    "koa": "^2.4.1"
+    "koa": "^2.4.1",
+    "koa-router": "^7.3.0"
   }
 }
