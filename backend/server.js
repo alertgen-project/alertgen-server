@@ -6,17 +6,17 @@ const router = new Router();
 const server = new Koa();
 
 router.get('/', async (ctx, next) => {
-    ctx.body = "Hello World!";
-});
+    ctx.body = 'Hello World!';
+  });
 
 router.get('/service', async (ctx, next) => {
-    ctx.body = "Hello World!";
+    ctx.body = 'Hello World!';
     console.log(ctx.query.parametername);
-});
+  });
 
 server
     .use(router.routes())
     .use(router.allowedMethods())
     .listen(config.get('serverConfig.port'));
 
-console.log("Server listening at port: " + config.get("serverConfig.port"));
+console.log('Server listening at port: ' + config.get('serverConfig.port'));
