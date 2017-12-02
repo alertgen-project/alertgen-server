@@ -1,12 +1,10 @@
 {
-  "alertgen": {
-    "dbConfig": {
-      "host": "allergy-check.informatik.hs-augsburg.de",
-      "port": 9200,
-      "dbName": ""
-    },
-    "serverConfig": {
-      "port": 8080
-    }
+  "dbConfig": {
+    "host": "allergy-check.informatik.hs-augsburg.de",
+    "port": 9200,
+    "dbName": ""
+  },
+  "serverConfig": {
+    "port": 8080
   }
 }
