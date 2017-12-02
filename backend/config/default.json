@@ -6,5 +6,8 @@
   },
   "serverConfig": {
     "port": 8080
+  },
+  "routes": {
+    "product": "/product"
   }
 }
