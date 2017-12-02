@@ -16,6 +16,7 @@
   "dependencies": {
     "config": "^1.28.1",
     "koa": "^2.4.1",
-    "koa-router": "^7.3.0"
+    "koa-router": "^7.3.0",
+    "request": "^2.83.0"
   }
 }
