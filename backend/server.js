@@ -21,6 +21,6 @@ router.get('/service', async (ctx, next) => {
 server
     .use(router.routes())
     .use(router.allowedMethods())
-    .listen(config.get('serverConfig.port'));
+    .listen(config.get('server.port'));
 
-console.log('Server listening at port: ' + config.get('serverConfig.port'));
+console.log('Server listening at port: ' + config.get('server.port'));
