@@ -8,7 +8,7 @@ async function containAllergens(ctx, next) {
     const ingredients = ctx.query.ingredients;
     const allergens = ctx.query.allergens;
     console.log(ingredients, allergens);
-    // requestss to db
+    // request data from db
 
     // form response
     ctx.body = false;
