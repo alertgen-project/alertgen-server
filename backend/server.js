@@ -4,16 +4,17 @@ const config = require('config');
 
 const product = require('./routes/product.js');
 const ingredients = require('./routes/ingredients.js');
+const generalError = require('./errors/general_error_handling.js');
 
 const router = new Router();
 const server = new Koa();
 
-router.get(config.get('routes.product'), product.isAllergicToProduct);
-router.get(config.get('routes.ingredients'), ingredients.containAllergens);
+router.get(config.get('routes.product'), product.isAllergicToProduct).
+    get(config.get('routes.ingredients'), ingredients.containAllergens);
 
-server
-    .use(router.routes())
-    .use(router.allowedMethods())
-    .listen(config.get('server.port'));
+server.use(router.routes()).
+    use(router.allowedMethods()).
+    use(generalError.handleGeneralError).
+    listen(config.get('server.port'));
 
 console.log('Server listening at port: ' + config.get('server.port'));

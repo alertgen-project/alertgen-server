@@ -1,8 +1,7 @@
 module.exports = {
-    isAllergicToProduct: isAllergicToProduct
+  isAllergicToProduct: isAllergicToProduct,
 };
 
-
 async function isAllergicToProduct(ctx, next) {
-    ctx.body = false;
+  ctx.body = false;
 }
