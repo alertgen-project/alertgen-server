@@ -9,6 +9,8 @@ const generalError = require('./errors/general_error_handling.js');
 const router = new Router();
 const server = new Koa();
 
+const log = require('./logger/logger.js').getLog('server.js');
+
 router.get(config.get('routes.product'), product.isAllergicToProduct).
     get(config.get('routes.ingredients'), ingredients.containAllergens);
 
@@ -17,4 +19,4 @@ server.use(router.routes()).
     use(generalError.handleGeneralError).
     listen(config.get('server.port'));
 
-console.log('Server listening at port: ' + config.get('server.port'));
+log.info('Server listening at port: ' + config.get('server.port'));
