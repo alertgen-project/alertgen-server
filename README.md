@@ -16,6 +16,13 @@ GET-Request with barcode or product name and list of allergens as query paramete
 GET /product?product=12324234&allergens=[gluten,lactose] 
 ```
 
+###### Response: 
+
+JSON with product object containing boolean of all and detail object with specific booleans for allergens.
+
+{"12324234": {all: boolean, detail: {gluten: true, lactose: false}}}
+ 
+
 ### /productCategory
 
 The route "/productcategory" can be used to request substitute products for products containing allergens.
@@ -28,6 +35,11 @@ GET-Request with product category and list of allergens as query parameters.
 GET /productcategory?productCategory=pizza&allergens=[gluten,lactose] 
 ```
 
+###### Response:
+
+JSON with array of product names which do not contain the requested allergens.
+
+{"products": [{productName: "bla", barcode: 12344},{productName: "bla", barcode: 12344},{productName: "bla", barcode: 12344}]}
 
 ### /ingredients 
 
@@ -40,6 +52,10 @@ GET-Request with list of ingredients and list of allergens as query parameters.
 ```
 GET /ingredients?ingredients=[water,sugar,milk,wheat]&allergens=[gluten,lactose]
 ```
+
+###### Response:
+
+JSON with array of ingredient objects which contain objects of the allergens with a boolean field "containing" and a percentage with the probability that the product contains the allergen.
 
 ### /helpus
 
