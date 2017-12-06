@@ -14,6 +14,7 @@
   "author": "Andreas Kottre, André Fiedler, David Yesil",
   "license": "ISC",
   "dependencies": {
+    "bunyan": "^1.8.12",
     "config": "^1.28.1",
     "erroz": "^1.1.0",
     "koa": "^2.4.1",
