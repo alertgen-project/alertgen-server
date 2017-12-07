@@ -79,6 +79,9 @@ We downloaded a dumb of the OFF Database on 11/27/2017. Most of the data will be
 - Node.js (Backend)
     - Koa (API, Routing)
     - node-config (Configuration)
+    - bunyan (Logging)
+    - mocha + chai (Testing)
+    - erroz (Errors)
 - MongoDB (Database)
 - Docker
 
