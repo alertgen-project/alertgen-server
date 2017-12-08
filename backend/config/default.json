@@ -9,6 +9,8 @@
   },
   "routes": {
     "product": "/product",
-    "ingredients": "/ingredients"
+    "productcategory": "/productcategory",
+    "ingredients": "/ingredients",
+    "helpus": "/helpus"
   }
 }
