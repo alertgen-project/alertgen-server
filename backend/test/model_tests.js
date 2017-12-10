@@ -11,7 +11,20 @@ describe('Ingredient Model Tests', () => {
             }
         };
         const waterModel = new IngredientModel(JSON.stringify(water));
-        const name = await waterModel.getIngredientName();
+        const name = waterModel.getIngredientName();
+        name.should.equal('water');
+    });
+
+    it('Should access ingredient name', async () => {
+        const water = {
+            "water": {
+                "gluten": {
+                    "contains": true
+                }
+            }
+        };
+        const waterModel = new IngredientModel(JSON.stringify(water));
+        const name = waterModel.ingredient;
         name.should.equal('water');
     });
 
@@ -24,7 +37,19 @@ describe('Ingredient Model Tests', () => {
             }
         };
         const waterModel = new IngredientModel(JSON.stringify(water));
-        const obj = await waterModel.getObject();
+        const obj = waterModel.getObject();
+        obj.should.deep.equal(water);
+    });
+    it('Should access ingredient object', async () => {
+        const water = {
+            "water": {
+                "gluten": {
+                    "contains": true
+                }
+            }
+        };
+        const waterModel = new IngredientModel(JSON.stringify(water));
+        const obj = waterModel.object;
         obj.should.deep.equal(water);
     });
 });

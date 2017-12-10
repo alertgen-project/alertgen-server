@@ -14,17 +14,17 @@ class IngredientModel {
 
     /**
      *
-     * @returns {Promise<any | *>}
+     * @returns {any | *}
      */
-    async getObject() {
+    getObject() {
         return this.object;
     }
 
     /**
      *
-     * @returns {Promise<string|*>}
+     * @returns {string|*}
      */
-    async getIngredientName() {
+    getIngredientName() {
         return this.ingredient;
     }
 
