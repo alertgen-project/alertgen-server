@@ -2,7 +2,7 @@ const RouteUtil = require('../routes/route_util.js');
 require('chai').should();
 const assert = require('assert');
 
-describe('Array', function() {
+describe('Array', () => {
   describe('#RouteUtil.toArray()', () => {
     it('should always return an Array', () => {
       assert.equal(typeof RouteUtil.toArray([]), typeof []);
