@@ -1,5 +1,7 @@
+"use strict";
+
 module.exports = {
-  retrieveProductsWithoutAllergens: retrieveProductsWithoutAllergens,
+  retrieveProductsWithoutAllergens,
 };
 
 const RouteUtil = require('./route_util.js');

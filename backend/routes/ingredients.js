@@ -1,5 +1,7 @@
+"use strict";
+
 module.exports = {
-  containAllergens: containAllergens,
+  containAllergens,
 };
 
 const IngredientsErrors = require('../errors/ingredients_errors.js');

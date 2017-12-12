@@ -1,3 +1,5 @@
+"use strict";
+
 const erroz = require("erroz");
 
 const ProductWrongParameterError = erroz({
@@ -7,6 +9,7 @@ const ProductWrongParameterError = erroz({
   template: "Usage of this service is for example: /product?product=12324234&allergens=gluten&allergens=lactose"
 });
 
+
 module.exports = {
-  ProductWrongParameterError: ProductWrongParameterError,
+  ProductWrongParameterError,
 };

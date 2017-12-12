@@ -1,3 +1,5 @@
+"use strict";
+
 const erroz = require("erroz");
 
 const IngredientsWrongParameterError = erroz({
@@ -9,5 +11,5 @@ const IngredientsWrongParameterError = erroz({
 
 
 module.exports = {
-  IngredientsWrongParameterError: IngredientsWrongParameterError,
+  IngredientsWrongParameterError,
 };

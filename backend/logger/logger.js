@@ -1,17 +1,18 @@
+"use strict";
+
 const bunyan = require('bunyan');
 const config = require('config');
 
 module.exports = {
-
   getLog: (filename) => {
     return bunyan.createLogger({
       name: filename,
       streams: [
         {
-          path: config.get('config.path') + '/server_log.json',
-          level: 'trace',
-          period: '1w', //woechentlich wird ein neues Logfile erstellt
-          count: '2'    // behalte die letzten 2 Kopien der Logdatei
+          path: config.get('logger.path') + '/server_log.json',
+          level: config.get('logger.level'),
+          period: config.get('logger.period'),
+          count: config.get('logger.count')
         },
         {
           stream: process.stdout,

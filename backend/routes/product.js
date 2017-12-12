@@ -1,5 +1,7 @@
+"use strict";
+
 module.exports = {
-  isAllergicToProduct: isAllergicToProduct,
+  isAllergicToProduct,
 };
 
 const RouteUtil = require('./route_util.js');

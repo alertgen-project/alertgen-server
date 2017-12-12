@@ -1,5 +1,7 @@
+"use strict";
+
 module.exports = {
-  toArray: toArray,
+  toArray,
 };
 
 function toArray(object) {

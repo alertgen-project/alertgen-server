@@ -1,3 +1,5 @@
+"use strict";
+
 require('chai').should();
 const { IngredientModel } = require('../models/ingredient_model');
 
