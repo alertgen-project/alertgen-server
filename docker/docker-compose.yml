@@ -13,6 +13,8 @@ services:
      depends_on:
        - mongo_db
      image: alertgen
+     volumes:
+       - /var/log/alertgen:/usr/share/node_app/logs
      ports:
        - "80:8080"
      restart: always
