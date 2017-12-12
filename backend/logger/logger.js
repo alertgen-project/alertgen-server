@@ -9,14 +9,14 @@ module.exports = {
       name: filename,
       streams: [
         {
-          path: config.get('logger.path') + '/server_log.json',
+          path: config.get('logger.path'),
           level: config.get('logger.level'),
           period: config.get('logger.period'),
           count: config.get('logger.count')
         },
         {
           stream: process.stdout,
-          level: 'trace'
+          level: config.get('logger.level')
         }
       ]
     });

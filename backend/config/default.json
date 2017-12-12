@@ -14,7 +14,7 @@
     "helpus": "/helpus"
   },
   "logger": {
-    "path": "./logs",
+    "path": "./logs/server_log.json",
     "level": "trace",
     "period": "1w",
     "count": "2"
