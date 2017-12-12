@@ -12,5 +12,8 @@
     "productcategory": "/productcategory",
     "ingredients": "/ingredients",
     "helpus": "/helpus"
+  },
+  "config": {
+    "path": "./logs"
   }
 }
