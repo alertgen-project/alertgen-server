@@ -1,4 +1,5 @@
 const bunyan = require('bunyan');
+const config = require('config');
 
 module.exports = {
 
@@ -7,7 +8,7 @@ module.exports = {
       name: filename,
       streams: [
         {
-          path: './logger/server_log.json',
+          path: config.get('config.path') + '/server_log.json',
           level: 'trace',
           period: '1w', //woechentlich wird ein neues Logfile erstellt
           count: '2'    // behalte die letzten 2 Kopien der Logdatei

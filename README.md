@@ -6,22 +6,22 @@ This project provides users with an API to identify allergens in products and in
 
 ### /product
 
-By sending a request to the route "/product", barcodes or products can be checked for specific allergens. 
+By sending a request to the route "/product", barcodes or products can be checked for specific allergens.
 
 ##### Technical Specification:
 
 GET-Request with barcode or product name and list of allergens as query parameters.
 
 ```
-GET /product?product=12324234&allergens=[gluten,lactose] 
+GET /product?product=12324234&allergens=gluten&allergens=lactose
 ```
 
-###### Response: 
+###### Response:
 
 JSON with product object containing boolean of all and detail object with specific booleans for allergens.
 
 {"12324234": {all: boolean, detail: {gluten: true, lactose: false}}}
- 
+
 
 ### /productCategory
 
@@ -32,7 +32,7 @@ The route "/productcategory" can be used to request substitute products for prod
 GET-Request with product category and list of allergens as query parameters.
 
 ```
-GET /productcategory?productCategory=pizza&allergens=[gluten,lactose] 
+GET /productcategory?productCategory=pizza&allergens=gluten&allergens=lactose
 ```
 
 ###### Response:
@@ -41,7 +41,7 @@ JSON with array of product names which do not contain the requested allergens.
 
 {"products": [{productName: "bla", barcode: 12344},{productName: "bla", barcode: 12344},{productName: "bla", barcode: 12344}]}
 
-### /ingredients 
+### /ingredients
 
 Via the route "/ingredients" ingredients can be checked for specific allergens. These possible allergens are displayed with probabilities next to the ingredients.
 
@@ -50,7 +50,7 @@ Via the route "/ingredients" ingredients can be checked for specific allergens. 
 GET-Request with list of ingredients and list of allergens as query parameters.
 
 ```
-GET /ingredients?ingredients=[water,sugar,milk,wheat]&allergens=[gluten,lactose]
+GET /ingredients?ingredients=water&ingredients=milk&allergens=gluten&allergens=lactose
 ```
 
 ###### Response:
@@ -72,7 +72,7 @@ POST /helpus?ingredient=wheat&allergen=gluten
 
 ### Open Food Facts Database
 
-We downloaded a dumb of the OFF Database on 11/27/2017. Most of the data will be requested there.
+We downloaded a dump of the OFF Database on 11/27/2017. Most of the data will be requested there.
 
 ## Tech Stack
 
