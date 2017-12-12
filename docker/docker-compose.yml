@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+   mongo_db:
+     image: mongo
+     volumes:
+       - /var/docker_deployment/mongo_db/data1:/data/db
+     restart: always
+     ports:
+       - "1010:27017"
+
+   alertgen:
+     depends_on:
+       - mongo_db
+     image: alertgen
+     ports:
+       - "80:8080"
+     restart: always
