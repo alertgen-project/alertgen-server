@@ -22,7 +22,6 @@ async function containAllergens(ctx, next) {
   ingredientsQueryParam.forEach(ingredient => {
     databaseRequestPromises.push(requestIngredient(ingredient));
   });
-  // dummy-impl requires error handling and db-request
   const responseIngredients = [];
   let ingredientIndex = 0;
   await Promise.all(databaseRequestPromises).then(ingredients => {
