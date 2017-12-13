@@ -3,6 +3,10 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const config = require('config');
+const mongoose = require('mongoose');
+
+mongoose.connect(config.get('db.host') + ':' + config.get('db.port'),
+    {useMongoClient: true});
 
 const product = require('./routes/product.js');
 const productCategory = require('./routes/product_category.js');

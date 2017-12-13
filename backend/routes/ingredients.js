@@ -4,6 +4,8 @@ module.exports = {
   containAllergens,
 };
 
+
+const IngredientsModel = require('../models/ingredient_model.js');
 const IngredientsErrors = require('../errors/ingredients_errors.js');
 const RouteUtil = require('./route_util.js');
 const log = require('../logger/logger.js').getLog('ingredients.js');
@@ -15,7 +17,6 @@ async function containAllergens(ctx, next) {
   const ingredients = RouteUtil.toArray(ctx.query.ingredients);
   const allergens = RouteUtil.toArray(ctx.query.allergens);
   log.debug('Using Queryparameters:', ingredients, allergens);
-
   // build promises
   const requestPromises = [];
   ingredients.forEach(ingredient => {
@@ -24,29 +25,23 @@ async function containAllergens(ctx, next) {
   // dummy-impl requires error handling and db-request
   const ingredientsWithAllergens = [];
   await Promise.all(requestPromises).then(ingredients => {
-    ingredients.forEach(ingredient => {
-      // skip first level, it contains only the name of the ingredient
-      Object.entries(ingredient).
-          forEach(([dbIngredientName, dbIngredientAttributes]) => {
-            // build one response for each ingredient
-            const ingredientProperties = {};
-            // check for the requested allergens, and form the response
-            allergens.forEach(allergen => {
-              const allergenProperties = {
-                containing: false,
-                contains_percent: 0,
-              };
-              if (dbIngredientAttributes[allergen].contains) {
-                allergenProperties.containing = true;
-              }
-              allergenProperties.contains_percent = dbIngredientAttributes[allergen].contains_percent;
-              ingredientProperties[allergen] = allergenProperties;
-            });
-            // add responseObject to the responseArray
-            const ingredientWithAllergen = {};
-            ingredientWithAllergen[dbIngredientName] = ingredientProperties;
-            ingredientsWithAllergens.push(ingredientWithAllergen);
-          });
+    ingredients.forEach(dbIngredientAttributes => {
+      // build one response-object for each ingredient
+      const ingredientProperties = {};
+      // check for the requested allergens, and form the response
+      allergens.forEach(allergen => {
+        const allergenProperties = {
+          containing: false,
+          contains_percent: 0,
+        };
+        allergenProperties.containing = dbIngredientAttributes[allergen].contains;
+        allergenProperties.contains_percent = dbIngredientAttributes[allergen].contains_percent;
+        ingredientProperties[allergen] = allergenProperties;
+      });
+      // add responseObject to the responseArray
+      const ingredientWithAllergen = {};
+      ingredientWithAllergen[dbIngredientAttributes.name] = ingredientProperties;
+      ingredientsWithAllergens.push(ingredientWithAllergen);
     });
   });
   console.log('results', JSON.stringify(ingredientsWithAllergens));
@@ -54,14 +49,8 @@ async function containAllergens(ctx, next) {
 }
 
 async function requestIngredientDummy(ingredient) {
-  // call mongodb dummy
-  // testquery http://localhost:8080/ingredients?ingredients=anything&allergens=gluten
-  return {
-    DelicousPancakeDough: {
-      gluten: {
-        contains: true,
-        contains_percent: 0.8,
-      },
-    },
-  };
+  // TODO add find_first to model
+  // testquery for db: http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&allergens=gluten
+  const response = await IngredientsModel.findByName(ingredient);
+  return response[0];
 }

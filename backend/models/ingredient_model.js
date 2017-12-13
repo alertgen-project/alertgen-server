@@ -1,155 +1,155 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const log = require('./logger/logger.js').getlog('ingredient_model.js');
+const log = require('../logger/logger.js').getLog('ingredient_model.js');
 
 const ingredientSchema = new Schema({
-    name: {
-        type: String,
-        lowercase: true,
-        required: true
+  name: {
+    type: String,
+    lowercase: true,
+    required: true,
+  },
+  gluten: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    gluten: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  crustaceans: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    crustaceans: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  eggs: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    eggs: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  fish: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    fish: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  peanuts: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    peanuts: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  soy: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    soy: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  milk: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    milk: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  nuts: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    nuts: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  celery: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    celery: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  mustard: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    mustard: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  sesame: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    sesame: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  sulphites: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    sulphites: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  lupin: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    lupin: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
+    contains_pos: Number,
+    contains_neg: Number,
+  },
+  molluscs: {
+    contains: Boolean,
+    contains_percent: {
+      type: Number,
+      min: 0,
+      max: 1,
     },
-    molluscs: {
-        contains: Boolean,
-        contains_percent: {
-            type: Number,
-            min: 0,
-            max: 1
-        },
-        contains_pos: Number,
-        contains_neg: Number
-    }
+    contains_pos: Number,
+    contains_neg: Number,
+  },
 }, {runSettersOnQuery: true});
 
 /**
@@ -157,8 +157,8 @@ const ingredientSchema = new Schema({
  * @param name
  * @returns {Promise<Query|void|*|number>}
  */
-ingredientSchema.statics.findByName = async (name) => {
-    return this.find({name: new RegExp(name, 'i')});
+ingredientSchema.statics.findByName = async function(name) {
+  return this.find({name: new RegExp(name, 'i')});
 };
 
 /**
@@ -168,24 +168,29 @@ ingredientSchema.statics.findByName = async (name) => {
  * @param field
  * @returns {Promise<void>}
  */
-ingredientSchema.statics.updateIngredientAllergenConfirmation = async (name, allergen, field) => {
-    try {
-        const ingredient = await this.find({name: new RegExp(name, 'i')});
-        ingredient[allergen][field]+=1;
-        if (field === "contains_pos") {
-            ingredient[allergen].contains_percent = ingredient[allergen][field] / (ingredient[allergen][field] + ingredient[allergen].contains_neg);
-            ingredient[allergen].contains = ingredient[allergen].contains_percent >= 0.5;
-        }
-        else {
-            ingredient[allergen].contains_percent = ingredient[allergen][field] / (ingredient[allergen][field] + ingredient[allergen].contains_pos);
-            ingredient[allergen].contains = ingredient[allergen].contains_percent >= 0.5;
-        }
-        log.info("Updated ingredient to: " + ingredient);
-        return await ingredient.save();
+ingredientSchema.statics.updateIngredientAllergenConfirmation = async (
+    name, allergen, field) => {
+  try {
+    const ingredient = await this.find({name: new RegExp(name, 'i')});
+    ingredient[allergen][field] += 1;
+    if (field === 'contains_pos') {
+      ingredient[allergen].contains_percent = ingredient[allergen][field] /
+          (ingredient[allergen][field] + ingredient[allergen].contains_neg);
+      ingredient[allergen].contains = ingredient[allergen].contains_percent >=
+          0.5;
     }
-    catch (err) {
-        log.error(err);
+    else {
+      ingredient[allergen].contains_percent = ingredient[allergen][field] /
+          (ingredient[allergen][field] + ingredient[allergen].contains_pos);
+      ingredient[allergen].contains = ingredient[allergen].contains_percent >=
+          0.5;
     }
+    log.info('Updated ingredient to: ' + ingredient);
+    return await ingredient.save();
+  }
+  catch (err) {
+    log.error(err);
+  }
 };
 
-module.exports = new mongoose.model('Ingredient', ingredientSchema);
+module.exports = mongoose.model('Ingredient', ingredientSchema);
