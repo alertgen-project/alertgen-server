@@ -20,12 +20,12 @@ async function containAllergens(ctx, next) {
   // build promises
   const requestPromises = [];
   ingredients.forEach(ingredient => {
-    requestPromises.push(requestIngredientDummy(ingredient));
+    requestPromises.push(requestIngredient(ingredient));
   });
   // dummy-impl requires error handling and db-request
   const ingredientsWithAllergens = [];
   await Promise.all(requestPromises).then(ingredients => {
-    ingredients.forEach(dbIngredientAttributes => {
+    ingredients.forEach(dbIngredient => {
       // build one response-object for each ingredient
       const ingredientProperties = {};
       // check for the requested allergens, and form the response
@@ -34,13 +34,13 @@ async function containAllergens(ctx, next) {
           containing: false,
           contains_percent: 0,
         };
-        allergenProperties.containing = dbIngredientAttributes[allergen].contains;
-        allergenProperties.contains_percent = dbIngredientAttributes[allergen].contains_percent;
+        allergenProperties.containing = dbIngredient[allergen].contains;
+        allergenProperties.contains_percent = dbIngredient[allergen].contains_percent;
         ingredientProperties[allergen] = allergenProperties;
       });
       // add responseObject to the responseArray
       const ingredientWithAllergen = {};
-      ingredientWithAllergen[dbIngredientAttributes.name] = ingredientProperties;
+      ingredientWithAllergen[dbIngredient.name] = ingredientProperties;
       ingredientsWithAllergens.push(ingredientWithAllergen);
     });
   });
@@ -48,7 +48,7 @@ async function containAllergens(ctx, next) {
   return ctx.body = JSON.stringify(ingredientsWithAllergens);
 }
 
-async function requestIngredientDummy(ingredient) {
+async function requestIngredient(ingredient) {
   // TODO add find_first to model
   // testquery for db: http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&allergens=gluten
   const response = await IngredientsModel.findByName(ingredient);
