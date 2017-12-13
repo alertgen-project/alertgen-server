@@ -1,5 +1,7 @@
+'use strict';
+
 module.exports = {
-  handleGeneralError: handleGeneralError,
+  handleGeneralError,
 };
 
 async function handleGeneralError(ctx, next) {

@@ -1,5 +1,7 @@
+'use strict';
+
 module.exports = {
-  postFeedback: postFeedback,
+  postFeedback,
 };
 
 const HelpUsErrors = require('../errors/help_us_errors.js');

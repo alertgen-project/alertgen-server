@@ -13,7 +13,10 @@
     "ingredients": "/ingredients",
     "helpus": "/helpus"
   },
-  "config": {
-    "path": "./logs"
+  "logger": {
+    "path": "./logs/server_log.json",
+    "level": "trace",
+    "period": "1w",
+    "count": "2"
   }
 }
