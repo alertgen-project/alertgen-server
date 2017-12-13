@@ -34,7 +34,7 @@ async function containAllergens(ctx, next) {
           containing: false,
           contains_percent: 0,
         };
-        responseAllergen.containing = dbIngredient[allergen].containing;
+        responseAllergen.containing = dbIngredient[allergen].contains;
         responseAllergen.contains_percent = dbIngredient[allergen].contains_percent;
         responseIngredientAttributes[allergen] = responseAllergen;
       });
