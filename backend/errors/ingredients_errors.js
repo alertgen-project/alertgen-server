@@ -16,7 +16,15 @@ const AllergenNotFoundError = erroz({
   template: 'The allergen you requested is not listed in our database.',
 });
 
+const IngredientNotIndexedError = erroz({
+  name: 'IngredientNotIndexedError',
+  code: 'IngredientNotIndexedError',
+  statusCode: 400,
+  template: 'We don\'t have any data about your requested Ingredient: %ingredient.',
+});
+
 module.exports = {
   IngredientsWrongParameterError,
-  AllergenNotFoundError
+  AllergenNotFoundError,
+  IngredientNotIndexedError
 };
