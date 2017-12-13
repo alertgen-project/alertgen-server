@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const bunyan = require('bunyan');
 const config = require('config');
@@ -12,15 +12,15 @@ module.exports = {
           path: config.get('logger.path'),
           level: config.get('logger.level'),
           period: config.get('logger.period'),
-          count: config.get('logger.count')
+          count: config.get('logger.count'),
         },
         {
           stream: process.stdout,
-          level: config.get('logger.level')
-        }
-      ]
+          level: config.get('logger.level'),
+        },
+      ],
     });
-  }
+  },
 };
 
 //In Script einfugen:  const log = require('./logger/logger.js').getlog('scriptname');

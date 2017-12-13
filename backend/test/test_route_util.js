@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const RouteUtil = require('../routes/route_util.js');
 require('chai').should();

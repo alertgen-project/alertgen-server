@@ -209,3 +209,5 @@ typings/
 # Sonarlint plugin
 
 # End of https://www.gitignore.io/api/node,phpstorm,webstorm,jetbrains
+
+backend/logger/server_log\.json
