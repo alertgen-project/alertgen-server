@@ -19,6 +19,7 @@
     "erroz": "^1.1.0",
     "koa": "^2.4.1",
     "koa-router": "^7.3.0",
+    "mongoose": "^4.13.7",
     "request": "^2.83.0"
   },
   "devDependencies": {
