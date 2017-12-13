@@ -171,7 +171,7 @@ ingredientSchema.statics.findByName = async (name) => {
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async (name, allergen, field) => {
     try {
         const ingredient = await this.find({name: new RegExp(name, 'i')});
-        ingredient[allergen][field] = ingredient[allergen][field] + 1;
+        ingredient[allergen][field]+=1;
         if (field === "contains_pos") {
             ingredient[allergen].contains_percent = ingredient[allergen][field] / (ingredient[allergen][field] + ingredient[allergen].contains_neg);
             ingredient[allergen].contains = ingredient[allergen].contains_percent >= 0.5;
