@@ -6,89 +6,146 @@ const Schema = mongoose.Schema;
 const ingredientSchema = new Schema({
         name: {
             type: String,
-            lowercase: true
+            lowercase: true,
+            required: true
         },
         gluten: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         crustaceans: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         eggs: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         fish: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         peanuts: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         soy: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         milk: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         nuts: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         celery: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         mustard: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         sesame: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         sulphites: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         lupin: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         },
         molluscs: {
             contains: Boolean,
-            contains_percent: Number,
+            contains_percent: {
+                type: Number,
+                min: 0,
+                max: 1
+            },
             contains_pos: Number,
             contains_neg: Number
         }
