@@ -18,34 +18,34 @@ async function containAllergens(ctx, next) {
   const allergens = RouteUtil.toArray(ctx.query.allergens);
   log.debug('Using Queryparameters:', ingredients, allergens);
   // build promises
-  const requestPromises = [];
+  const databaseRequestPromises = [];
   ingredients.forEach(ingredient => {
-    requestPromises.push(requestIngredient(ingredient));
+    databaseRequestPromises.push(requestIngredient(ingredient));
   });
   // dummy-impl requires error handling and db-request
-  const ingredientsWithAllergens = [];
-  await Promise.all(requestPromises).then(ingredients => {
+  const responseIngredients = [];
+  await Promise.all(databaseRequestPromises).then(ingredients => {
     ingredients.forEach(dbIngredient => {
       // build one response-object for each ingredient
-      const ingredientProperties = {};
+      const responseIngredientAttributes = {};
       // check for the requested allergens, and form the response
       allergens.forEach(allergen => {
-        const allergenProperties = {
+        const responseAllergen = {
           containing: false,
           contains_percent: 0,
         };
-        allergenProperties.containing = dbIngredient[allergen].contains;
-        allergenProperties.contains_percent = dbIngredient[allergen].contains_percent;
-        ingredientProperties[allergen] = allergenProperties;
+        responseAllergen.containing = dbIngredient[allergen].containing;
+        responseAllergen.contains_percent = dbIngredient[allergen].contains_percent;
+        responseIngredientAttributes[allergen] = responseAllergen;
       });
       // add responseObject to the responseArray
-      const ingredientWithAllergen = {};
-      ingredientWithAllergen[dbIngredient.name] = ingredientProperties;
-      ingredientsWithAllergens.push(ingredientWithAllergen);
+      const responseIngredient = {};
+      responseIngredient[dbIngredient.name] = responseIngredientAttributes;
+      responseIngredients.push(responseIngredient);
     });
   });
-  console.log('results', JSON.stringify(ingredientsWithAllergens));
-  return ctx.body = JSON.stringify(ingredientsWithAllergens);
+  console.log('results', JSON.stringify(responseIngredients));
+  return ctx.body = JSON.stringify(responseIngredients);
 }
 
 async function requestIngredient(ingredient) {
