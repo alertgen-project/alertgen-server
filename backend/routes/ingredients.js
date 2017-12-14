@@ -41,7 +41,7 @@ async function containAllergens(ctx, next) {
         const {contains, contains_percent} = dbAllergen;
         const responseAllergen = {
           containing: contains,
-          contains_percent
+          contains_percent,
         };
         responseIngredientAttributes[allergen] = responseAllergen;
         ingredientIndex++;
@@ -59,6 +59,7 @@ async function containAllergens(ctx, next) {
 async function requestIngredient(ingredient) {
   // TODO add find_first to model
   // testquery for db: http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&allergens=gluten
+  // testquery for two objects http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&ingredients=DelicousPickle&allergens=gluten
   const response = await IngredientsModel.findByName(ingredient);
   return response[0];
 }
