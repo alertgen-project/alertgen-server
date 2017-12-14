@@ -13,7 +13,7 @@ const AllergenNotFoundError = erroz({
   name: 'AllergenNotFoundError',
   code: 'AllergenNotFoundError',
   statusCode: 400,
-  template: 'The allergen you requested is not listed in our database.',
+  template: 'The allergen you requested with the name "%allergen" is not listed in our database.',
 });
 
 const IngredientNotIndexedError = erroz({

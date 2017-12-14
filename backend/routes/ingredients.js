@@ -36,7 +36,7 @@ async function containAllergens(ctx, next) {
         }
         const dbAllergen = dbIngredient[allergen];
         if (!dbAllergen) {
-          ctx.throw(new IngredientsErrors.AllergenNotFoundError);
+          ctx.throw(new IngredientsErrors.AllergenNotFoundError({allergen}));
         }
         const {contains, contains_percent} = dbAllergen;
         const responseAllergen = {
