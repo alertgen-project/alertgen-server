@@ -30,10 +30,6 @@ async function containAllergens(ctx, next) {
       const responseIngredientAttributes = {};
       // check for the requested allergens, and form the response
       allergensQueryParam.forEach(allergen => {
-        const responseAllergen = {
-          containing: false,
-          contains_percent: 0,
-        };
         if (!dbIngredient) {
           ctx.throw(new IngredientsErrors.IngredientNotIndexedError(
               {ingredient: ingredientsQueryParam[ingredientIndex]}));
@@ -42,8 +38,11 @@ async function containAllergens(ctx, next) {
         if (!dbAllergen) {
           ctx.throw(new IngredientsErrors.AllergenNotFoundError);
         }
-        responseAllergen.containing = dbAllergen.contains;
-        responseAllergen.contains_percent = dbAllergen.contains_percent;
+        const {contains, contains_percent} = dbAllergen;
+        const responseAllergen = {
+          containing: contains,
+          contains_percent
+        };
         responseIngredientAttributes[allergen] = responseAllergen;
         ingredientIndex++;
       });
