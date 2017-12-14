@@ -57,7 +57,9 @@ async function containAllergens(ctx, next) {
 }
 
 async function requestIngredient(ingredient) {
-  // TODO add find_first to model
+  /**
+   * Returns the first found Ingredient in the database with the passed name
+   */
   // testquery for db: http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&allergens=gluten
   // testquery for two objects http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&ingredients=DelicousPickle&allergens=gluten
   const response = await IngredientsModel.findByName(ingredient);
