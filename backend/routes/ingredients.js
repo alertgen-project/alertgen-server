@@ -9,7 +9,7 @@ const IngredientsErrors = require('../errors/ingredients_errors.js');
 const RouteUtil = require('./route_util.js');
 const log = require('../logger/logger.js').getLog('ingredients.js');
 
-async function containAllergens(ctx, next) {
+async function containAllergens(ctx) {
   if (!ctx.query.ingredients || !ctx.query.allergens) {
     ctx.throw(new IngredientsErrors.IngredientsWrongParameterError());
   }
@@ -27,7 +27,7 @@ async function containAllergens(ctx, next) {
           }
           // create an object which contains all requested allergens for this ingredient
           const responseAllergens = allergensQueryParam.reduce(
-              (responseAllergens, allergen, index, arr) => {
+              (responseAllergens, allergen) => {
                 const dbAllergen = dbIngredient[allergen];
                 if (!dbAllergen) {
                   ctx.throw(
@@ -50,8 +50,9 @@ async function requestIngredient(ingredient) {
   /**
    * Returns the first found Ingredient in the database with the passed name
    */
-  // testquery for db: http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&allergens=gluten
-      // testquery for two objects http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&ingredients=DelicousPickle&allergens=gluten
+      // testquery for db: http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&allergens=gluten
+      // testquery for two ingredients http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&ingredients=DelicousPickle&allergens=gluten
+      // testquery for two allergens http://localhost:8080/ingredients?ingredients=DelicousPickle2&allergens=gluten&allergens=lupin
   const response = await IngredientsModel.findByName(ingredient);
   return response[0];
 }
