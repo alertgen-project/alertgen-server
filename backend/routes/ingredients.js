@@ -25,6 +25,7 @@ async function containAllergens(ctx, next) {
             ctx.throw(new IngredientsErrors.IngredientNotIndexedError(
                 {ingredient: ingredientsQueryParam[ingredientIndex]}));
           }
+          // create an object which contains all requested allergens for this ingredient
           const responseAllergens = allergensQueryParam.reduce(
               (responseAllergens, allergen, index, arr) => {
                 const dbAllergen = dbIngredient[allergen];
