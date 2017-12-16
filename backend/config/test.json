@@ -1,0 +1,24 @@
+{
+  "db": {
+    "host": "mongodb://allergy-check.informatik.hs-augsburg.de",
+    "port": 1011,
+    "dbName": "",
+    "user": "admin",
+    "pw": "halloMongo;120"
+  },
+  "server": {
+    "port": 8080
+  },
+  "routes": {
+    "product": "/product",
+    "productcategory": "/productcategory",
+    "ingredients": "/ingredients",
+    "helpus": "/helpus"
+  },
+  "logger": {
+    "path": "./logs/server_log.json",
+    "level": "trace",
+    "period": "1w",
+    "count": "2"
+  }
+}

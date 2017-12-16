@@ -18,12 +18,14 @@
     "config": "^1.28.1",
     "erroz": "^1.1.0",
     "koa": "^2.4.1",
+    "koa-json": "^2.0.2",
     "koa-router": "^7.3.0",
     "mongoose": "^4.13.7",
     "request": "^2.83.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "chai-http": "^3.0.0"
   }
 }

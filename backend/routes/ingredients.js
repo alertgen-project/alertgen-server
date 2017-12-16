@@ -42,8 +42,7 @@ async function containAllergens(ctx) {
           return {[`${dbIngredient.name}`]: responseAllergens};
         });
       });
-  console.log('results', JSON.stringify(responseIngredients));
-  return ctx.body = JSON.stringify(responseIngredients);
+  return ctx.body = responseIngredients;
 }
 
 async function requestIngredient(ingredient) {
