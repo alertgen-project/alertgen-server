@@ -49,9 +49,6 @@ async function requestIngredient(ingredient) {
   /**
    * Returns the first found Ingredient in the database with the passed name
    */
-      // testquery for db: http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&allergens=gluten
-      // testquery for two ingredients http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&ingredients=DelicousPickle&allergens=gluten
-      // testquery for two allergens http://localhost:8080/ingredients?ingredients=DelicousPickle2&allergens=gluten&allergens=lupin
   const response = await IngredientsModel.findByName(ingredient);
   return response[0];
 }
