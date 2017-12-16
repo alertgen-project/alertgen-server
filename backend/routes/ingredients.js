@@ -18,14 +18,10 @@ async function containAllergens(ctx, next) {
   log.debug('Using Queryparameters:', ingredientsQueryParam,
       allergensQueryParam);
   // build promises
-  const databaseRequestPromises = [];
-  ingredientsQueryParam.forEach(ingredient => {
-    databaseRequestPromises.push(requestIngredient(ingredient));
-  });
+  const databaseRequestPromises = ingredientsQueryParam.map(requestIngredient);
   const responseIngredients = [];
-  let ingredientIndex = 0;
   await Promise.all(databaseRequestPromises).then(ingredients => {
-    ingredients.forEach(dbIngredient => {
+    ingredients.forEach((dbIngredient, ingredientIndex) => {
       // build one response-object for each ingredient
       const responseIngredientAttributes = {};
       // check for the requested allergens, and form the response
@@ -44,7 +40,6 @@ async function containAllergens(ctx, next) {
           contains_percent,
         };
         responseIngredientAttributes[allergen] = responseAllergen;
-        ingredientIndex++;
       });
       // add responseObject to the responseArray
       const responseIngredient = {};
