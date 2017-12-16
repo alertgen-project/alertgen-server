@@ -1,8 +1,8 @@
 process.env.NODE_ENV = 'test';
 
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server.js');
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../server.js');
 
 chai.use(chaiHttp);
 
@@ -24,6 +24,6 @@ describe('ingredients', () => {
 
 after(() => {
   server.close(() => {
-    process.exit(0);
+    mongoose.connection.close()
   });
 });
