@@ -5,7 +5,9 @@ const Router = require('koa-router');
 const config = require('config');
 const mongoose = require('mongoose');
 
-mongoose.connect(config.get('db.host') + ':' + config.get('db.port'),
+mongoose.connect('mongodb://' + config.get('db.user') + ':' +
+    config.get('db.pw') + '@' + config.get('db.host') + ':' +
+    config.get('db.port'),
     {useMongoClient: true});
 // use ES6 native Promises
 mongoose.Promise = Promise;
@@ -18,7 +20,7 @@ const helpUs = require('./routes/help_us.js');
 const generalError = require('./errors/general_error_handling.js');
 const log = require('./logger/logger.js').getLog('server.js');
 
-const json = require('koa-json')
+const json = require('koa-json');
 const router = new Router();
 const app = new Koa();
 

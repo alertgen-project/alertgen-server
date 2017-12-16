@@ -1,6 +1,6 @@
 {
   "db": {
-    "host": "mongodb://allergy-check.informatik.hs-augsburg.de",
+    "host": "allergy-check.informatik.hs-augsburg.de",
     "port": 1010,
     "dbName": "",
     "user": "admin",
