@@ -17,36 +17,30 @@ async function containAllergens(ctx, next) {
   const allergensQueryParam = RouteUtil.toArray(ctx.query.allergens);
   log.debug('Using Queryparameters:', ingredientsQueryParam,
       allergensQueryParam);
-  // build promises
-  const databaseRequestPromises = ingredientsQueryParam.map(requestIngredient);
-  const responseIngredients = [];
-  await Promise.all(databaseRequestPromises).then(ingredients => {
-    ingredients.forEach((dbIngredient, ingredientIndex) => {
-      // build one response-object for each ingredient
-      const responseIngredientAttributes = {};
-      // check for the requested allergens, and form the response
-      allergensQueryParam.forEach(allergen => {
-        if (!dbIngredient) {
-          ctx.throw(new IngredientsErrors.IngredientNotIndexedError(
-              {ingredient: ingredientsQueryParam[ingredientIndex]}));
-        }
-        const dbAllergen = dbIngredient[allergen];
-        if (!dbAllergen) {
-          ctx.throw(new IngredientsErrors.AllergenNotFoundError({allergen}));
-        }
-        const {contains, contains_percent} = dbAllergen;
-        const responseAllergen = {
-          containing: contains,
-          contains_percent,
-        };
-        responseIngredientAttributes[allergen] = responseAllergen;
+  const responseIngredients = await Promise.all(
+      ingredientsQueryParam.map(requestIngredient)).
+      then(dbIngredients => {
+        return dbIngredients.map((dbIngredient, ingredientIndex) => {
+          if (!dbIngredient) {
+            ctx.throw(new IngredientsErrors.IngredientNotIndexedError(
+                {ingredient: ingredientsQueryParam[ingredientIndex]}));
+          }
+          const responseAllergens = allergensQueryParam.reduce(
+              (responseAllergens, allergen, index, arr) => {
+                const dbAllergen = dbIngredient[allergen];
+                if (!dbAllergen) {
+                  ctx.throw(
+                      new IngredientsErrors.AllergenNotFoundError({allergen}));
+                }
+                const {contains, contains_percent} = dbAllergen;
+                responseAllergens[allergen] = {
+                  containing: contains, contains_percent,
+                };
+                return responseAllergens;
+              }, {});
+          return {[`${dbIngredient.name}`]: responseAllergens};
+        });
       });
-      // add responseObject to the responseArray
-      const responseIngredient = {};
-      responseIngredient[dbIngredient.name] = responseIngredientAttributes;
-      responseIngredients.push(responseIngredient);
-    });
-  });
   console.log('results', JSON.stringify(responseIngredients));
   return ctx.body = JSON.stringify(responseIngredients);
 }
@@ -56,7 +50,7 @@ async function requestIngredient(ingredient) {
    * Returns the first found Ingredient in the database with the passed name
    */
   // testquery for db: http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&allergens=gluten
-  // testquery for two objects http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&ingredients=DelicousPickle&allergens=gluten
+      // testquery for two objects http://localhost:8080/ingredients?ingredients=DelicousPancakeDough&ingredients=DelicousPickle&allergens=gluten
   const response = await IngredientsModel.findByName(ingredient);
   return response[0];
 }
