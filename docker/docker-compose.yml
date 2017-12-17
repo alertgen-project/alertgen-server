@@ -9,12 +9,12 @@ services:
      ports:
        - "1010:27017"
      environment:
-           - AUTH=yes
-           - MONGODB_ADMIN_USER=admin
-           - MONGODB_ADMIN_PASS=halloMongo;120
-           #- MONGODB_APPLICATION_DATABASE=sample
-           #- MONGODB_APPLICATION_USER=aashrey
-           #- MONGODB_APPLICATION_PASS=admin123
+       - AUTH=yes
+       - MONGODB_ADMIN_USER=admin
+       - MONGODB_ADMIN_PASS=halloMongo;120
+       #- MONGODB_APPLICATION_DATABASE=sample
+       #- MONGODB_APPLICATION_USER=aashrey
+       #- MONGODB_APPLICATION_PASS=admin123
 
    alertgen:
      depends_on:
