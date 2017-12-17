@@ -2,7 +2,7 @@ version: '3'
 
 services:
    mongo_db:
-     image: mongo
+     image: aashreys/mongo-auth:latest
      volumes:
        - /var/docker_deployment/mongo_db/data2:/data/db
      restart: always
