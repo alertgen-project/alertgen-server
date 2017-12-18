@@ -17,11 +17,14 @@ describe('Ingredient Model Tests', () => {
   });
 
   it('Should insert test-object and remove it', async () => {
-    (await Ingredient.insert({name: "test"})).should.be.true;
-    (await Ingredient.removeOne({name: "test"})).should.be.true;
+    (await Ingredient.insert({name: 'test'})).should.be.true;
+    (await Ingredient.findOneIngredient({name: 'test'})).name.should.be.equal(
+        'test');
+    (await Ingredient.removeOne({name: 'test'})).should.be.true;
   });
 
   it('Should update sugar', async () => {
-    (await Ingredient.updateIngredientAllergenConfirmation('sugar', 'gluten', 'contains_neg')).should.be.false;
+    (await Ingredient.updateIngredientAllergenConfirmation('sugar', 'gluten',
+        'contains_neg')).should.be.false;
   });
 });

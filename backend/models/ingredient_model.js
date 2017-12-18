@@ -236,4 +236,18 @@ ingredientSchema.statics.removeOne = async function(
   });
 };
 
+ingredientSchema.statics.findOneIngredient = async function(
+    object) {
+  return new Promise((resolve) => {
+    this.findOne(object, (err, object) => {
+      if (err) {
+        log.error(err);
+        resolve(undefined);
+      } else {
+        resolve(object);
+      }
+    });
+  });
+};
+
 module.exports = conn.model('Ingredient', ingredientSchema);
