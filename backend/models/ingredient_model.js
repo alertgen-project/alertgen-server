@@ -2,7 +2,15 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const config = require('config');
 const log = require('../logger/logger.js').getLog('ingredient_model.js');
+
+const connection = mongoose.connect('mongodb://' + config.get('db.user') + ':' +
+    config.get('db.pw') + '@' + config.get('db.host') + ':' +
+    config.get('db.port'),
+    {useMongoClient: true});
+// use ES6 native Promises
+mongoose.Promise = Promise;
 
 const ingredientSchema = new Schema({
   name: {
@@ -198,4 +206,15 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async (
   }
 };
 
-module.exports = mongoose.model('Ingredient', ingredientSchema);
+ingredientSchema.statics.insert = async function(
+    object) {
+  this.create(object, (err) => {
+    if (err) {
+      return err;
+    } else {
+      return;
+    }
+  });
+};
+
+module.exports = connection.model('Ingredient', ingredientSchema);
