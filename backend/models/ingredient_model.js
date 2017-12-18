@@ -209,12 +209,12 @@ ingredientSchema.statics.insert = async function(
     object) {
   this.create(object, (err) => {
     if (err) {
-      return err;
+      log.error(err);
+      return false;
     } else {
-      return;
+      return true;
     }
   });
 };
 
 module.exports = conn.model('Ingredient', ingredientSchema);
-
