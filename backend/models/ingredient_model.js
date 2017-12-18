@@ -205,4 +205,16 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
   }
 };
 
+ingredientSchema.statics.insert = async function(
+    object) {
+  this.create(object, (err) => {
+    if (err) {
+      log.error(err);
+      return false;
+    } else {
+      return true;
+    }
+  });
+};
+
 module.exports = conn.model('Ingredient', ingredientSchema);
