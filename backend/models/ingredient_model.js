@@ -182,8 +182,11 @@ ingredientSchema.statics.findByName = async function(name) {
  */
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     name, allergen, field) {
-  try {
-    const ingredient = await this.find({name: new RegExp(name, 'i')});
+  const ingredient = await this.find({name: new RegExp(name, 'i')});
+  return new Promise((resolve) => {
+    if (ingredient.length === 0) {
+      resolve(false);
+    }
     ingredient[allergen][field] += 1;
     if (field === 'contains_pos') {
       ingredient[allergen].contains_percent = ingredient[allergen][field] /
@@ -199,22 +202,19 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     }
     log.info('Updated ingredient to: ' + ingredient);
     ingredient.save(function(err) {
-      if (err) return false;
-      else return true;
+      if (err) resolve(false);
+      else return resolve(true);
     });
-  }
-  catch (err) {
-    log.error(err);
-  }
+  });
 };
 
 ingredientSchema.statics.insert = async function(
     object) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     this.create(object, (err) => {
       if (err) {
         log.error(err);
-        reject(false);
+        resolve(false);
       } else {
         resolve(true);
       }
