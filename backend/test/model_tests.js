@@ -3,7 +3,7 @@ require('chai').should();
 const Ingredient = require('../models/ingredient_model');
 
 describe('Ingredient Model Tests', () => {
-  it('Should create water', async (done) => {
+  it('Should create sugar', async (done) => {
     const sugar = new Ingredient({
       name: 'sugar',
       gluten: {
@@ -17,8 +17,8 @@ describe('Ingredient Model Tests', () => {
     done();
   });
 
-  it('Should update water', async (done) => {
-    const water2 = await Ingredient.findByName('sugar');
+  it('Should update sugar', async (done) => {
+    const water2 = await Ingredient.updateIngredientAllergenConfirmation('sugar', 'gluten', 'contains_neg');
     console.log(water2);
     done();
   });
