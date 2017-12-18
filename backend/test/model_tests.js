@@ -18,7 +18,7 @@ describe('Ingredient Model Tests', () => {
   });
 
   it('Should update sugar', async (done) => {
-    const water2 = await Ingredient.updateIngredientAllergenConfirmation('sugar', 'gluten', 'contains_neg');
+    const water2 = Ingredient.updateIngredientAllergenConfirmation('sugar', 'gluten', 'contains_neg').then((test) => console.log(test));
     console.log(water2);
     done();
   });

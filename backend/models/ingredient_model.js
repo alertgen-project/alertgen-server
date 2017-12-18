@@ -199,8 +199,8 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     }
     log.info('Updated ingredient to: ' + ingredient);
     ingredient.save(function (err) {
-      if (err) return Promise.reject(false);
-      else return Promise.resolve(true);
+      if (err) return false;
+      else return true;
     });
   }
   catch (err) {
