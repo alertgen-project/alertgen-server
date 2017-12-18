@@ -198,7 +198,7 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
           0.5;
     }
     log.info('Updated ingredient to: ' + ingredient);
-    ingredient.save(function (err) {
+    ingredient.save(function(err) {
       if (err) return false;
       else return true;
     });
@@ -210,13 +210,15 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
 
 ingredientSchema.statics.insert = async function(
     object) {
-  this.create(object, (err) => {
-    if (err) {
-      log.error(err);
-      return false;
-    } else {
-      return true;
-    }
+  return new Promise((resolve, reject) => {
+    this.create(object, (err) => {
+      if (err) {
+        log.error(err);
+        reject(false);
+      } else {
+        resolve(true);
+      }
+    });
   });
 };
 
