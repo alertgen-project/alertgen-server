@@ -16,8 +16,9 @@ describe('Ingredient Model Tests', () => {
     done();
   });
 
-  it('Should insert test', async () => {
+  it('Should insert test-object and remove it', async () => {
     (await Ingredient.insert({name: "test"})).should.be.true;
+    (await Ingredient.removeOne({name: "test"})).should.be.true;
   });
 
   it('Should update sugar', async () => {
