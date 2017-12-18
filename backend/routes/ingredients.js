@@ -49,6 +49,5 @@ async function requestIngredient(ingredient) {
   /**
    * Returns the first found Ingredient in the database with the passed name
    */
-  const response = await IngredientsModel.findByName(ingredient);
-  return response[0];
+  return IngredientsModel.findOneIngredientFuzzy(ingredient);
 }

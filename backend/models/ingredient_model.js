@@ -250,4 +250,18 @@ ingredientSchema.statics.findOneIngredient = async function(
   });
 };
 
+ingredientSchema.statics.findOneIngredientFuzzy = async function(
+    name) {
+  return new Promise((resolve) => {
+    this.findOne({name: new RegExp(name, 'i')}, (err, object) => {
+      if (err) {
+        log.error(err);
+        resolve(undefined);
+      } else {
+        resolve(object);
+      }
+    });
+  });
+};
+
 module.exports = conn.model('Ingredient', ingredientSchema);
