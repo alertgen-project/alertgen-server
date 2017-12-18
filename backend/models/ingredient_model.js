@@ -176,7 +176,7 @@ ingredientSchema.statics.findByName = async function(name) {
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async (
     name, allergen, field) => {
   try {
-    const ingredient = await this.find({name: new RegExp(name, 'i')});
+    const ingredient = await ingredientSchema.find({name: new RegExp(name, 'i')});
     ingredient[allergen][field] += 1;
     if (field === 'contains_pos') {
       ingredient[allergen].contains_percent = ingredient[allergen][field] /
@@ -198,4 +198,4 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async (
   }
 };
 
-module.exports = mongoose.model('Ingredient', ingredientSchema);
+module.exports = { ingredientSchema };

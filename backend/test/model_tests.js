@@ -1,57 +1,36 @@
 'use strict';
+const config = require('config');
+const mongoose = require('mongoose');
+const IngredientSchema = require('../models/ingredient_model');
 
-require('chai').should();
-const {IngredientModel} = require('../models/ingredient_model');
+const conn = mongoose.connect('mongodb://' + config.get('db.user') + ':' +
+    config.get('db.pw') + '@' + config.get('db.host') + ':' +
+    config.get('db.port'),
+    {useMongoClient: true});
+// use ES6 native Promises
+mongoose.Promise = Promise;
+
+const Ingredient = conn.model('Ingredient', IngredientSchema);
 
 describe('Ingredient Model Tests', () => {
-  it('Should return ingredient name', async () => {
-    const water = {
-      'water': {
-        'gluten': {
-          'contains': true,
-        },
+  it('Should create water', async (done) => {
+    const water = new Ingredient({
+      name: 'water',
+      gluten: {
+        contains: false,
+        contains_percent: 1,
+        contains_pos: 0,
+        contains_neg: 1,
       },
-    };
-    const waterModel = new IngredientModel(JSON.stringify(water));
-    const name = waterModel.getIngredientName();
-    name.should.equal('water');
+    });
+    console.log(water);
+    done();
   });
 
-  it('Should access ingredient name', async () => {
-    const water = {
-      'water': {
-        'gluten': {
-          'contains': true,
-        },
-      },
-    };
-    const waterModel = new IngredientModel(JSON.stringify(water));
-    const name = waterModel.ingredient;
-    name.should.equal('water');
+  it('Should update water', async (done) => {
+    const water2 = Ingredient.findByName('water');
+    console.log(water2);
+    done();
   });
 
-  it('Should return ingredient object', async () => {
-    const water = {
-      'water': {
-        'gluten': {
-          'contains': true,
-        },
-      },
-    };
-    const waterModel = new IngredientModel(JSON.stringify(water));
-    const obj = waterModel.getObject();
-    obj.should.deep.equal(water);
-  });
-  it('Should access ingredient object', async () => {
-    const water = {
-      'water': {
-        'gluten': {
-          'contains': true,
-        },
-      },
-    };
-    const waterModel = new IngredientModel(JSON.stringify(water));
-    const obj = waterModel.object;
-    obj.should.deep.equal(water);
-  });
 });
