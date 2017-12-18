@@ -1,21 +1,11 @@
 'use strict';
-const config = require('config');
-const mongoose = require('mongoose');
-const IngredientSchema = require('../models/ingredient_model');
-
-const conn = mongoose.connect('mongodb://' + config.get('db.user') + ':' +
-    config.get('db.pw') + '@' + config.get('db.host') + ':' +
-    config.get('db.port'),
-    {useMongoClient: true});
-// use ES6 native Promises
-mongoose.Promise = Promise;
-
-const Ingredient = conn.model('Ingredient', IngredientSchema);
+require('chai').should();
+const Ingredient = require('../models/ingredient_model');
 
 describe('Ingredient Model Tests', () => {
   it('Should create water', async (done) => {
-    const water = new Ingredient({
-      name: 'water',
+    const sugar = new Ingredient({
+      name: 'sugar',
       gluten: {
         contains: false,
         contains_percent: 1,
@@ -23,12 +13,12 @@ describe('Ingredient Model Tests', () => {
         contains_neg: 1,
       },
     });
-    console.log(water);
+    console.log(sugar);
     done();
   });
 
   it('Should update water', async (done) => {
-    const water2 = Ingredient.findByName('water');
+    const water2 = await Ingredient.findByName('sugar');
     console.log(water2);
     done();
   });
