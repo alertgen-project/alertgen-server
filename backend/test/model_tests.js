@@ -13,14 +13,14 @@ describe('Ingredient Model Tests', () => {
         contains_neg: 1,
       },
     });
-    console.log(sugar);
     done();
   });
 
-  it('Should update sugar', async (done) => {
-    const water2 = Ingredient.updateIngredientAllergenConfirmation('sugar', 'gluten', 'contains_neg').then((test) => console.log(test));
-    console.log(water2);
-    done();
+  it('Should insert test', async () => {
+    (await Ingredient.insert({name: "test"})).should.be.true;
   });
 
+  it('Should update sugar', async () => {
+    (await Ingredient.updateIngredientAllergenConfirmation('sugar', 'gluten', 'contains_neg')).should.be.false;
+  });
 });
