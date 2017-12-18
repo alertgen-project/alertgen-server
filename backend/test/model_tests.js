@@ -16,7 +16,7 @@ describe('Ingredient Model Tests', () => {
     done();
   });
 
-  it('Should insert test-object and remove it', async () => {
+  it('Should insert test-object, find it and remove it', async () => {
     (await Ingredient.insert({name: 'test'})).should.be.true;
     (await Ingredient.findOneIngredient({name: 'test'})).name.should.be.equal(
         'test');
