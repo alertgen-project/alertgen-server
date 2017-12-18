@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const config = require('config');
 const log = require('../logger/logger.js').getLog('ingredient_model.js');
-
-const connection = mongoose.connect('mongodb://' + config.get('db.user') + ':' +
+const conn = mongoose.connect('mongodb://' + config.get('db.user') + ':' +
     config.get('db.pw') + '@' + config.get('db.host') + ':' +
     config.get('db.port'),
     {useMongoClient: true});
@@ -184,7 +183,7 @@ ingredientSchema.statics.findByName = async function(name) {
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async (
     name, allergen, field) => {
   try {
-    const ingredient = await this.find({name: new RegExp(name, 'i')});
+    const ingredient = await ingredientSchema.find({name: new RegExp(name, 'i')});
     ingredient[allergen][field] += 1;
     if (field === 'contains_pos') {
       ingredient[allergen].contains_percent = ingredient[allergen][field] /
@@ -217,4 +216,5 @@ ingredientSchema.statics.insert = async function(
   });
 };
 
-module.exports = connection.model('Ingredient', ingredientSchema);
+module.exports = conn.model('Ingredient', ingredientSchema);
+

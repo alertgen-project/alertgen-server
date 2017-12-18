@@ -1,57 +1,26 @@
 'use strict';
-
 require('chai').should();
-const {IngredientModel} = require('../models/ingredient_model');
+const Ingredient = require('../models/ingredient_model');
 
 describe('Ingredient Model Tests', () => {
-  it('Should return ingredient name', async () => {
-    const water = {
-      'water': {
-        'gluten': {
-          'contains': true,
-        },
+  it('Should create water', async (done) => {
+    const sugar = new Ingredient({
+      name: 'sugar',
+      gluten: {
+        contains: false,
+        contains_percent: 1,
+        contains_pos: 0,
+        contains_neg: 1,
       },
-    };
-    const waterModel = new IngredientModel(JSON.stringify(water));
-    const name = waterModel.getIngredientName();
-    name.should.equal('water');
+    });
+    console.log(sugar);
+    done();
   });
 
-  it('Should access ingredient name', async () => {
-    const water = {
-      'water': {
-        'gluten': {
-          'contains': true,
-        },
-      },
-    };
-    const waterModel = new IngredientModel(JSON.stringify(water));
-    const name = waterModel.ingredient;
-    name.should.equal('water');
+  it('Should update water', async (done) => {
+    const water2 = await Ingredient.findByName('sugar');
+    console.log(water2);
+    done();
   });
 
-  it('Should return ingredient object', async () => {
-    const water = {
-      'water': {
-        'gluten': {
-          'contains': true,
-        },
-      },
-    };
-    const waterModel = new IngredientModel(JSON.stringify(water));
-    const obj = waterModel.getObject();
-    obj.should.deep.equal(water);
-  });
-  it('Should access ingredient object', async () => {
-    const water = {
-      'water': {
-        'gluten': {
-          'contains': true,
-        },
-      },
-    };
-    const waterModel = new IngredientModel(JSON.stringify(water));
-    const obj = waterModel.object;
-    obj.should.deep.equal(water);
-  });
 });
