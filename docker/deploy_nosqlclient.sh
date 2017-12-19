@@ -1,0 +1,1 @@
+docker run --name mongo-nosqlclient -p 1004:3000 -e MONGO_URL="mongodb://admin:halloMongo;120@allergy-check.informatik.hs-augsburg.de:1011" -d -e MONGOCLIENT_AUTH="true" -e MONGOCLIENT_USERNAME="admin" -e MONGOCLIENT_PASSWORD="halloMongo;120" -v /var/docker_deployment/nosqlclient:/data/db mongoclient/mongoclient
