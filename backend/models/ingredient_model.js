@@ -11,11 +11,22 @@ const conn = mongoose.connect('mongodb://' + config.get('db.user') + ':' +
 // use ES6 native Promises
 mongoose.Promise = Promise;
 
+/**
+ *
+ * @param contains_neg
+ * @param contains_pos
+ * @returns {number}
+ */
+const calcContainsPercentage = (contains_neg, contains_pos) => {
+  return contains_pos / (contains_pos + contains_neg);
+};
+
 const ingredientSchema = new Schema({
   name: {
     type: String,
     lowercase: true,
     required: true,
+    unique: true,
   },
   gluten: {
     contains: Boolean,
@@ -183,85 +194,37 @@ ingredientSchema.statics.findByName = async function(name) {
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     name, allergen, field) {
   const ingredient = await this.find({name: new RegExp(name, 'i')});
-  return new Promise((resolve) => {
-    if (ingredient[allergen] === undefined || ingredient.length === 0) {
-      resolve(false);
-    }
-    ingredient[allergen][field] += 1;
-    if (field === 'contains_pos') {
-      ingredient[allergen].contains_percent = ingredient[allergen][field] /
-          (ingredient[allergen][field] + ingredient[allergen].contains_neg);
-      ingredient[allergen].contains = ingredient[allergen].contains_percent >=
-          0.5;
-    }
-    else {
-      ingredient[allergen].contains_percent = ingredient[allergen][field] /
-          (ingredient[allergen][field] + ingredient[allergen].contains_pos);
-      ingredient[allergen].contains = ingredient[allergen].contains_percent >=
-          0.5;
-    }
-    log.info('Updated ingredient to: ' + ingredient);
-    ingredient.save(function(err) {
-      if (err) resolve(false);
-      else return resolve(true);
-    });
-  });
+
+  if (ingredient[allergen] === undefined || ingredient.length === 0) {
+    return Promise.resolve(false);
+  }
+  ingredient[allergen][field] += 1;
+  ingredient[allergen].contains_percent = calcContainsPercentage(
+      ingredient[allergen].contains_neg, ingredient[allergen].contains_pos);
+  ingredient[allergen].contains = ingredient[allergen].contains_percent >=
+      0.5;
+  log.info('Updated ingredient to: ' + ingredient);
+  return await ingredient.save();
 };
 
 ingredientSchema.statics.insert = async function(
     object) {
-  return new Promise((resolve) => {
-    this.create(object, (err) => {
-      if (err) {
-        log.error(err);
-        resolve(false);
-      } else {
-        resolve(true);
-      }
-    });
-  });
+  return await this.create(object);
 };
 
 ingredientSchema.statics.removeOne = async function(
     object) {
-  return new Promise((resolve) => {
-    this.findOneAndRemove(object, (err) => {
-      if (err) {
-        log.error(err);
-        resolve(false);
-      } else {
-        resolve(true);
-      }
-    });
-  });
+  return await this.findOneAndRemove(object);
 };
 
 ingredientSchema.statics.findOneIngredient = async function(
     object) {
-  return new Promise((resolve) => {
-    this.findOne(object, (err, object) => {
-      if (err) {
-        log.error(err);
-        resolve(undefined);
-      } else {
-        resolve(object);
-      }
-    });
-  });
+  return await this.findOne(object);
 };
 
 ingredientSchema.statics.findOneIngredientFuzzy = async function(
     name) {
-  return new Promise((resolve) => {
-    this.findOne({name: new RegExp(name, 'i')}, (err, object) => {
-      if (err) {
-        log.error(err);
-        resolve(undefined);
-      } else {
-        resolve(object);
-      }
-    });
-  });
+  return await this.findOne({name: new RegExp(name, 'i')});
 };
 
 module.exports = conn.model('Ingredient', ingredientSchema);

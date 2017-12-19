@@ -1,30 +1,27 @@
 'use strict';
+process.env.NODE_ENV = 'test';
+
 require('chai').should();
 const Ingredient = require('../models/ingredient_model');
+const mongoose = require('mongoose');
 
 describe('Ingredient Model Tests', () => {
-  it('Should create sugar', async (done) => {
-    const sugar = new Ingredient({
-      name: 'sugar',
-      gluten: {
-        contains: false,
-        contains_percent: 1,
-        contains_pos: 0,
-        contains_neg: 1,
-      },
-    });
-    done();
-  });
 
   it('Should insert test-object, find it and remove it', async () => {
-    (await Ingredient.insert({name: 'test'})).should.be.true;
+    (await Ingredient.insert({name: 'test'})).should.be.an('object');
     (await Ingredient.findOneIngredient({name: 'test'})).name.should.be.equal(
         'test');
-    (await Ingredient.removeOne({name: 'test'})).should.be.true;
+    (await Ingredient.removeOne({name: 'test'})).should.be.an('object');
   });
 
-  it('Should update sugar', async () => {
-    (await Ingredient.updateIngredientAllergenConfirmation('sugar', 'gluten',
-        'contains_neg')).should.be.false;
+  it('Should not find sugar and return false', async () => {
+    const sugar = await Ingredient.updateIngredientAllergenConfirmation('sugar',
+        'gluten',
+        'contains_neg');
+    sugar.should.be.false;
   });
+});
+
+after(() => {
+  mongoose.connection.close();
 });
