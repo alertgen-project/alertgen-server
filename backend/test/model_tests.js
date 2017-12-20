@@ -27,12 +27,6 @@ describe('Ingredient Model Tests', () => {
   });
 });
 
-beforeEach((done) => {
-  connectionFactory.getConnection().
-      then(() => done()).
-      catch(err => (console.err('could not connect to testdb')));
-});
-
 after(() => {
   connectionFactory.closeConnection();
 });

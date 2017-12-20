@@ -126,12 +126,6 @@ describe('ingredients', () => {
       });
 });
 
-beforeEach((done) => {
-  connectionFactory.getConnection().
-      then(() => done()).
-      catch(err => (console.err('could not connect to testdb')));
-});
-
 after(() => {
   server.close(() => {
     this.connectionFactory.closeConnection();
