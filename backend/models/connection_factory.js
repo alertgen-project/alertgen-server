@@ -6,12 +6,13 @@ const log = require('../logger/logger.js').getLog('ingredient_model.js');
 
 class MongoDBConnectionFactory {
 
+  /**
+   * factory function: creates a connection to the configured mongo-db
+   * and references it as a state. Won't create a new connection if the state is already
+   * referenced. Returns the created connection or the state connection.
+   * @returns {Promise<*|null>}
+   */
   async getConnection() {
-    /**
-     * factory function: creates a connection to the configured mongo-db
-     * and references it as a state. Won't create a new connection if the state is already
-     * referenced. Returns the created connection or the state connection.
-     */
     if (!this.conn) {
       try {
         await mongoose.connect('mongodb://' + config.get('db.host') + ':' +
@@ -28,11 +29,12 @@ class MongoDBConnectionFactory {
     return this.conn;
   }
 
+  /**
+   * closes the state connection if one has been referenced. Returns true
+   * if a connection has been closed, else false
+   * @returns {Promise<boolean>}
+   */
   async closeConnection() {
-    /**
-     * closes the state connection if one has been referenced. Returns true
-     * if a connection has been closed, else false
-     */
     if (this.conn) {
       await this.conn.close();
       this.conn = null;
