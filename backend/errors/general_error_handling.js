@@ -1,8 +1,13 @@
 'use strict';
 
-module.exports = {
-  handleGeneralError,
-};
+const erroz = require('erroz');
+
+const DBConnectionFailedError = erroz({
+  name: 'DBConnectionFailedError ',
+  code: 'DBConnectionFailedError ',
+  statusCode: 503,
+  template: 'Database not available!',
+});
 
 async function handleGeneralError(ctx, next) {
   try {
@@ -13,3 +18,8 @@ async function handleGeneralError(ctx, next) {
     ctx.app.emit('error', err, ctx);
   }
 }
+
+module.exports = {
+  handleGeneralError,
+  DBConnectionFailedError,
+};

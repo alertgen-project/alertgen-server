@@ -2,12 +2,9 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const config = require('config');
 const log = require('../logger/logger.js').getLog('ingredient_model.js');
-const conn = mongoose.connect('mongodb://' + config.get('db.user') + ':' +
-    config.get('db.pw') + '@' + config.get('db.host') + ':' +
-    config.get('db.port'),
-    {useMongoClient: true});
+const {connectionFactory} = require('./connection_factory');
+
 // use ES6 native Promises
 mongoose.Promise = Promise;
 
@@ -227,4 +224,13 @@ ingredientSchema.statics.findOneIngredientFuzzy = async function(
   return await this.findOne({name: new RegExp(name, 'i')});
 };
 
-module.exports = conn.model('Ingredient', ingredientSchema);
+async function getIngredientsModel() {
+  try {
+    const connection = await connectionFactory.getConnection();
+    return connection.model('Ingredient', ingredientSchema);
+  } catch (err) {
+    throw err;
+  }
+}
+
+module.exports = {getIngredientsModel};

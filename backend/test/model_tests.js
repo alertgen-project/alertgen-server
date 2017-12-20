@@ -2,26 +2,37 @@
 process.env.NODE_ENV = 'test';
 
 require('chai').should();
-const Ingredient = require('../models/ingredient_model');
-const mongoose = require('mongoose');
+const {getIngredientsModel} = require('../models/ingredient_model');
+const {connectionFactory} = require('../models/connection_factory');
 
 describe('Ingredient Model Tests', () => {
 
-  it('Should insert test-object, find it and remove it', async () => {
-    (await Ingredient.insert({name: 'test'})).should.be.an('object');
-    (await Ingredient.findOneIngredient({name: 'test'})).name.should.be.equal(
-        'test');
-    (await Ingredient.removeOne({name: 'test'})).should.be.an('object');
-  });
+  it('Should insert test-object, find it, update it and remove it',
+      async () => {
+        const model = await getIngredientsModel();
+        (await model.insert({name: 'test'})).name.should.be.equal(
+            'test');
+        (await model.findOneIngredient({name: 'test'})).name.should.be.equal(
+            'test');
+        (await model.removeOne({name: 'test'})).name.should.be.equal(
+            'test');
+      });
 
   it('Should not find sugar and return false', async () => {
-    const sugar = await Ingredient.updateIngredientAllergenConfirmation('sugar',
+    const model = await getIngredientsModel();
+    const sugar = await model.updateIngredientAllergenConfirmation('sugar',
         'gluten',
         'contains_neg');
     sugar.should.be.false;
   });
 });
 
+beforeEach((done) => {
+  connectionFactory.getConnection().
+      then(() => done()).
+      catch(err => (console.err('could not connect to testdb')));
+});
+
 after(() => {
-  mongoose.connection.close();
+  connectionFactory.closeConnection();
 });

@@ -4,7 +4,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server.js');
 const IngredientsErrors = require('../errors/ingredients_errors.js');
-const mongoose = require('mongoose');
+const {connectionFactory} = require('../models/connection_factory');
 
 chai.use(chaiHttp);
 
@@ -120,15 +120,20 @@ describe('ingredients', () => {
               end((err, res) => {
                 res.should.have.status(400);
                 (res.text.length > 40).should.be.true;
-                console.log(res.text);
                 done();
               });
         });
       });
 });
 
+beforeEach((done) => {
+  connectionFactory.getConnection().
+      then(() => done()).
+      catch(err => (console.err('could not connect to testdb')));
+});
+
 after(() => {
   server.close(() => {
-    mongoose.connection.close();
+    this.connectionFactory.closeConnection();
   });
 });

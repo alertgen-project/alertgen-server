@@ -4,10 +4,12 @@ module.exports = {
   containAllergens,
 };
 
-const IngredientsModel = require('../models/ingredient_model.js');
+const {getIngredientsModel} = require('../models/ingredient_model.js');
 const IngredientsErrors = require('../errors/ingredients_errors.js');
 const RouteUtil = require('./route_util.js');
 const log = require('../logger/logger.js').getLog('ingredients.js');
+const DBConnectionFailedError = require(
+    '../errors/general_error_handling').DBConnectionFailedError;
 
 async function containAllergens(ctx) {
   if (!ctx.query.ingredients || !ctx.query.allergens) {
@@ -19,7 +21,7 @@ async function containAllergens(ctx) {
       allergensQueryParam);
   const responseIngredients = await Promise.all(
       ingredientsQueryParam.map(requestIngredient)).
-      then(dbIngredients => {
+      then((dbIngredients) => {
         return dbIngredients.map((dbIngredient, ingredientIndex) => {
           if (!dbIngredient) {
             ctx.throw(new IngredientsErrors.IngredientNotIndexedError(
@@ -41,7 +43,7 @@ async function containAllergens(ctx) {
               }, {});
           return {[`${dbIngredient.name}`]: responseAllergens};
         });
-      });
+      }).catch(err => ctx.throw(new DBConnectionFailedError()));
   return ctx.body = responseIngredients;
 }
 
@@ -49,5 +51,6 @@ async function requestIngredient(ingredient) {
   /**
    * Returns the first found Ingredient in the database with the passed name
    */
-  return IngredientsModel.findOneIngredientFuzzy(ingredient);
+  const model = await getIngredientsModel();
+  return model.findOneIngredientFuzzy(ingredient);
 }
