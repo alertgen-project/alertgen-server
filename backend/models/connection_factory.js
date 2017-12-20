@@ -9,8 +9,8 @@ class MongoDBConnectionFactory {
   async getConnection() {
     /**
      * factory function: creates a connection to the configured mongo-db
-     * and stores it state. Won't create a new connection if the state is already
-     * stored. Returns the created connection or the stored connection
+     * and references it as a state. Won't create a new connection if the state is already
+     * referenced. Returns the created connection or the state connection.
      */
     if (!this.conn) {
       try {
@@ -30,7 +30,7 @@ class MongoDBConnectionFactory {
 
   async closeConnection() {
     /**
-     * closes the stored connection if one has been stored. Returns true
+     * closes the state connection if one has been referenced. Returns true
      * if a connection has been closed, else false
      */
     if (this.conn) {
