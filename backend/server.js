@@ -26,15 +26,13 @@ router.get(config.get('routes.product'), product.isAllergicToProduct).
 const server = app.use(router.routes()).
     use(router.allowedMethods()).
     use(generalError.handleGeneralError).
-    use(json);
+    use(json).
+    listen(config.get('server.port'));
 
-// make sure database connection can be established before starting server
+// make sure database connection can be established
 connectionFactory.getConnection().
-    then(() => {
-      server.listen(config.get('server.port'));
-      log.info('Server listening at port: ' +
-          config.get('server.port'));
-    }).
+    then(() => log.info('Server listening at port: ' +
+        config.get('server.port'))).
     catch((err) => process.exit(1));
 
 // for testing
