@@ -224,6 +224,26 @@ ingredientSchema.statics.findOneIngredientFuzzy = async function(
   return await this.findOne({name: new RegExp(name, 'i')});
 };
 
+async function insert(object){
+  const model = await getIngredientsModel();
+  return await model.insert(object);
+}
+
+async function removeOne(object){
+  const model = await getIngredientsModel();
+  return await model.findOneAndRemove(object);
+}
+
+async function findOne(object){
+  const model = await getIngredientsModel();
+  return await model.findOne(object);
+}
+
+async function findOneIngredientFuzzy(name){
+  const model = await getIngredientsModel();
+  return await model.findOneIngredientFuzzy(name);
+}
+
 async function getIngredientsModel() {
   try {
     const connection = await connectionFactory.getConnection();
@@ -233,4 +253,5 @@ async function getIngredientsModel() {
   }
 }
 
-module.exports = {getIngredientsModel};
+module.exports = {getIngredientsModel, insert,
+              removeOne, findOne, findOneIngredientFuzzy};

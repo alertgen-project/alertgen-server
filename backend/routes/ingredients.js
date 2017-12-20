@@ -4,7 +4,7 @@ module.exports = {
   containAllergens,
 };
 
-const {getIngredientsModel} = require('../models/ingredient_model.js');
+const {findOneIngredientFuzzy} = require('../models/ingredient_model.js');
 const IngredientsErrors = require('../errors/ingredients_errors.js');
 const RouteUtil = require('./route_util.js');
 const log = require('../logger/logger.js').getLog('ingredients.js');
@@ -51,6 +51,5 @@ async function requestIngredient(ingredient) {
   /**
    * Returns the first found Ingredient in the database with the passed name
    */
-  const model = await getIngredientsModel();
-  return model.findOneIngredientFuzzy(ingredient);
+  return await findOneIngredientFuzzy(ingredient);
 }
