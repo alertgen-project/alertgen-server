@@ -224,34 +224,35 @@ ingredientSchema.statics.findOneIngredientFuzzy = async function(
   return await this.findOne({name: new RegExp(name, 'i')});
 };
 
-async function insert(object){
+async function insert(object) {
   const model = await getIngredientsModel();
   return await model.create(object);
 }
 
-async function removeOne(object){
+async function removeOne(object) {
   const model = await getIngredientsModel();
   return await model.findOneAndRemove(object);
 }
 
-async function findOne(object){
+async function findOne(object) {
   const model = await getIngredientsModel();
   return await model.findOne(object);
 }
 
-async function findOneIngredientFuzzy(name){
+async function findOneIngredientFuzzy(name) {
   const model = await getIngredientsModel();
   return await model.findOne({name: new RegExp(name, 'i')});
 }
 
-async function findByName(name){
+async function findByName(name) {
   const model = await getIngredientsModel();
   return await model.find({name: new RegExp(name, 'i')});
 }
 
-async function updateIngredientAllergenConfirmation(name, allergen, field){
+async function updateIngredientAllergenConfirmation(name, allergen, field) {
   const model = await getIngredientsModel();
-  return await model.updateIngredientAllergenConfirmation(name, allergen, field);
+  return await model.updateIngredientAllergenConfirmation(name, allergen,
+      field);
 }
 
 async function getIngredientsModel() {
@@ -263,6 +264,8 @@ async function getIngredientsModel() {
   }
 }
 
-module.exports = {getIngredientsModel, insert, findByName,
-              removeOne, findOne, findOneIngredientFuzzy,
-              updateIngredientAllergenConfirmation};
+module.exports = {
+  getIngredientsModel, insert, findByName,
+  removeOne, findOne, findOneIngredientFuzzy,
+  updateIngredientAllergenConfirmation,
+};
