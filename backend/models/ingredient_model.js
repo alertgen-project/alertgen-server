@@ -190,9 +190,8 @@ ingredientSchema.statics.findByName = async function(name) {
  */
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     name, allergen, field) {
-  const ingredient = await this.find({name: new RegExp(name, 'i')});
-
-  if (ingredient[allergen] === undefined || ingredient.length === 0) {
+  const ingredient = await this.findOneIngredient({name: new RegExp(name, 'i')});
+  if (!ingredient || !ingredient[allergen]) {
     return Promise.resolve(false);
   }
   ingredient[allergen][field] += 1;
