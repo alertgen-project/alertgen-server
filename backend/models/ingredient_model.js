@@ -170,6 +170,20 @@ const ingredientSchema = new Schema({
 /**
  *
  * @param name
+ * @returns {Promise<Query|void|*|number>}
+ */
+ingredientSchema.statics.findByName = async function(name) {
+  try {
+    return this.find({name: new RegExp(name, 'i')});
+  }
+  catch (err) {
+    log.error(err);
+  }
+};
+
+/**
+ *
+ * @param name
  * @param allergen
  * @param field
  * @returns {Promise<void>}
@@ -177,6 +191,7 @@ const ingredientSchema = new Schema({
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     name, allergen, field) {
   const ingredient = await this.find({name: new RegExp(name, 'i')});
+
   if (ingredient[allergen] === undefined || ingredient.length === 0) {
     return Promise.resolve(false);
   }
@@ -189,40 +204,54 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
   return await ingredient.save();
 };
 
-/**
- * Tries to insert passed object into the database
- * @param object
- * @returns {Promise<*>}
- */
-async function insert(object) {
+ingredientSchema.statics.insert = async function(
+    object) {
+  return await this.create(object);
+};
+
+ingredientSchema.statics.removeOne = async function(
+    object) {
+  return await this.findOneAndRemove(object);
+};
+
+ingredientSchema.statics.findOneIngredient = async function(
+    object) {
+  return await this.findOne(object);
+};
+
+ingredientSchema.statics.findOneIngredientFuzzy = async function(
+    name) {
+  return await this.findOne({name: new RegExp(name, 'i')});
+};
+
+async function insert(object){
   const model = await getIngredientsModel();
   return await model.create(object);
 }
 
-async function removeOne(object) {
+async function removeOne(object){
   const model = await getIngredientsModel();
   return await model.findOneAndRemove(object);
 }
 
-async function findOne(object) {
+async function findOne(object){
   const model = await getIngredientsModel();
   return await model.findOne(object);
 }
 
-async function findOneIngredientFuzzy(name) {
+async function findOneIngredientFuzzy(name){
   const model = await getIngredientsModel();
   return await model.findOne({name: new RegExp(name, 'i')});
 }
 
-async function findByName(name) {
+async function findByName(name){
   const model = await getIngredientsModel();
   return await model.find({name: new RegExp(name, 'i')});
 }
 
-async function updateIngredientAllergenConfirmation(name, allergen, field) {
+async function updateIngredientAllergenConfirmation(name, allergen, field){
   const model = await getIngredientsModel();
-  return await model.updateIngredientAllergenConfirmation(name, allergen,
-      field);
+  return await model.updateIngredientAllergenConfirmation(name, allergen, field);
 }
 
 async function getIngredientsModel() {
@@ -234,8 +263,6 @@ async function getIngredientsModel() {
   }
 }
 
-module.exports = {
-  getIngredientsModel, insert, findByName,
-  removeOne, findOne, findOneIngredientFuzzy,
-  updateIngredientAllergenConfirmation,
-};
+module.exports = {getIngredientsModel, insert, findByName,
+              removeOne, findOne, findOneIngredientFuzzy,
+              updateIngredientAllergenConfirmation};
