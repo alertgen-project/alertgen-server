@@ -244,6 +244,16 @@ async function findOneIngredientFuzzy(name){
   return await model.findOneIngredientFuzzy(name);
 }
 
+async function findByName(name){
+  const model = await getIngredientsModel();
+  return await model.findByName(name);
+}
+
+async function updateIngredientAllergenConfirmation(name, allergen, field){
+  const model = await getIngredientsModel();
+  return await model.updateIngredientAllergenConfirmation(name, allergen, field);
+}
+
 async function getIngredientsModel() {
   try {
     const connection = await connectionFactory.getConnection();
@@ -253,5 +263,6 @@ async function getIngredientsModel() {
   }
 }
 
-module.exports = {getIngredientsModel, insert,
-              removeOne, findOne, findOneIngredientFuzzy};
+module.exports = {getIngredientsModel, insert, findByName,
+              removeOne, findOne, findOneIngredientFuzzy,
+              updateIngredientAllergenConfirmation};
