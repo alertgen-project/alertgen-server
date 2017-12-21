@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const log = require('../logger/logger.js').getLog('ingredient_model.js');
 const {connectionFactory} = require('./connection_factory');
+const contains_pos = 'contains_pos';
+const contains_neg = 'contains_neg';
 
 // use ES6 native Promises
 mongoose.Promise = Promise;
@@ -254,6 +256,39 @@ async function updateIngredientAllergenConfirmation(name, allergen, field) {
       field);
 }
 
+async function decreaseIngredientAllergen(ingredient, allergen){
+  const model = await getIngredientsModel();
+  return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
+      contains_neg);
+}
+
+async function increaseIngredientAllergen(ingredient, allergen){
+  const model = await getIngredientsModel();
+  return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
+      contains_pos);
+}
+
+/*
+async function decreaseIngredientAllergen(ingredient, allergen) {
+  const model = await getIngredientsModel();
+  const incquery = allergen + '.' + contains_neg;
+  const updatedDoc = await model.findOneAndUpdate({name: new RegExp(ingredient, 'i')},
+      {$inc: {[incquery]: 1}});
+  return updatedDoc
+  //return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
+  //  contains_neg);
+}
+
+async function increaseIngredientAllergen(ingredient, allergen) {
+  const model = await getIngredientsModel();
+  const incquery = allergen + '.' + contains_pos;
+  return await model.findOneAndUpdate({name: new RegExp(ingredient, 'i')},
+      {$inc: {[incquery]: 1}});
+  //return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
+  //  contains_pos);
+}
+*/
+
 async function getIngredientsModel() {
   try {
     const connection = await connectionFactory.getConnection();
@@ -266,5 +301,6 @@ async function getIngredientsModel() {
 module.exports = {
   getIngredientsModel, insert, findByName,
   removeOne, findOne, findOneIngredientFuzzy,
-  updateIngredientAllergenConfirmation,
+  updateIngredientAllergenConfirmation, increaseIngredientAllergen,
+  decreaseIngredientAllergen
 };
