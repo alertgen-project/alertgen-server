@@ -55,18 +55,30 @@ describe('Ingredient Model Tests', () => {
 
   it('Should test update in depth', async () => {
     const allergen = 'gluten';
+    let resultAllergen;
     (await IngredientsModel.insert(testFruitUpdate)).name.should.be.equal(
         testFruitNameUpdate);
-    (await IngredientsModel.increaseIngredientAllergen(
-        testFruitNameUpdate, allergen))[allergen].contains.should.be.true;
+    resultAllergen = (await IngredientsModel.increaseIngredientAllergen(
+        testFruitNameUpdate, allergen))[allergen];
+    resultAllergen.contains.should.be.true;
+    resultAllergen.contains_pos.should.be.equal(1);
+    resultAllergen.contains_percent.should.be.equal(1);
     await Promise.all(getDecreaseUpdateRequests(5, testFruitNameUpdate));
-    (await IngredientsModel.findOneIngredientFuzzy(
-        testFruitNameUpdate))[allergen].contains.should.be.false;
+    resultAllergen = (await IngredientsModel.findOneIngredientFuzzy(testFruitNameUpdate))[allergen];
+    resultAllergen.contains.should.be.false;
+    resultAllergen.contains_pos.should.be.equal(1);
+    resultAllergen.contains_neg.should.be.equal(5);
+    resultAllergen.contains_percent.should.be.equal(1/(1+5));
+    await Promise.all(getIncreaseUpdateRequests(7, testFruitNameUpdate));
+    resultAllergen = (await IngredientsModel.findOneIngredientFuzzy(testFruitNameUpdate))[allergen];
+    resultAllergen.contains.should.be.true;
+    resultAllergen.contains_pos.should.be.equal(8);
+    resultAllergen.contains_neg.should.be.equal(5);
+    resultAllergen.contains_percent.should.be.equal(8/(8+5));
     (await IngredientsModel.removeOne(
         {name: testFruitNameUpdate})).name.should.be.equal(
         testFruitNameUpdate);
   });
-
 });
 
 function getIncreaseUpdateRequests(numberOfRequests, ingredientName) {
