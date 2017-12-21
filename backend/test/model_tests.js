@@ -83,7 +83,7 @@ describe('Ingredient Model Tests', () => {
             testFruitNameUpdate);
       });
 
-  it('Should return false if no doc has been found', async () => {
+  it('Update should return false if no doc has been found', async () => {
     const hopefullyNotInDatabase = 'X44FKbUVXwUW6LeWtvdL';
     (await IngredientsModel.increaseIngredientAllergen(
         hopefullyNotInDatabase, hopefullyNotInDatabase)).should.be.false;
