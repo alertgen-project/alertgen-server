@@ -6,6 +6,8 @@ const log = require('../logger/logger.js').getLog('ingredient_model.js');
 const {connectionFactory} = require('./connection_factory');
 const contains_pos = 'contains_pos';
 const contains_neg = 'contains_neg';
+const AsyncLock = require('async-lock');
+const lock = new AsyncLock();
 
 // use ES6 native Promises
 mongoose.Promise = Promise;
@@ -192,17 +194,20 @@ ingredientSchema.statics.findByName = async function(name) {
  */
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     name, allergen, field) {
-  const ingredient = await this.findOneIngredient({name: new RegExp(name, 'i')});
-  if (!ingredient || !ingredient[allergen]) {
-    return Promise.resolve(false);
-  }
-  ingredient[allergen][field] += 1;
-  ingredient[allergen].contains_percent = calcContainsPercentage(
-      ingredient[allergen].contains_neg, ingredient[allergen].contains_pos);
-  ingredient[allergen].contains = ingredient[allergen].contains_percent >=
-      0.5;
-  log.info('Updated ingredient to: ' + ingredient);
-  return await ingredient.save();
+  return await lock.acquire('test', async () => {
+    const ingredient = await this.findOneIngredient(
+        {name: new RegExp(name, 'i')});
+    if (!ingredient || !ingredient[allergen]) {
+      return (false);
+    }
+    ingredient[allergen][field] += 1;
+    ingredient[allergen].contains_percent = calcContainsPercentage(
+        ingredient[allergen].contains_neg, ingredient[allergen].contains_pos);
+    ingredient[allergen].contains = ingredient[allergen].contains_percent >=
+        0.5;
+    log.info('Updated ingredient to: ' + ingredient);
+    return await ingredient.save();
+  });
 };
 
 ingredientSchema.statics.insert = async function(
@@ -256,38 +261,17 @@ async function updateIngredientAllergenConfirmation(name, allergen, field) {
       field);
 }
 
-async function decreaseIngredientAllergen(ingredient, allergen){
+async function decreaseIngredientAllergen(ingredient, allergen) {
   const model = await getIngredientsModel();
   return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
       contains_neg);
 }
 
-async function increaseIngredientAllergen(ingredient, allergen){
+async function increaseIngredientAllergen(ingredient, allergen) {
   const model = await getIngredientsModel();
   return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
       contains_pos);
 }
-
-/*
-async function decreaseIngredientAllergen(ingredient, allergen) {
-  const model = await getIngredientsModel();
-  const incquery = allergen + '.' + contains_neg;
-  const updatedDoc = await model.findOneAndUpdate({name: new RegExp(ingredient, 'i')},
-      {$inc: {[incquery]: 1}});
-  return updatedDoc
-  //return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
-  //  contains_neg);
-}
-
-async function increaseIngredientAllergen(ingredient, allergen) {
-  const model = await getIngredientsModel();
-  const incquery = allergen + '.' + contains_pos;
-  return await model.findOneAndUpdate({name: new RegExp(ingredient, 'i')},
-      {$inc: {[incquery]: 1}});
-  //return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
-  //  contains_pos);
-}
-*/
 
 async function getIngredientsModel() {
   try {
@@ -302,5 +286,5 @@ module.exports = {
   getIngredientsModel, insert, findByName,
   removeOne, findOne, findOneIngredientFuzzy,
   updateIngredientAllergenConfirmation, increaseIngredientAllergen,
-  decreaseIngredientAllergen
+  decreaseIngredientAllergen,
 };

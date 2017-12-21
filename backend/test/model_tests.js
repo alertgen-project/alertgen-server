@@ -24,7 +24,6 @@ const testFruitUpdate = {
   },
 };
 
-
 describe('Ingredient Model Tests', () => {
 
   it('Should insert test-object, find it, update it and remove it',
@@ -55,14 +54,14 @@ describe('Ingredient Model Tests', () => {
       });
 
   it('Should test update in depth', async () => {
+    const allergen = 'gluten';
     (await IngredientsModel.insert(testFruitUpdate)).name.should.be.equal(
         testFruitNameUpdate);
     (await IngredientsModel.increaseIngredientAllergen(
-        testFruitNameUpdate, 'gluten')).gluten.contains.should.be.true;
+        testFruitNameUpdate, allergen))[allergen].contains.should.be.true;
     await Promise.all(getDecreaseUpdateRequests(5, testFruitNameUpdate));
-    const ing = (await IngredientsModel.findOneIngredientFuzzy(
-        testFruitNameUpdate));
-    console.log(ing);
+    (await IngredientsModel.findOneIngredientFuzzy(
+        testFruitNameUpdate))[allergen].contains.should.be.false;
     (await IngredientsModel.removeOne(
         {name: testFruitNameUpdate})).name.should.be.equal(
         testFruitNameUpdate);
@@ -70,22 +69,22 @@ describe('Ingredient Model Tests', () => {
 
 });
 
-function getIncreaseUpdateRequests(numberOfRequests, ingredientName){
+function getIncreaseUpdateRequests(numberOfRequests, ingredientName) {
   const updateRequests = [];
   for (let i = 0; i < numberOfRequests; i++) {
     updateRequests.push((IngredientsModel.increaseIngredientAllergen(
         ingredientName, 'gluten')));
   }
-  return updateRequests
+  return updateRequests;
 }
 
-function getDecreaseUpdateRequests(numberOfRequests, ingredientName){
+function getDecreaseUpdateRequests(numberOfRequests, ingredientName) {
   const updateRequests = [];
   for (let i = 0; i < numberOfRequests; i++) {
     updateRequests.push((IngredientsModel.decreaseIngredientAllergen(
         ingredientName, 'gluten')));
   }
-  return updateRequests
+  return updateRequests;
 }
 
 afterEach(async () => {
