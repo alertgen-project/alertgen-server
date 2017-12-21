@@ -20,7 +20,7 @@ async function containAllergens(ctx) {
   log.debug('Using Queryparameters:', ingredientsQueryParam,
       allergensQueryParam);
   const responseIngredients = await Promise.all(
-      ingredientsQueryParam.map(requestIngredient)).
+      ingredientsQueryParam.map(findOneIngredientFuzzy)).
       then((dbIngredients) => {
         return dbIngredients.map((dbIngredient, ingredientIndex) => {
           if (!dbIngredient) {
@@ -45,11 +45,4 @@ async function containAllergens(ctx) {
         });
       }).catch(err => ctx.throw(new DBConnectionFailedError()));
   return ctx.body = responseIngredients;
-}
-
-async function requestIngredient(ingredient) {
-  /**
-   * Returns the first found Ingredient in the database with the passed name
-   */
-  return await findOneIngredientFuzzy(ingredient);
 }
