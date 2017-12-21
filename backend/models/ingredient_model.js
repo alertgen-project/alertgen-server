@@ -225,27 +225,27 @@ ingredientSchema.statics.findOneIngredientFuzzy = async function(
 
 async function insert(object) {
   const model = await getIngredientsModel();
-  return await model.create(object);
+  return await model.insert(object);
 }
 
 async function removeOne(object) {
   const model = await getIngredientsModel();
-  return await model.findOneAndRemove(object);
+  return await model.removeOne(object);
 }
 
 async function findOne(object) {
   const model = await getIngredientsModel();
-  return await model.findOne(object);
+  return await model.findOneIngredient(object);
 }
 
 async function findOneIngredientFuzzy(name) {
   const model = await getIngredientsModel();
-  return await model.findOne({name: new RegExp(name, 'i')});
+  return await model.findOneIngredientFuzzy(name);
 }
 
 async function findByName(name) {
   const model = await getIngredientsModel();
-  return await model.find({name: new RegExp(name, 'i')});
+  return await model.findByName(name);
 }
 
 async function updateIngredientAllergenConfirmation(name, allergen, field) {
