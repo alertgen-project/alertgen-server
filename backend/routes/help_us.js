@@ -8,7 +8,7 @@ const IngredientErrors = require('../errors/ingredients_errors.js');
 const HelpUsErrors = require('../errors/help_us_errors.js');
 const log = require('../logger/logger.js').getLog('help_us.js');
 const IngredientsModel = require('../models/ingredient_model.js');
-const DBConnectionFailedError = require(
+const UnexpectedError = require(
     '../errors/general_error_handling').DBConnectionFailedError;
 
 async function postFeedback(ctx) {
@@ -20,21 +20,21 @@ async function postFeedback(ctx) {
   const increaseQueryParameter = ctx.query.increase === 'true';
   log.debug('Using Queryparameters:', ingredientQueryParameter,
       allergenQueryParameter);
-  let success = false;
+  let successfulUpdate = false;
   try {
     if (increaseQueryParameter) {
-      success = await IngredientsModel.increaseIngredientAllergen(
+      successfulUpdate = await IngredientsModel.increaseIngredientAllergen(
           ingredientQueryParameter, allergenQueryParameter);
     } else {
-      success = await IngredientsModel.decreaseIngredientAllergen(
+      successfulUpdate = await IngredientsModel.decreaseIngredientAllergen(
           ingredientQueryParameter, allergenQueryParameter);
     }
   } catch (err) {
     log.error(err);
     console.error(err);
-    ctx.throw(new DBConnectionFailedError());
+    ctx.throw(new UnexpectedError());
   }
-  if (!success) {
+  if (!successfulUpdate) {
     const ingredient = new IngredientsModel.Ingredient(
         {name: ingredientQueryParameter});
     const allergen = ingredient[allergenQueryParameter];
@@ -52,7 +52,7 @@ async function postFeedback(ctx) {
     } catch (err) {
       log.error(err);
       console.error(err);
-      ctx.throw(new DBConnectionFailedError());
+      ctx.throw(new UnexpectedError());
     }
   }
   ctx.body = {message: ingredientQueryParameter + ' updated'};

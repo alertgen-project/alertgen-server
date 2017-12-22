@@ -9,6 +9,13 @@ const DBConnectionFailedError = erroz({
   template: 'Database not available!',
 });
 
+const UnexpectedError = erroz({
+  name: 'UnexpectedError',
+  code: 'UnexpectedError',
+  statusCode: 503,
+  template: 'Something unexpected happened!',
+});
+
 async function handleGeneralError(ctx, next) {
   try {
     await next();
