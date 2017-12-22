@@ -15,20 +15,20 @@ async function containAllergens(ctx) {
   if (!ctx.query.ingredients || !ctx.query.allergens) {
     ctx.throw(new IngredientsErrors.IngredientsWrongParameterError());
   }
-  const ingredientsQueryParam = RouteUtil.toArray(ctx.query.ingredients);
-  const allergensQueryParam = RouteUtil.toArray(ctx.query.allergens);
-  log.debug('Using Queryparameters:', ingredientsQueryParam,
-      allergensQueryParam);
+  const ingredientsQueryParameter = RouteUtil.toArray(ctx.query.ingredients);
+  const allergensQueryParameter = RouteUtil.toArray(ctx.query.allergens);
+  log.debug('Using Queryparameters:', ingredientsQueryParameter,
+      allergensQueryParameter);
   const responseIngredients = await Promise.all(
-      ingredientsQueryParam.map(findOneIngredientFuzzy)).
+      ingredientsQueryParameter.map(findOneIngredientFuzzy)).
       then((dbIngredients) => {
         return dbIngredients.map((dbIngredient, ingredientIndex) => {
           if (!dbIngredient) {
             ctx.throw(new IngredientsErrors.IngredientNotIndexedError(
-                {ingredient: ingredientsQueryParam[ingredientIndex]}));
+                {ingredient: ingredientsQueryParameter[ingredientIndex]}));
           }
           // create an object which contains all requested allergens for this ingredient
-          const responseAllergens = allergensQueryParam.reduce(
+          const responseAllergens = allergensQueryParameter.reduce(
               (responseAllergens, allergen) => {
                 const dbAllergen = dbIngredient[allergen];
                 if (!dbAllergen) {
