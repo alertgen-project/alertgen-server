@@ -15,6 +15,7 @@ const log = require('./logger/logger.js').getLog('server.js');
 const json = require('koa-json');
 const router = new Router();
 const app = new Koa();
+const {connectionFactory} = require('./models/connection_factory');
 
 router.get(config.get('routes.product'), product.isAllergicToProduct).
     get(config.get('routes.productcategory'), productCategory.
@@ -28,5 +29,11 @@ const server = app.use(router.routes()).
     use(json).
     listen(config.get('server.port'));
 
-log.info('Server listening at port: ' + config.get('server.port'));
-module.exports = server; // for testing
+// make sure database connection can be established
+connectionFactory.getConnection().
+    then(() => log.info('Server listening at port: ' +
+        config.get('server.port'))).
+    catch((err) => process.exit(1));
+
+// for testing
+module.exports = server;

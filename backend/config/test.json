@@ -17,7 +17,7 @@
   },
   "logger": {
     "path": "./logs/server_log.json",
-    "level": "trace",
+    "level": "error",
     "period": "1w",
     "count": "2"
   }
