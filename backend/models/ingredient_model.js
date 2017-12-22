@@ -22,154 +22,54 @@ const calcContainsPercentage = (contains_neg, contains_pos) => {
   return contains_pos / (contains_pos + contains_neg);
 };
 
-const ingredientSchema = new Schema({
+const allergenAttributes = {
+  contains: {
+    type: Boolean,
+    default: false,
+  },
+  contains_percent: {
+    type: Number,
+    min: 0,
+    max: 1,
+    default: 0,
+  },
+  contains_pos: {
+    type: Number,
+    default: 0,
+  },
+  contains_neg: {
+    type: Number,
+    default: 0,
+  },
+};
+
+const allergens = [
+  'gluten',
+  'crustaceans',
+  'eggs',
+  'fish',
+  'peanuts',
+  'soy',
+  'milk',
+  'nuts',
+  'celery',
+  'mustard',
+  'sesame',
+  'sulphites',
+  'lupin',
+  'molluscs'];
+const schemaObject = {
   name: {
     type: String,
     lowercase: true,
     required: true,
     unique: true,
   },
-  gluten: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  crustaceans: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  eggs: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  fish: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  peanuts: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  soy: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  milk: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  nuts: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  celery: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  mustard: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  sesame: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  sulphites: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  lupin: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-  molluscs: {
-    contains: Boolean,
-    contains_percent: {
-      type: Number,
-      min: 0,
-      max: 1,
-    },
-    contains_pos: Number,
-    contains_neg: Number,
-  },
-}, {runSettersOnQuery: true});
+};
+allergens.forEach(allergen => {
+  schemaObject[allergen] = allergenAttributes;
+});
+const ingredientSchema = new Schema(schemaObject, {runSettersOnQuery: true});
 
 /**
  *
@@ -195,10 +95,9 @@ ingredientSchema.statics.findByName = async function(name) {
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     name, allergen, field) {
   return await lock.acquire('test', async () => {
-    const ingredient = await this.findOneIngredient(
-        {name: new RegExp(name, 'i')});
+    const ingredient = await this.findOneIngredientFuzzy(name);
     if (!ingredient || !ingredient[allergen]) {
-      return (false);
+      return false;
     }
     ingredient[allergen][field] += 1;
     ingredient[allergen].contains_percent = calcContainsPercentage(
