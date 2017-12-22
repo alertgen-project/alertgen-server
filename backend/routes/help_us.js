@@ -17,7 +17,11 @@ async function postFeedback(ctx) {
   }
   const ingredientQueryParameter = ctx.query.ingredient;
   const allergenQueryParameter = ctx.query.allergen;
-  const increaseQueryParameter = ctx.query.increase === 'true';
+  let increaseQueryParameter = ctx.query.increase.toLowerCase();
+  if (increaseQueryParameter !== 'true' && increaseQueryParameter !== 'false') {
+    ctx.throw(new HelpUsErrors.IncreaseWrongParameterError());
+  }
+  increaseQueryParameter = ctx.query.increase === 'true';
   log.debug('Using Queryparameters:', ingredientQueryParameter,
       allergenQueryParameter);
   let updateIsSuccessful = false;
