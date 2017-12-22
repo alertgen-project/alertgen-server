@@ -20,13 +20,13 @@ async function postFeedback(ctx) {
   const increaseQueryParameter = ctx.query.increase === 'true';
   log.debug('Using Queryparameters:', ingredientQueryParameter,
       allergenQueryParameter);
-  let successfulUpdate = false;
+  let updateIsSuccessful = false;
   try {
     if (increaseQueryParameter) {
-      successfulUpdate = await IngredientsModel.increaseIngredientAllergen(
+      updateIsSuccessful = await IngredientsModel.increaseIngredientAllergen(
           ingredientQueryParameter, allergenQueryParameter);
     } else {
-      successfulUpdate = await IngredientsModel.decreaseIngredientAllergen(
+      updateIsSuccessful = await IngredientsModel.decreaseIngredientAllergen(
           ingredientQueryParameter, allergenQueryParameter);
     }
   } catch (err) {
@@ -34,7 +34,7 @@ async function postFeedback(ctx) {
     console.error(err);
     ctx.throw(new UnexpectedError());
   }
-  if (!successfulUpdate) {
+  if (!updateIsSuccessful) {
     const ingredient = new IngredientsModel.Ingredient(
         {name: ingredientQueryParameter});
     const allergen = ingredient[allergenQueryParameter];
