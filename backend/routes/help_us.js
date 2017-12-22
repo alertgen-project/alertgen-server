@@ -4,7 +4,7 @@ module.exports = {
   postFeedback,
 };
 
-const IngredientErrors = require('../errors/ingredients_errors.js')
+const IngredientErrors = require('../errors/ingredients_errors.js');
 const HelpUsErrors = require('../errors/help_us_errors.js');
 const log = require('../logger/logger.js').getLog('help_us.js');
 const IngredientsModel = require('../models/ingredient_model.js');
@@ -18,24 +18,29 @@ async function postFeedback(ctx) {
   const ingredientQueryParameter = ctx.query.ingredient;
   const allergenQueryParameter = ctx.query.allergen;
   const increaseQueryParameter = ctx.query.increase === 'true';
-  log.debug('Using Queryparameters:', ingredientQueryParameter, allergenQueryParameter);
+  log.debug('Using Queryparameters:', ingredientQueryParameter,
+      allergenQueryParameter);
   let success = false;
   try {
     if (increaseQueryParameter) {
-      success = await IngredientsModel.increaseIngredientAllergen(ingredientQueryParameter, allergenQueryParameter);
+      success = await IngredientsModel.increaseIngredientAllergen(
+          ingredientQueryParameter, allergenQueryParameter);
     } else {
-      success = await IngredientsModel.decreaseIngredientAllergen(ingredientQueryParameter, allergenQueryParameter);
+      success = await IngredientsModel.decreaseIngredientAllergen(
+          ingredientQueryParameter, allergenQueryParameter);
     }
   } catch (err) {
     log.error(err);
     console.error(err);
     ctx.throw(new DBConnectionFailedError());
   }
-  if(!success){
-    const ingredient = new IngredientsModel.Ingredient({name: ingredientQueryParameter});
+  if (!success) {
+    const ingredient = new IngredientsModel.Ingredient(
+        {name: ingredientQueryParameter});
     const allergen = ingredient[allergenQueryParameter];
-    if(!allergen){
-      ctx.throw(new IngredientErrors.AllergenNotFoundError({allergen: ingredientQueryParameter}));
+    if (!allergen) {
+      ctx.throw(new IngredientErrors.AllergenNotFoundError(
+          {allergen: ingredientQueryParameter}));
     }
     if (increaseQueryParameter) {
       allergen.contains_pos = 1;
