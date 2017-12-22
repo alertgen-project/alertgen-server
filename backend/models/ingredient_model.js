@@ -58,7 +58,7 @@ const allergens = [
   'sulphites',
   'lupin',
   'molluscs'];
-const schemaObject = {
+const schema = {
   name: {
     type: String,
     lowercase: true,
@@ -67,9 +67,9 @@ const schemaObject = {
   },
 };
 allergens.forEach(allergen => {
-  schemaObject[allergen] = allergenAttributes;
+  schema[allergen] = allergenAttributes;
 });
-const ingredientSchema = new Schema(schemaObject, {runSettersOnQuery: true});
+const ingredientSchema = new Schema(schema, {runSettersOnQuery: true});
 
 /**
  *
