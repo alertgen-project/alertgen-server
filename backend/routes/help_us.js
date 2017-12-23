@@ -12,21 +12,21 @@ const UnexpectedError = require(
     '../errors/general_error_handling').DBConnectionFailedError;
 
 async function postFeedback(ctx) {
-  if (!ctx.query.ingredient || !ctx.query.allergen || !ctx.query.increase) {
+  if (!ctx.query.ingredient || !ctx.query.allergen || !ctx.query.contains) {
     ctx.throw(new HelpUsErrors.HelpUsWrongParameterError());
   }
   const ingredientQueryParameter = ctx.query.ingredient;
   const allergenQueryParameter = ctx.query.allergen;
-  let increaseQueryParameter = ctx.query.increase.toLowerCase();
-  if (increaseQueryParameter !== 'true' && increaseQueryParameter !== 'false') {
+  let containsQueryParameter = ctx.query.contains.toLowerCase();
+  if (containsQueryParameter !== 'true' && containsQueryParameter !== 'false') {
     ctx.throw(new HelpUsErrors.IncreaseWrongParameterError());
   }
-  increaseQueryParameter = ctx.query.increase === 'true';
+  containsQueryParameter = containsQueryParameter === 'true';
   log.debug('Using Queryparameters:', ingredientQueryParameter,
       allergenQueryParameter);
   let updateIsSuccessful = false;
   try {
-    if (increaseQueryParameter) {
+    if (containsQueryParameter) {
       updateIsSuccessful = await IngredientsModel.increaseIngredientAllergen(
           ingredientQueryParameter, allergenQueryParameter);
     } else {
@@ -46,7 +46,7 @@ async function postFeedback(ctx) {
       ctx.throw(new IngredientErrors.AllergenNotFoundError(
           {allergen: ingredientQueryParameter}));
     }
-    if (increaseQueryParameter) {
+    if (containsQueryParameter) {
       allergen.contains_pos = 1;
     } else {
       allergen.contains_neg = 1;
