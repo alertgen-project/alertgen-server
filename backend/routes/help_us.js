@@ -49,6 +49,8 @@ async function postFeedback(ctx) {
     }
     if (containsQueryParameter) {
       allergen.contains_pos = 1;
+      allergen.contains_percent = 1;
+      allergen.contains = true;
     } else {
       allergen.contains_neg = 1;
     }
