@@ -185,5 +185,5 @@ module.exports = {
   getIngredientsModel, insert, findByName,
   removeOne, findOne, findOneIngredientFuzzy,
   updateIngredientAllergenConfirmation, increaseIngredientAllergen,
-  decreaseIngredientAllergen,
+  decreaseIngredientAllergen, Ingredient: mongoose.model('Ingredient', ingredientSchema)
 };

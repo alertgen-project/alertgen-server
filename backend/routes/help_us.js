@@ -4,52 +4,60 @@ module.exports = {
   postFeedback,
 };
 
+const IngredientErrors = require('../errors/ingredients_errors.js');
 const HelpUsErrors = require('../errors/help_us_errors.js');
 const log = require('../logger/logger.js').getLog('help_us.js');
 const IngredientsModel = require('../models/ingredient_model.js');
+const UnexpectedError = require(
+    '../errors/general_error_handling').DBConnectionFailedError;
 
-async function postFeedback(ctx, next) {
-  if (!ctx.query.ingredient || !ctx.query.allergen || !ctx.query.increase) {
+async function postFeedback(ctx) {
+  if (!ctx.query.ingredient || !ctx.query.allergen || !ctx.query.contains) {
     ctx.throw(new HelpUsErrors.HelpUsWrongParameterError());
   }
-  const ingredient = ctx.query.ingredient;
-  const allergen = ctx.query.allergen;
-  const increase = ctx.query.increase;
-  log.debug('Using Queryparameters:', ingredient, allergen);
-
-  if (increase) {
-    IngredientsModel.updateIngredientAllergenConfirmation(ingredient,
-        allergen, 'contains_pos').then(success => {
-      handleUpdateResponse(ingredient, allergen, increase, success, ctx);
-    });
-  } else {
-    IngredientsModel.updateIngredientAllergenConfirmation(ingredient,
-        allergen, 'contains_neg').then(success => {
-      handleUpdateResponse(ingredient, allergen, increase, success, ctx);
-    });
+  const ingredientQueryParameter = ctx.query.ingredient;
+  const allergenQueryParameter = ctx.query.allergen;
+  let containsQueryParameter = ctx.query.contains.toLowerCase();
+  if (containsQueryParameter !== 'true' && containsQueryParameter !== 'false') {
+    ctx.throw(new HelpUsErrors.IncreaseWrongParameterError());
   }
-
-  function handleUpdateResponse(ingredient, allergen, increase, success, ctx) {
-    if (success) {
-      ctx.body = {message: 'ingredient updated'};
+  containsQueryParameter = containsQueryParameter === 'true';
+  log.debug('Using Queryparameters:', ingredientQueryParameter,
+      allergenQueryParameter);
+  let updateIsSuccessful = false;
+  try {
+    if (containsQueryParameter) {
+      updateIsSuccessful = await IngredientsModel.increaseIngredientAllergen(
+          ingredientQueryParameter, allergenQueryParameter);
     } else {
-      const ingredient = {name: ingredient};
-      if (increase) {
-        ingredient[allergen].contains_pos = 1;
-      } else {
-        ingredient[allergen].contains_neg = 1;
-      }
-      IngredientsModel.insert(ingredient).then(sucess => {
-        handleInsertResponse(success);
-      });
+      updateIsSuccessful = await IngredientsModel.decreaseIngredientAllergen(
+          ingredientQueryParameter, allergenQueryParameter);
+    }
+  } catch (err) {
+    log.error(err);
+    console.error(err);
+    ctx.throw(new UnexpectedError());
+  }
+  if (!updateIsSuccessful) {
+    const ingredient = new IngredientsModel.Ingredient(
+        {name: ingredientQueryParameter});
+    const allergen = ingredient[allergenQueryParameter];
+    if (!allergen) {
+      ctx.throw(new IngredientErrors.AllergenNotFoundError(
+          {allergen: ingredientQueryParameter}));
+    }
+    if (containsQueryParameter) {
+      allergen.contains_pos = 1;
+    } else {
+      allergen.contains_neg = 1;
+    }
+    try {
+      await IngredientsModel.insert(ingredient);
+    } catch (err) {
+      log.error(err);
+      console.error(err);
+      ctx.throw(new UnexpectedError());
     }
   }
-
-  function handleInsertResponse(success) {
-    if (success) {
-      ctx.body = {message: 'ingredient inserted'};
-    } else {
-      ctx.body = {message: 'ingredient not inserted'};
-    }
-  }
+  ctx.body = {message: ingredientQueryParameter + ' updated'};
 }
