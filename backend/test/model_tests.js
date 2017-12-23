@@ -1,29 +1,28 @@
 'use strict';
 process.env.NODE_ENV = 'test';
 
-const chai = require("chai");
-const chaiAsPromised = require("chai-as-promised");
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 chai.should();
 const IngredientsModel = require('../models/ingredient_model');
 const {connectionFactory} = require('../models/connection_factory');
 
-const testFruitNameCRUD = 'testfruit123';
-const testFruitCRUD = {
-  name: testFruitNameCRUD, gluten: {
-    contains: false,
-    contains_percent: 1 / 12,
-    contains_pos: 1,
-    contains_neg: 12,
-  },
-};
-const testFruitNameUpdate = 'updatefruit';
+const testFruitName = '7357f2u17';
 const testFruitUpdate = {
-  name: testFruitNameUpdate, gluten: {
+  name: testFruitName, gluten: {
     contains: false,
     contains_percent: 0,
     contains_pos: 0,
     contains_neg: 0,
+  },
+};
+const testFruitCRUD = {
+  name: testFruitName, gluten: {
+    contains: false,
+    contains_percent: 1 / 12,
+    contains_pos: 1,
+    contains_neg: 12,
   },
 };
 
@@ -32,28 +31,28 @@ describe('Ingredient Model Tests', () => {
   it('Should insert a test-object, find it, update it and remove it',
       async () => {
         (await IngredientsModel.insert(testFruitCRUD)).name.should.be.equal(
-            testFruitNameCRUD);
+            testFruitName);
         (await IngredientsModel.findByName(
-            testFruitNameCRUD))[0].name.should.be.equal(
-            testFruitNameCRUD);
+            testFruitName))[0].name.should.be.equal(
+            testFruitName);
         (await IngredientsModel.findOneIngredientFuzzy(
-            testFruitNameCRUD)).name.should.be.equal(
-            testFruitNameCRUD);
+            testFruitName)).name.should.be.equal(
+            testFruitName);
         (await IngredientsModel.increaseIngredientAllergen(
-            testFruitNameCRUD, 'gluten')).name.should.be.equal(
-            testFruitNameCRUD);
+            testFruitName, 'gluten')).name.should.be.equal(
+            testFruitName);
         (await IngredientsModel.findOneIngredientFuzzy(
-            testFruitNameCRUD)).gluten.contains_pos.should.be.equal(
+            testFruitName)).gluten.contains_pos.should.be.equal(
             2);
         (await IngredientsModel.decreaseIngredientAllergen(
-            testFruitNameCRUD, 'gluten', 'contains_neg')).name.should.be.equal(
-            testFruitNameCRUD);
+            testFruitName, 'gluten', 'contains_neg')).name.should.be.equal(
+            testFruitName);
         (await IngredientsModel.findOneIngredientFuzzy(
-            testFruitNameCRUD)).gluten.contains_neg.should.be.equal(
+            testFruitName)).gluten.contains_neg.should.be.equal(
             13);
         (await IngredientsModel.removeOne(
-            {name: testFruitNameCRUD})).name.should.be.equal(
-            testFruitNameCRUD);
+            {name: testFruitName})).name.should.be.equal(
+            testFruitName);
       });
 
   it('Should update in parallel and return docs with the correct values',
@@ -61,29 +60,29 @@ describe('Ingredient Model Tests', () => {
         const allergen = 'gluten';
         let resultAllergen;
         (await IngredientsModel.insert(testFruitUpdate)).name.should.be.equal(
-            testFruitNameUpdate);
+            testFruitName);
         resultAllergen = (await IngredientsModel.increaseIngredientAllergen(
-            testFruitNameUpdate, allergen))[allergen];
+            testFruitName, allergen))[allergen];
         resultAllergen.contains.should.be.true;
         resultAllergen.contains_pos.should.be.equal(1);
         resultAllergen.contains_percent.should.be.equal(1);
-        await Promise.all(getDecreaseUpdateRequests(5, testFruitNameUpdate));
+        await Promise.all(getDecreaseUpdateRequests(5, testFruitName));
         resultAllergen = (await IngredientsModel.findOneIngredientFuzzy(
-            testFruitNameUpdate))[allergen];
+            testFruitName))[allergen];
         resultAllergen.contains.should.be.false;
         resultAllergen.contains_pos.should.be.equal(1);
         resultAllergen.contains_neg.should.be.equal(5);
         resultAllergen.contains_percent.should.be.equal(1 / (1 + 5));
-        await Promise.all(getIncreaseUpdateRequests(7, testFruitNameUpdate));
+        await Promise.all(getIncreaseUpdateRequests(7, testFruitName));
         resultAllergen = (await IngredientsModel.findOneIngredientFuzzy(
-            testFruitNameUpdate))[allergen];
+            testFruitName))[allergen];
         resultAllergen.contains.should.be.true;
         resultAllergen.contains_pos.should.be.equal(8);
         resultAllergen.contains_neg.should.be.equal(5);
         resultAllergen.contains_percent.should.be.equal(8 / (8 + 5));
         (await IngredientsModel.removeOne(
-            {name: testFruitNameUpdate})).name.should.be.equal(
-            testFruitNameUpdate);
+            {name: testFruitName})).name.should.be.equal(
+            testFruitName);
       });
 
   it('Update should return false if no doc has been found', async () => {
@@ -92,11 +91,14 @@ describe('Ingredient Model Tests', () => {
         hopefullyNotInDatabase, hopefullyNotInDatabase)).should.be.false;
   });
 
-  it('Should throw an error if something with the same name is inserted twice', async () => {
-    const hopefullyNotInDatabase = 'X4asd4FKbUVX234ff!/(eWtvdL';
-    (await IngredientsModel.insert({name: hopefullyNotInDatabase}));
-    IngredientsModel.insert({name: hopefullyNotInDatabase}).should.eventually.throw();
-  });
+  it('Should throw an error if something with the same name is inserted twice',
+      async () => {
+        (await IngredientsModel.insert({name: testFruitName}));
+        IngredientsModel.insert({name: testFruitName}).
+            should.
+            eventually.
+            throw();
+      });
 });
 
 function getIncreaseUpdateRequests(numberOfRequests, ingredientName) {
@@ -119,9 +121,7 @@ function getDecreaseUpdateRequests(numberOfRequests, ingredientName) {
 
 afterEach(async () => {
   // make sure created objects are not in the database anymore
-  await IngredientsModel.removeOne({name: testFruitNameCRUD});
-  await IngredientsModel.removeOne({name: testFruitNameUpdate});
-  await IngredientsModel.removeOne({name: 'X4asd4FKbUVX234ff!/(eWtvdL'});
+  await IngredientsModel.removeOne({name: testFruitName});
 });
 
 after(() => {
