@@ -1,7 +1,10 @@
 'use strict';
 process.env.NODE_ENV = 'test';
 
-require('chai').should();
+const chai = require("chai");
+const chaiAsPromised = require("chai-as-promised");
+chai.use(chaiAsPromised);
+chai.should();
 const IngredientsModel = require('../models/ingredient_model');
 const {connectionFactory} = require('../models/connection_factory');
 
@@ -88,6 +91,12 @@ describe('Ingredient Model Tests', () => {
     (await IngredientsModel.increaseIngredientAllergen(
         hopefullyNotInDatabase, hopefullyNotInDatabase)).should.be.false;
   });
+
+  it('Should throw an error if something with the same name is inserted twice', async () => {
+    const hopefullyNotInDatabase = 'X4asd4FKbUVX234ff!/(eWtvdL';
+    (await IngredientsModel.insert({name: hopefullyNotInDatabase}));
+    IngredientsModel.insert({name: hopefullyNotInDatabase}).should.eventually.throw();
+  });
 });
 
 function getIncreaseUpdateRequests(numberOfRequests, ingredientName) {
@@ -112,6 +121,7 @@ afterEach(async () => {
   // make sure created objects are not in the database anymore
   await IngredientsModel.removeOne({name: testFruitNameCRUD});
   await IngredientsModel.removeOne({name: testFruitNameUpdate});
+  await IngredientsModel.removeOne({name: 'X4asd4FKbUVX234ff!/(eWtvdL'});
 });
 
 after(() => {

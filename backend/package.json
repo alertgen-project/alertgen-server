@@ -16,6 +16,7 @@
   "dependencies": {
     "async-lock": "^1.1.0",
     "bunyan": "^1.8.12",
+    "chai-as-promised": "^7.1.1",
     "config": "^1.28.1",
     "erroz": "^1.1.0",
     "koa": "^2.4.1",
