@@ -8,8 +8,6 @@ const {findOneIngredientFuzzy} = require('../models/ingredient_model.js');
 const IngredientsErrors = require('../errors/ingredients_errors.js');
 const RouteUtil = require('./route_util.js');
 const log = require('../logger/logger.js').getLog('ingredients.js');
-const DBConnectionFailedError = require(
-    '../errors/general_error_handling').DBConnectionFailedError;
 
 async function containAllergens(ctx) {
   if (!ctx.query.ingredients || !ctx.query.allergens) {
@@ -43,6 +41,6 @@ async function containAllergens(ctx) {
               }, {});
           return {[`${dbIngredient.name}`]: responseAllergens};
         });
-      }).catch(err => ctx.throw(new DBConnectionFailedError()));
+      });
   return ctx.body = responseIngredients;
 }
