@@ -1,8 +1,8 @@
 {
   "db": {
     "host": "allergy-check.informatik.hs-augsburg.de",
-    "port": 1011,
-    "dbName": "",
+    "port": 1010,
+    "name": "allergy_testdb",
     "user": "admin",
     "pw": "halloMongo;120"
   },

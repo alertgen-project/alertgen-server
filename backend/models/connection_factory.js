@@ -16,8 +16,10 @@ class MongoDBConnectionFactory {
     if (!this.conn) {
       try {
         await mongoose.connect('mongodb://' + config.get('db.host') + ':' +
-            config.get('db.port'), {useMongoClient: true,
-          user: config.get('db.user'), pass: config.get('db.pw')});
+            config.get('db.port') + '/' + config.get('db.name'), {
+          useMongoClient: true,
+          user: config.get('db.user'), pass: config.get('db.pw'),
+        });
         this.conn = mongoose.connection;
       } catch (err) {
         this.conn = null;
