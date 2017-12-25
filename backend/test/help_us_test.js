@@ -8,6 +8,7 @@ chai.use(chaiAsPromised);
 chai.should();
 const server = require('../server.js');
 const IngredientsErrors = require('../errors/ingredients_errors.js');
+const HelpUsErrors = require('../errors/help_us_errors.js');
 const {connectionFactory} = require('../models/connection_factory');
 const {insert, findOneIngredientFuzzy, removeOne, Ingredient} = require(
     '../models/ingredient_model');
@@ -21,7 +22,7 @@ describe('ingredients', () => {
       '/POST /helpus?ingredient=' + testIngredientName +
       '&allergen=gluten&contains=false',
       () => {
-        it('it insert a ingredient manually and updates this inserted' +
+        it('it inserts a ingredient manually and updates this inserted' +
             ' testingredient', async () => {
           await insert(testIngredient);
           const res = await chai.request(server).
@@ -66,7 +67,7 @@ describe('ingredients', () => {
 
   describe(
       '/POST /helpus?ingredient=' + testIngredientName +
-      '&allergen=gluten&contains=true x10 times and false x7 times',
+      '&allergen=gluten&contains=true',
       () => {
         it('tests parallel /helpus-calls', async () => {
           await Promise.all(
@@ -84,6 +85,20 @@ describe('ingredients', () => {
           ingredient.gluten.contains_neg.should.be.equal(7);
           ingredient.gluten.contains_pos.should.be.equal(10);
           ingredient.gluten.contains_percent.should.be.equal(10 / 17);
+          await Promise.all(
+              getHelpusRequests(4, testIngredientName, 'gluten', false));
+          ingredient = await findOneIngredientFuzzy(testIngredientName);
+          ingredient.gluten.contains.should.be.false;
+          ingredient.gluten.contains_neg.should.be.equal(11);
+          ingredient.gluten.contains_pos.should.be.equal(10);
+          ingredient.gluten.contains_percent.should.be.equal(10 / 21);
+          await Promise.all(
+              getHelpusRequests(4, testIngredientName, 'eggs', false));
+          ingredient = await findOneIngredientFuzzy(testIngredientName);
+          ingredient.eggs.contains.should.be.false;
+          ingredient.eggs.contains_neg.should.be.equal(4);
+          ingredient.eggs.contains_pos.should.be.equal(0);
+          ingredient.eggs.contains_percent.should.be.equal(0);
         });
       });
 
@@ -100,6 +115,93 @@ describe('ingredients', () => {
     }
     return requests;
   }
+
+  describe(
+      '/GET /helpus', () => {
+        it('do not allow GET', (done) => {
+          chai.request(server).
+              get('/helpus').
+              end((err, res) => {
+                res.should.have.status(405);
+                done();
+              });
+        });
+      });
+
+  describe(
+      '/POST /helpus', () => {
+        it('it should respond with an error message', (done) => {
+          chai.request(server).
+              post('/helpus').
+              end((err, res) => {
+                res.should.have.status(400);
+                (res.text.length > 40).should.be.true;
+                res.text.should.equal(
+                    new HelpUsErrors.HelpUsWrongParameterError().template);
+                done();
+              });
+        });
+      });
+
+  describe(
+      '/POST /helpus?ingredient=' + testIngredientName, () => {
+        it('it should respond with an error message', (done) => {
+          chai.request(server).
+              post('/helpus').
+              query({
+                ingredient: testIngredientName,
+              }).
+              end((err, res) => {
+                res.should.have.status(400);
+                (res.text.length > 40).should.be.true;
+                res.text.should.equal(
+                    new HelpUsErrors.HelpUsWrongParameterError().template);
+                done();
+              });
+        });
+      });
+
+  describe(
+      '/POST /helpus?ingredient=' + testIngredientName +
+      '&allergen=gluten&contains=WRONGPARAMETER', () => {
+        it('it should respond with an error message', (done) => {
+          chai.request(server).
+              post('/helpus').
+              query({
+                ingredient: testIngredientName,
+                allergen: 'gluten',
+                contains: 'WRONGPARAMETER',
+              }).
+              end((err, res) => {
+                res.should.have.status(400);
+                (res.text.length > 40).should.be.true;
+                res.text.should.equal(
+                    new HelpUsErrors.ContainsWrongParameterError().template);
+                done();
+              });
+        });
+      });
+
+  describe(
+      '/POST /helpus?ingredient=' + testIngredientName +
+      '&allergen=WRONGPARAMETER&contains=true', () => {
+        it('it should respond with an error message', (done) => {
+          chai.request(server).
+              post('/helpus').
+              query({
+                ingredient: testIngredientName,
+                allergen: 'WRONGPARAMETER',
+                contains: 'true',
+              }).
+              end((err, res) => {
+                res.should.have.status(400);
+                (res.text.length > 40).should.be.true;
+                res.text.should.equal(
+                    'The allergen you requested with the name "WRONGPARAMETER" is not listed in our database.');
+                done();
+              });
+        });
+      });
 });
 
 beforeEach(async () => {

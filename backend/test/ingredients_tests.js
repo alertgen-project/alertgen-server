@@ -9,6 +9,7 @@ const {connectionFactory} = require('../models/connection_factory');
 chai.use(chaiHttp);
 
 describe('ingredients', () => {
+
   describe(
       '/GET /ingredients?ingredients=DelicousPancakeDough&allergens=gluten',
       () => {
@@ -24,6 +25,7 @@ describe('ingredients', () => {
               });
         });
       });
+
   describe(
       '/GET /ingredients?ingredients=DelicousPancakeDough&ingredients=DelicousPickle&allergens=gluten',
       () => {
@@ -43,6 +45,7 @@ describe('ingredients', () => {
               });
         });
       });
+
   describe(
       '/GET /ingredients?ingredients=sushimi&allergens=molluscs&allergens=gluten',
       () => {
@@ -66,6 +69,7 @@ describe('ingredients', () => {
               });
         });
       });
+
   describe(
       '/GET /ingredients?ingredients=DelicousPickle2&allergens=gluten&allergens=lupin',
       () => {
@@ -85,6 +89,7 @@ describe('ingredients', () => {
               });
         });
       });
+
   describe(
       '/GET /ingredients',
       () => {
@@ -100,6 +105,24 @@ describe('ingredients', () => {
               });
         });
       });
+
+  describe(
+      '/GET /ingredients',
+      () => {
+        it('it should return an error message', (done) => {
+          chai.request(server).
+              get('/ingredients?ingredients=DelicousPickle2&allergens=FAIL').
+              query({ingredients: 'DelicousPickle2', allergens: 'FAIL'}).
+              end((err, res) => {
+                res.should.have.status(400);
+                (res.text.length > 40).should.be.true;
+                res.text.should.equal(
+                    'The allergen you requested with the name "FAIL" is not listed in our database.');
+                done();
+              });
+        });
+      });
+
   describe(
       '/GET /ingredients?ingredients=test',
       () => {
@@ -114,6 +137,7 @@ describe('ingredients', () => {
               });
         });
       });
+
   describe(
       '/GET /ingredients?allergens=test',
       () => {
@@ -128,6 +152,7 @@ describe('ingredients', () => {
               });
         });
       });
+
   describe(
       '/GET /ingredients?allergens=test?ingredients=test',
       () => {
