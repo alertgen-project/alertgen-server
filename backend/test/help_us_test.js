@@ -224,7 +224,8 @@ afterEach(async () => {
   await removeOne({name: testIngredientName});
 });
 
-after(async () => {
-  await server.close();
-  await connectionFactory.closeConnection();
+after(() => {
+  server.close(() => {
+    this.connectionFactory.closeConnection();
+  });
 });
