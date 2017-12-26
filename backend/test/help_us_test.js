@@ -7,7 +7,6 @@ chai.use(chaiHttp);
 chai.use(chaiAsPromised);
 chai.should();
 const server = require('../server.js');
-const IngredientsErrors = require('../errors/ingredients_errors.js');
 const HelpUsErrors = require('../errors/help_us_errors.js');
 const {connectionFactory} = require('../models/connection_factory');
 const {insert, findOneIngredientFuzzy, removeOne, Ingredient} = require(
@@ -218,10 +217,6 @@ describe('ingredients', () => {
               });
         });
       });
-});
-
-beforeEach(async () => {
-  // make sure created objects are not in the database anymore
 });
 
 afterEach(async () => {
