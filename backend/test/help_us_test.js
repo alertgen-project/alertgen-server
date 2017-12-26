@@ -70,30 +70,46 @@ describe('ingredients', () => {
       '&allergen=gluten&contains=true',
       () => {
         it('tests parallel /helpus-calls', async () => {
-          await Promise.all(
+          let responses = await Promise.all(
               getHelpusRequests(10, testIngredientName, 'gluten', true));
+          responses.forEach((response) => {
+            response.should.have.status(200);
+            response.should.be.a.json;
+          });
           let ingredient = await findOneIngredientFuzzy(testIngredientName);
           ingredient.name.should.be.equal(testIngredientName);
           ingredient.gluten.contains.should.be.true;
           ingredient.gluten.contains_neg.should.be.equal(0);
           ingredient.gluten.contains_pos.should.be.equal(10);
           ingredient.gluten.contains_percent.should.be.equal(1);
-          await Promise.all(
+          responses = await Promise.all(
               getHelpusRequests(7, testIngredientName, 'gluten', false));
+          responses.forEach((response) => {
+            response.should.have.status(200);
+            response.should.be.a.json;
+          });
           ingredient = await findOneIngredientFuzzy(testIngredientName);
           ingredient.gluten.contains.should.be.true;
           ingredient.gluten.contains_neg.should.be.equal(7);
           ingredient.gluten.contains_pos.should.be.equal(10);
           ingredient.gluten.contains_percent.should.be.equal(10 / 17);
-          await Promise.all(
+          responses = await Promise.all(
               getHelpusRequests(4, testIngredientName, 'gluten', false));
+          responses.forEach((response) => {
+            response.should.have.status(200);
+            response.should.be.a.json;
+          });
           ingredient = await findOneIngredientFuzzy(testIngredientName);
           ingredient.gluten.contains.should.be.false;
           ingredient.gluten.contains_neg.should.be.equal(11);
           ingredient.gluten.contains_pos.should.be.equal(10);
           ingredient.gluten.contains_percent.should.be.equal(10 / 21);
-          await Promise.all(
-              getHelpusRequests(4, testIngredientName, 'eggs', false));
+          responses = (await Promise.all(
+              getHelpusRequests(4, testIngredientName, 'eggs', false)));
+          responses.forEach((response) => {
+            response.should.have.status(200);
+            response.should.be.a.json;
+          });
           ingredient = await findOneIngredientFuzzy(testIngredientName);
           ingredient.eggs.contains.should.be.false;
           ingredient.eggs.contains_neg.should.be.equal(4);
@@ -213,8 +229,7 @@ afterEach(async () => {
   await removeOne({name: testIngredientName});
 });
 
-after(() => {
-  server.close(() => {
-    this.connectionFactory.closeConnection();
-  });
+after(async () => {
+  await server.close();
+  await connectionFactory.closeConnection();
 });
