@@ -1,4 +1,4 @@
-FROM node:8.9.1
+FROM node
 # Rest-API in image kopieren
 COPY backend /usr/share/node_app
 # npm install im image ausführen
