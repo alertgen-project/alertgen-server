@@ -177,13 +177,19 @@ async function getIngredientsModel() {
     const connection = await connectionFactory.getConnection();
     return connection.model('Ingredient', ingredientSchema);
   } catch (err) {
+    log.error(err);
     throw err;
   }
 }
 
 module.exports = {
-  getIngredientsModel, insert, findByName,
-  removeOne, findOne, findOneIngredientFuzzy,
-  updateIngredientAllergenConfirmation, increaseIngredientAllergen,
-  decreaseIngredientAllergen, Ingredient: mongoose.model('Ingredient', ingredientSchema)
+  insert,
+  findByName,
+  removeOne,
+  findOne,
+  findOneIngredientFuzzy,
+  updateIngredientAllergenConfirmation,
+  increaseIngredientAllergen,
+  decreaseIngredientAllergen,
+  Ingredient: mongoose.model('Ingredient', ingredientSchema),
 };
