@@ -1,0 +1,31 @@
+{
+  "name": "alertgen_indexer",
+  "version": "1.0.0",
+  "description": "mongodb indexer",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "mocha --timeout 4000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://r-n-d.informatik.hs-augsburg.de:8080/nodejs-ws1718/allergy-check-group/allergy-check.git"
+  },
+  "author": "Andreas Kottre, David Yesil",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "chai-as-promised": "^7.1.1",
+    "config": "^1.28.1",
+    "erroz": "^1.1.0",
+    "koa-router": "^7.3.0",
+    "mongoose": "^4.13.7",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "chai-http": "^3.0.0"
+  }
+}
