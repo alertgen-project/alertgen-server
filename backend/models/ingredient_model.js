@@ -94,7 +94,7 @@ ingredientSchema.statics.findByName = async function(name) {
  */
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
     name, allergen, field) {
-  return await lock.acquire('test', async () => {
+  return await lock.acquire('ingredientUpdate', async () => {
     const ingredient = await this.findOneIngredientFuzzy(name);
     if (!ingredient || !ingredient[allergen]) {
       return false;
