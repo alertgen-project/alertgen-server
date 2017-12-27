@@ -6,6 +6,7 @@ const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 chai.should();
 const IngredientsModel = require('../models/ingredient_model');
+const ProductModel = require('../models/product_model');
 const {connectionFactory} = require('../models/connection_factory');
 
 const testIngredientName = '7357f2u17';
@@ -93,6 +94,22 @@ describe('Ingredient Model Tests', () => {
             throw();
       });
 });
+
+describe('Product Model Tests', () => {
+
+  const testProduct = {
+    barcode: 123123111,
+    name: "pizza ristorante",
+    ingredients: ["wheat", "water", "tomato"]
+  };
+
+  it('Should insert a test product, find it and remove it', async () => {
+    (await ProductModel.insert(testProduct)).barcode.should.be.equal(123123111);
+    (await ProductModel.findOneByBarcode(123123111)).barcode.should.be.equal(123123111);
+    (await ProductModel.removeOne(testProduct)).barcode.should.be.equal(123123111);
+  });
+});
+
 
 function getIncreaseUpdateRequests(numberOfRequests, ingredientName) {
   const updateRequests = [];
