@@ -1,6 +1,7 @@
 const config = require('config');
 
-const IngredientsModel = require('../backend/models/ingredient_model');
+const IngredientsModel = require('../backend/models/ingredient_model.js');
+const ProductModel = require('../backend/models/product_model.js')
 const fs = require('fs');
 const util = require('util');
 const readFile = util.promisify(fs.readFile);
@@ -15,11 +16,8 @@ let indexed = 0;
 modelsToIndex.forEach((model) => {
   index(model).then(async () => {
     indexed++;
-
     if (indexed === modelsToIndex.length) {
-
-      const rest = await connectionFactory.closeConnection();
-      console.log(rest);
+      await connectionFactory.closeConnection();
     }
   });
 });
@@ -31,7 +29,6 @@ async function index(modelToIndex) {
     documents.forEach(async (ingredient) => {
       try {
         await IngredientsModel.insert(ingredient);
-        console.log(connectionFactory);
       } catch (err) {
         log.error(err);
         console.error(err);
@@ -41,7 +38,7 @@ async function index(modelToIndex) {
   if (modelToIndex === 'products') {
     documents.forEach(async (doc) => {
       try {
-        await IngredientsModel.insert(doc);
+        await ProductModel.insert(doc);
       } catch(err) {
         log.error(err);
         console.error(err);
