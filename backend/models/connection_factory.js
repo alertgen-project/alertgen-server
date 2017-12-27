@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const log = require('../logger/logger.js').getLog('ingredient_model.js');
 const AsyncLock = require('async-lock');
 const lock = new AsyncLock();
+const connectionCachingLockKey = 'connection_caching';
 
 class MongoDBConnectionFactory {
 
@@ -15,7 +16,7 @@ class MongoDBConnectionFactory {
    * @returns {Promise<*|null>}
    */
   async getConnection() {
-    await lock.acquire('connection_caching', async () => {
+    await lock.acquire(connectionCachingLockKey, async () => {
       if (!this.conn) {
         try {
           await mongoose.connect('mongodb://' + config.get('db.host') + ':' +
@@ -41,7 +42,7 @@ class MongoDBConnectionFactory {
    * @returns {Promise<boolean>}
    */
   async closeConnection() {
-    return await lock.acquire('connection_caching', async () => {
+    return await lock.acquire(connectionCachingLockKey, async () => {
       if (this.conn) {
         await this.conn.close();
         this.conn = null;
