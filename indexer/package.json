@@ -4,14 +4,14 @@
   "description": "mongodb indexer",
   "main": "main.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node main.js",
     "test": "mocha --timeout 4000"
   },
   "repository": {
     "type": "git",
     "url": "https://r-n-d.informatik.hs-augsburg.de:8080/nodejs-ws1718/allergy-check-group/allergy-check.git"
   },
-  "author": "Andreas Kottre, André Fiedler, David Yesil",
+  "author": "Andreas Kottre, David Yesil",
   "license": "ISC",
   "dependencies": {
     "bunyan": "^1.8.12",

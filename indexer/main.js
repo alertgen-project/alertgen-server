@@ -15,6 +15,7 @@ let indexed = 0;
 modelsToIndex.forEach((model) => {
   index(model).then(async () => {
     indexed++;
+
     if (indexed === modelsToIndex.length) {
 
       const rest = await connectionFactory.closeConnection();
@@ -30,6 +31,7 @@ async function index(modelToIndex) {
     documents.forEach(async (ingredient) => {
       try {
         await IngredientsModel.insert(ingredient);
+        console.log(connectionFactory);
       } catch (err) {
         log.error(err);
         console.error(err);
@@ -38,10 +40,12 @@ async function index(modelToIndex) {
   }
   if (modelToIndex === 'products') {
     documents.forEach(async (doc) => {
-      await IngredientsModel.insert(doc).catch((err) => {
+      try {
+        await IngredientsModel.insert(doc);
+      } catch(err) {
         log.error(err);
         console.error(err);
-      });
+      }
     });
   }
 }

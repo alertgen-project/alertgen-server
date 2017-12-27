@@ -3,6 +3,8 @@
 const config = require('config');
 const mongoose = require('mongoose');
 const log = require('../logger/logger.js').getLog('ingredient_model.js');
+const AsyncLock = require('async-lock');
+const lock = new AsyncLock();
 
 class MongoDBConnectionFactory {
 
@@ -13,21 +15,24 @@ class MongoDBConnectionFactory {
    * @returns {Promise<*|null>}
    */
   async getConnection() {
-    if (!this.conn) {
-      try {
-        await mongoose.connect('mongodb://' + config.get('db.host') + ':' +
-            config.get('db.port') + '/' + config.get('db.name'), {
-          useMongoClient: true,
-          user: config.get('db.user'), pass: config.get('db.pw'),
-        });
-        this.conn = mongoose.connection;
-      } catch (err) {
-        this.conn = null;
-        console.error(err);
-        log.error(err);
-        throw err;
+    await lock.acquire('connection_caching', async () => {
+      if (!this.conn) {
+        console.log('connection');
+        try {
+          await mongoose.connect('mongodb://' + config.get('db.host') + ':' +
+              config.get('db.port') + '/' + config.get('db.name'), {
+            useMongoClient: true,
+            user: config.get('db.user'), pass: config.get('db.pw'),
+          });
+          this.conn = mongoose.connection;
+        } catch (err) {
+          this.conn = null;
+          console.error(err);
+          log.error(err);
+          throw err;
+        }
       }
-    }
+    });
     return this.conn;
   }
 
@@ -37,13 +42,15 @@ class MongoDBConnectionFactory {
    * @returns {Promise<boolean>}
    */
   async closeConnection() {
-    if (this.conn) {
-      await this.conn.close();
-      this.conn = null;
-      return true;
-    } else {
-      return false;
-    }
+    return await lock.acquire('connection_caching', async () => {
+      if (this.conn) {
+        await this.conn.close();
+        this.conn = null;
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
 }
