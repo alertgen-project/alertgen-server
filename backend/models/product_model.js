@@ -24,6 +24,10 @@ const productSchema = new Schema({
     required: true,
     lowercase: true,
   },
+  category: {
+    type: [String],
+    lowercase: true
+  }
 }, {runSettersOnQuery: true});
 
 productSchema.statics.insert = async function(
@@ -44,6 +48,10 @@ productSchema.statics.findOneProduct = async function(
 productSchema.statics.findOneProductByBarcode = async function(
     barcode) {
   return await this.findOne({barcode: barcode});
+};
+
+productSchema.statics.findProductsOfCategory = async function (category) {
+  return await this.find({category: category})
 };
 
 async function getProductModel() {
@@ -76,6 +84,11 @@ async function findOneByBarcode(barcode) {
   return await model.findOneProductByBarcode(barcode);
 }
 
+async function findProductsOfCategory(category) {
+  const model = await getProductModel();
+  return await model.findProductsOfCategory(category);
+}
+
 module.exports = {
-  insert, removeOne, findOne, findOneByBarcode
+  insert, removeOne, findOne, findOneByBarcode, findProductsOfCategory
 };
