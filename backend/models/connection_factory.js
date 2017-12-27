@@ -17,7 +17,6 @@ class MongoDBConnectionFactory {
   async getConnection() {
     await lock.acquire('connection_caching', async () => {
       if (!this.conn) {
-        console.log('connection');
         try {
           await mongoose.connect('mongodb://' + config.get('db.host') + ':' +
               config.get('db.port') + '/' + config.get('db.name'), {
