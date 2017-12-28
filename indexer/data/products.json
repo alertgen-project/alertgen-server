@@ -4,13 +4,13 @@
       "name": "Spaghetti - Asda - 500 g",
       "categories": ["pastas"],
       "barcode": "5051413183144",
-      "ingredients": ["white cornflour", "yellow cornflour", "rice flour", "emulsifier"]
+      "ingredients": ["white cornflour", "yellow cornflour", "rice flour", "diglyceride", "monoglyceride"]
     },
     {
       "name": "Nutella",
       "categories": ["spreads"],
       "barcode": "0009800895250",
-      "ingredients": ["sugar", "palm oil", "hazelnut", "cocoa", "skim milk", "reduced minerals whey", "emulsifier lecithin", "vanillin"]
+      "ingredients": ["sugar", "palm oil", "hazelnut", "cocoa", "skim milk", "reduced minerals whey", "lecithin", "vanillin"]
     }
   ]
 }
