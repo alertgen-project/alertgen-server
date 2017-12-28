@@ -20,7 +20,7 @@ GET /product?product=12324234&allergens=gluten&allergens=lactose
 
 JSON with product object containing boolean of all and detail object with specific booleans for allergens.
 
-{"12324234": {all: boolean, detail: {gluten: true, lactose: false}}}
+{"barcode": "12324234", all: boolean, detail: {gluten: true, lactose: false}}
 
 
 ### /productCategory

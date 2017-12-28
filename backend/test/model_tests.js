@@ -98,17 +98,17 @@ describe('Ingredient Model Tests', () => {
 describe('Product Model Tests', () => {
 
   const testProduct = {
-    barcode: 123123111,
+    barcode: '123123000',
     name: 'pizza ristorante',
     ingredients: ['wheat', 'water', 'tomato'],
-    category: ['pastries']
+    category: ['pastry']
   };
 
   it('Should insert a test product, find it by barcode, find it by category and remove it', async () => {
-    (await ProductModel.insert(testProduct)).barcode.should.be.equal(123123111);
-    (await ProductModel.findOneByBarcode(123123111)).barcode.should.be.equal(123123111);
-    (await ProductModel.findProductsOfCategory('pastries'))[0].barcode.should.be.equal(123123111);
-    (await ProductModel.removeOne(testProduct)).barcode.should.be.equal(123123111);
+    (await ProductModel.insert(testProduct)).barcode.should.be.equal('123123000');
+    (await ProductModel.findOneByBarcode('123123000')).barcode.should.be.equal('123123000');
+    (await ProductModel.findProductsOfCategory('pastry'))[0].barcode.should.be.equal('123123000');
+    (await ProductModel.removeOne(testProduct)).barcode.should.be.equal('123123000');
   });
 });
 
