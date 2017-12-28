@@ -23,6 +23,12 @@
       "categories": ["butters", "peanut butters"],
       "barcode": "23154131",
       "ingredients": ["peanuts", "sugar", "salt", "canola oil"]
+    },
+    {
+      "name": "Toblerone - 3.52 OZ (100 g)",
+      "categories": ["sweets", "chocolate"],
+      "barcode": "0070221011116",
+      "ingredients": ["milk", "milk fat", "sugar", "honey", "almonds", "egg whites", "soy lecithin", "cocoa butter", "vanillin"]
     }
   ]
 }

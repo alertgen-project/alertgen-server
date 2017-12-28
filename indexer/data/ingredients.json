@@ -179,6 +179,57 @@
     },
     {
       "name": "salt"
+    },
+    {
+      "name": "milk",
+      "milk": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "milk fat",
+      "milk": {
+        "contains": true,
+        "contains_percent": 0.5,
+        "contains_pos": 5,
+        "contains_neg": 5
+      }
+    },
+    {
+      "name": "soy lecithin",
+      "soy": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "almonds",
+      "nuts": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "cocoa butter"
+    },
+    {
+      "name": "egg whites",
+      "eggs": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "honey"
     }
   ]
 }
