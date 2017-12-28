@@ -12,7 +12,6 @@ const {connectionFactory} = require('../backend/models/connection_factory');
 // "main-function"
 (async() => {
   const modelsToIndex = config.get('toIndex');
-  let indexed = 0;
   for (let model of modelsToIndex){
       await index(model);
   }
