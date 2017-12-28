@@ -51,7 +51,7 @@ productSchema.statics.findOneProductByBarcode = async function(
 };
 
 productSchema.statics.findProductsOfCategory = async function (category) {
-  return await this.find({category: category})
+  return await this.find({categories: new RegExp(category, 'i')})
 };
 
 async function getProductModel() {
