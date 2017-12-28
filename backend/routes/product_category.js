@@ -24,7 +24,7 @@ async function retrieveProductsWithoutAllergens(ctx) {
       allergensQueryParameter);
   const productsWithoutAllergens = [];
   const products = await findProductsOfCategory(productCategoryQueryParameter);
-  if(!products ||products.length == 0){
+  if(!products || products.length === 0){
     ctx.throw(new ProductCategoryNotFoundError({category: productCategoryQueryParameter}));
   }
   for (let product of products) {
