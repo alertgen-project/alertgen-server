@@ -19,27 +19,27 @@ async function containAllergens(ctx) {
       allergensQueryParameter);
   const responseIngredients = await Promise.all(
       ingredientsQueryParameter.map(findOneIngredientFuzzy)).
-      then((dbIngredients) => {
-        return dbIngredients.map((dbIngredient, ingredientIndex) => {
-          if (!dbIngredient) {
+      then((ingredientsDocuments) => {
+        return ingredientsDocuments.map((ingredientDocument, indexOfIngredientDocument) => {
+          if (!ingredientDocument) {
             ctx.throw(new IngredientsErrors.IngredientNotIndexedError(
-                {ingredient: ingredientsQueryParameter[ingredientIndex]}));
+                {ingredient: ingredientsQueryParameter[indexOfIngredientDocument]}));
           }
           // create an object which contains all requested allergens for this ingredient
           const responseAllergens = allergensQueryParameter.reduce(
-              (responseAllergens, allergen) => {
-                const dbAllergen = dbIngredient[allergen];
-                if (!dbAllergen) {
+              (responseAllergens, allergenQueryParameter) => {
+                const indexedAllergen = ingredientDocument[allergenQueryParameter];
+                if (!indexedAllergen) {
                   ctx.throw(
-                      new IngredientsErrors.AllergenNotFoundError({allergen}));
+                      new IngredientsErrors.AllergenNotFoundError({allergen: allergenQueryParameter}));
                 }
-                const {contains, contains_percent} = dbAllergen;
-                responseAllergens[allergen] = {
+                const {contains, contains_percent} = indexedAllergen;
+                responseAllergens[allergenQueryParameter] = {
                   containing: contains, contains_percent,
                 };
                 return responseAllergens;
               }, {});
-          return {[`${dbIngredient.name}`]: responseAllergens};
+          return {[`${ingredientDocument.name}`]: responseAllergens};
         });
       });
   return ctx.body = responseIngredients;
