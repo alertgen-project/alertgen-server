@@ -6,7 +6,7 @@ const fs = require('fs');
 const util = require('util');
 const readFile = util.promisify(fs.readFile);
 const log = require('../backend/logger/logger.js').
-    getLog('ingredient_model.js');
+    getLog('main.js');
 const {connectionFactory} = require('../backend/models/connection_factory');
 
 // "main-function"
