@@ -164,6 +164,21 @@
     },
     {
       "name": "orange juice pulp"
+    },
+    {
+      "name": "peanuts",
+      "peanuts": {
+        "contains": true,
+        "contains_percent": 1,
+        "contains_pos": 10,
+        "contains_neg": 0
+      }
+    },
+    {
+      "name": "canola oil"
+    },
+    {
+      "name": "salt"
     }
   ]
 }

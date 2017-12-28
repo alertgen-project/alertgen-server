@@ -17,6 +17,12 @@
       "categories": ["juices"],
       "barcode": "0049022644793",
       "ingredients": ["Orange juice", "orange juice pulp"]
+    },
+    {
+      "name": "Erdnusscreme - KG Fancy Food Handels GmbH & Co. - 350 g",
+      "categories": ["butters", "peanut butters"],
+      "barcode": "23154131",
+      "ingredients": ["peanuts", "sugar", "salt", "canola oil"]
     }
   ]
 }
