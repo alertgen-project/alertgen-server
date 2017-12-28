@@ -1,0 +1,235 @@
+{
+  "ingredients": [
+    {
+      "name": "rice flour",
+      "gluten": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      },
+      "peanuts": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      },
+      "sesame": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      }
+    },
+    {
+      "name": "yellow cornflour",
+      "gluten": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      },
+      "crustaceans": {
+        "contains": false,
+        "contains_percent": 0,
+        "contains_pos": 0,
+        "contains_neg": 10
+      },
+      "eggs": {
+        "contains": false,
+        "contains_percent": 0,
+        "contains_pos": 0,
+        "contains_neg": 10
+      },
+      "fish": {
+        "contains": false,
+        "contains_percent": 0,
+        "contains_pos": 0,
+        "contains_neg": 10
+      },
+      "peanuts": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      },
+      "sesame": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      }
+    },
+    {
+      "name": "white cornflour",
+      "gluten": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      },
+      "peanuts": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      },
+      "sesame": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      }
+    },
+    {
+      "name": "diglyceride",
+      "eggs": {
+        "contains": false,
+        "contains_percent": 0.3,
+        "contains_pos": 3,
+        "contains_neg": 7
+      },
+      "soy": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      },
+      "milk": {
+        "contains": false,
+        "contains_percent": 0.3,
+        "contains_pos": 3,
+        "contains_neg": 7
+      }
+    },
+    {
+      "name": "monoglyceride",
+      "eggs": {
+        "contains": false,
+        "contains_percent": 0.3,
+        "contains_pos": 3,
+        "contains_neg": 7
+      },
+      "soy": {
+        "contains": false,
+        "contains_percent": 0.1,
+        "contains_pos": 1,
+        "contains_neg": 9
+      },
+      "milk": {
+        "contains": false,
+        "contains_percent": 0.3,
+        "contains_pos": 3,
+        "contains_neg": 7
+      }
+    },
+    {
+      "name": "sugar"
+    },
+    {
+      "name": "palm oil",
+      "nuts": {
+        "contains": true,
+        "contains_percent": 0.5,
+        "contains_pos": 5,
+        "contains_neg": 5
+      }
+    },
+    {
+      "name": "cocoa"
+    },
+    {
+      "name": "skim milk",
+      "milk": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "reduced minerals whey",
+      "milk": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "vanillin"
+    },
+    {
+      "name": "orange juice"
+    },
+    {
+      "name": "orange juice pulp"
+    },
+    {
+      "name": "peanuts",
+      "peanuts": {
+        "contains": true,
+        "contains_percent": 1,
+        "contains_pos": 10,
+        "contains_neg": 0
+      }
+    },
+    {
+      "name": "canola oil"
+    },
+    {
+      "name": "salt"
+    },
+    {
+      "name": "milk",
+      "milk": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "milk fat",
+      "milk": {
+        "contains": true,
+        "contains_percent": 0.5,
+        "contains_pos": 5,
+        "contains_neg": 5
+      }
+    },
+    {
+      "name": "soy lecithin",
+      "soy": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "almonds",
+      "nuts": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "cocoa butter"
+    },
+    {
+      "name": "egg whites",
+      "eggs": {
+        "contains": true,
+        "contains_percent": 0.8,
+        "contains_pos": 8,
+        "contains_neg": 2
+      }
+    },
+    {
+      "name": "honey"
+    }
+  ]
+}
