@@ -10,7 +10,7 @@ mongoose.Promise = Promise;
 
 const productSchema = new Schema({
   barcode: {
-    type: Number,
+    type: String,
     required: true,
     unique: true,
   },

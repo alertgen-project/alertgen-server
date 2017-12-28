@@ -10,7 +10,7 @@
     "port": 8080
   },
   "toIndex": [
-    "products"
+    "products", "ingredients"
   ],
   "logger": {
     "path": "./logs/server_log.json",

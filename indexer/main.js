@@ -1,7 +1,7 @@
 const config = require('config');
 
 const IngredientsModel = require('../backend/models/ingredient_model.js');
-const ProductModel = require('../backend/models/product_model.js')
+const ProductModel = require('../backend/models/product_model.js');
 const fs = require('fs');
 const util = require('util');
 const readFile = util.promisify(fs.readFile);
@@ -13,36 +13,48 @@ const {connectionFactory} = require('../backend/models/connection_factory');
 
 let indexed = 0;
 
-modelsToIndex.forEach((model) => {
+modelsToIndex.forEach(async (model) => {
   index(model).then(async () => {
     indexed++;
     if (indexed === modelsToIndex.length) {
       await connectionFactory.closeConnection();
     }
+  }).catch((err) => {
+    console.err(err);
   });
 });
 
 async function index(modelToIndex) {
   const documents = JSON.parse(
-      (await readFile('./data/products.json')).toString('ascii'))[modelToIndex];
+      (await readFile('./data/' + modelToIndex + '.json')).toString(
+          'ascii'))[modelToIndex];
   if (modelToIndex === 'ingredients') {
-    documents.forEach(async (ingredient) => {
-      try {
-        await IngredientsModel.insert(ingredient);
-      } catch (err) {
-        log.error(err);
-        console.error(err);
-      }
-    });
+
   }
   if (modelToIndex === 'products') {
-    documents.forEach(async (doc) => {
-      try {
-        await ProductModel.insert(doc);
-      } catch(err) {
-        log.error(err);
-        console.error(err);
-      }
-    });
+    await indexProducts(documents);
+  }
+}
+
+async function indexProducts(documents){
+  for (let document of documents) {
+    try {
+      return await ProductModel.insert(document);
+    } catch (err) {
+      log.error(err);
+      log.info('could not index', document.name);
+      return;
+    }
+  }
+}
+
+async function indexIngredients(documents){
+  for (let document of documents) {
+    try {
+      await IngredientsModel.insert(document);
+    } catch (err) {
+      log.error(err);
+      log.info('could not index', document.name);
+    }
   }
 }
