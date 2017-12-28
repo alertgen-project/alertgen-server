@@ -23,14 +23,13 @@ async function retrieveProductsWithoutAllergens(ctx) {
   log.debug('Using Queryparameters:', productCategoryQueryParameter,
       allergensQueryParameter);
   const productsWithoutAllergens = [];
-  const products = await findProductsOfCategory(productCategoryQueryParameter);
-  if(!products || products.length === 0){
+  const productDocuments = await findProductsOfCategory(productCategoryQueryParameter);
+  if(!productDocuments || productDocuments.length === 0){
     ctx.throw(new ProductCategoryNotFoundError({category: productCategoryQueryParameter}));
   }
-  for (let product of products) {
+  for (let productDocument of productDocuments) {
     let containsAllergen = false;
-    for (let ingredientName of product.ingredients) {
-      const ingredientDocument = await findOneIngredientFuzzy(ingredientName);
+    for (let ingredientDocument of await Promise.all(productDocument.ingredients.map(findOneIngredientFuzzy))) {
       for (let allergen of allergensQueryParameter) {
         if (!ingredientDocument[allergen]) {
           ctx.throw(new AllergenNotFoundError({allergen}));
@@ -42,7 +41,7 @@ async function retrieveProductsWithoutAllergens(ctx) {
     }
     if (!containsAllergen) {
       productsWithoutAllergens.push(
-          {productName: product.name, barcode: product.barcode});
+          {productName: productDocument.name, barcode: productDocument.barcode});
     }
   }
   return ctx.body = productsWithoutAllergens;
