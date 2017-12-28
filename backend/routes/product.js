@@ -19,16 +19,19 @@ async function isAllergicToProduct(ctx) {
   log.debug('Using Queryparameters:', product, allergens);
   // request data from db
   if (product.match('[0-9]+') && product.length > 5) {
-    ctx.body = await checkContainingAllergen(await findOneByBarcode(product), allergens);
+    ctx.body = await checkContainingAllergen(await findOneByBarcode(product), allergens, ctx);
     return ctx.body;
   }
   else {
-    ctx.body = await checkContainingAllergen(await findOne({name: product}), allergens);
+    ctx.body = await checkContainingAllergen(await findOne({name: product}), allergens, ctx);
     return ctx.body;
   }
 }
 
-async function checkContainingAllergen(productFromDb, allergens) {
+async function checkContainingAllergen(productFromDb, allergens, ctx) {
+  if (productFromDb === null || productFromDb === undefined) {
+    ctx.throw(new ProductErrors.ProductNotFoundError);
+  }
   let result = {barcode: productFromDb.barcode};
   let all = false;
   let detail = {};
