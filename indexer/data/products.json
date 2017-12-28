@@ -11,6 +11,12 @@
       "categories": ["spreads"],
       "barcode": "0009800895250",
       "ingredients": ["sugar", "palm oil", "hazelnut", "cocoa", "skim milk", "reduced minerals whey", "lecithin", "vanillin"]
+    },
+    {
+      "name": "Orange Juice With Pulp - Good & Delish",
+      "categories": ["juices"],
+      "barcode": "0049022644793",
+      "ingredients": ["Orange juice", "orange juice pulp"]
     }
   ]
 }

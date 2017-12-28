@@ -14,12 +14,6 @@
         "contains_pos": 1,
         "contains_neg": 9
       },
-      "soy": {
-        "contains": true,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
       "sesame": {
         "contains": false,
         "contains_percent": 0.1,
@@ -59,12 +53,6 @@
         "contains_pos": 1,
         "contains_neg": 9
       },
-      "soy": {
-        "contains": true,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
       "sesame": {
         "contains": false,
         "contains_percent": 0.1,
@@ -86,12 +74,6 @@
         "contains_pos": 1,
         "contains_neg": 9
       },
-      "soy": {
-        "contains": true,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
       "sesame": {
         "contains": false,
         "contains_percent": 0.1,
@@ -108,7 +90,7 @@
         "contains_neg": 7
       },
       "soy": {
-        "contains": true,
+        "contains": false,
         "contains_percent": 0.1,
         "contains_pos": 1,
         "contains_neg": 9
@@ -129,7 +111,7 @@
         "contains_neg": 7
       },
       "soy": {
-        "contains": true,
+        "contains": false,
         "contains_percent": 0.1,
         "contains_pos": 1,
         "contains_neg": 9
@@ -176,6 +158,12 @@
     },
     {
       "name": "vanillin"
+    },
+    {
+      "name": "orange juice"
+    },
+    {
+      "name": "orange juice pulp"
     }
   ]
 }
