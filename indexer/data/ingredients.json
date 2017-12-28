@@ -86,6 +86,180 @@
         "contains_pos" : 0,
         "contains_neg" : 10
       }
+    },
+    {
+      "name" : "yellow cornflour",
+      "gluten" : {
+        "contains" : false,
+        "contains_percent" : 0.1,
+        "contains_pos" : 1,
+        "contains_neg" : 9
+      },
+      "crustaceans" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "eggs" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "fish" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "peanuts" : {
+        "contains" : false,
+        "contains_percent" : 0.1,
+        "contains_pos" : 1,
+        "contains_neg" : 9
+      },
+      "soy" : {
+        "contains" : true,
+        "contains_percent" : 0.1,
+        "contains_pos" : 1,
+        "contains_neg" : 9
+      },
+      "milk" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "nuts" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "celery" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "mustard" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "sesame" : {
+        "contains" : false,
+        "contains_percent" : 0.1,
+        "contains_pos" : 1,
+        "contains_neg" : 9
+      },
+      "sulphites" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "lupin" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "molluscs" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      }
+    },
+    {
+      "name" : "white cornflour",
+      "gluten" : {
+        "contains" : false,
+        "contains_percent" : 0.1,
+        "contains_pos" : 1,
+        "contains_neg" : 9
+      },
+      "crustaceans" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "eggs" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "fish" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "peanuts" : {
+        "contains" : false,
+        "contains_percent" : 0.1,
+        "contains_pos" : 1,
+        "contains_neg" : 9
+      },
+      "soy" : {
+        "contains" : true,
+        "contains_percent" : 0.1,
+        "contains_pos" : 1,
+        "contains_neg" : 9
+      },
+      "milk" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "nuts" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "celery" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "mustard" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "sesame" : {
+        "contains" : false,
+        "contains_percent" : 0.1,
+        "contains_pos" : 1,
+        "contains_neg" : 9
+      },
+      "sulphites" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "lupin" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      },
+      "molluscs" : {
+        "contains" : false,
+        "contains_percent" : 0,
+        "contains_pos" : 0,
+        "contains_neg" : 10
+      }
     }
   ]
 
