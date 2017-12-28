@@ -16,7 +16,7 @@
       "name": "Orange Juice With Pulp - Good & Delish",
       "categories": ["juices"],
       "barcode": "0049022644793",
-      "ingredients": ["Orange juice", "orange juice pulp"]
+      "ingredients": ["orange juice", "orange juice pulp"]
     },
     {
       "name": "Erdnusscreme - KG Fancy Food Handels GmbH & Co. - 350 g",
@@ -32,6 +32,3 @@
     }
   ]
 }
-
-
-
