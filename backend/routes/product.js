@@ -13,20 +13,23 @@ const log = require('../logger/logger.js').getLog('product.js');
 
 /**
  * logic of /product route
- * @param ctx
- * @returns {Promise<*>}
+ * The requested product and allergens are saved to constants.
+ * the validation of the allergens array is checked
+ * depending on whether if it's a numeric or a character string the checkContainingAllergen
+ * function is called with findOneByBarcode() or findOne()
+ * @param {Object} ctx - Koa context object
+ * @returns {Promise<*>} - returns response body
  */
 async function isAllergicToProduct(ctx) {
-  if (!ctx.query.product || !ctx.query.allergens) {
-    ctx.throw(new ProductErrors.ProductWrongParameterError);
-  }
+  if (!ctx.query.product || !ctx.query.allergens) ctx.throw(
+      new ProductErrors.ProductWrongParameterError);
   const product = ctx.query.product;
   const allergens = RouteUtil.toArray(ctx.query.allergens);
   log.debug('Using Queryparameters:', product, allergens);
   // checking if allergens in the request are valid
-  await Promise.all(allergens.map(async (allergen)=>{
+  await Promise.all(allergens.map(async (allergen) => {
     if (!allergensArr.includes(allergen)) {
-      log.error('Invalid allergen in request: '+ allergen);
+      log.error('Invalid allergen in request: ' + allergen);
       ctx.throw(new ProductErrors.InvalidAllergen);
     }
   }));
@@ -43,19 +46,19 @@ async function isAllergicToProduct(ctx) {
       return ctx.body;
     }
   }
-  catch(err) {
+  catch (err) {
     log.error(err);
     ctx.throw(err);
   }
 }
 
 /**
- * function iterates throw the requested allergens and checks if these are included in the product
+ * function iterates through the requested allergens and checks if these are included in the product
  * it creates and returns a result object which is in fact the response body of the route
  * the ctx parameter is used to throw an ProductNotFoundError if the requested product wasn't found in the database
- * @param productFromDb
- * @param allergens
- * @param ctx
+ * @param {Object} productFromDb - the product loaded from database
+ * @param {string[]} allergens - array of allergens from request
+ * @param {Object} ctx - Koa context object
  * @returns {Promise<{barcode: *|string|barcode|{type, required, unique}}>}
  */
 async function checkContainingAllergen(productFromDb, allergens, ctx) {
@@ -71,7 +74,7 @@ async function checkContainingAllergen(productFromDb, allergens, ctx) {
     ingredientsFromDb.push(await findOneIngredientFuzzy(ingredient));
   }));
   await Promise.all(ingredientsFromDb.map(async (ingredient) => {
-    await Promise.all(allergens.map(async (allergen)=>{
+    await Promise.all(allergens.map(async (allergen) => {
       if (ingredient[allergen].contains === true) {
         all = true;
         detail[allergen] = true;

@@ -14,9 +14,9 @@ mongoose.Promise = Promise;
 
 /**
  * Function calculates the percentage of containing allergen with the negative and positive confirmations
- * @param contains_neg
- * @param contains_pos
- * @returns {number}
+ * @param {number} contains_neg - negative confirmations
+ * @param {number} contains_pos - positive confirmations
+ * @returns {number} percentage of possible contamination with allergen
  */
 const calcContainsPercentage = (contains_neg, contains_pos) => {
   return contains_pos / (contains_pos + contains_neg);
@@ -73,7 +73,7 @@ const ingredientSchema = new Schema(schema, {runSettersOnQuery: true});
 
 /**
  * Finds documents in mongoDb by name
- * @param name
+ * @param {string} name - name of ingredient
  * @returns {Promise<Query|void|*|number>}
  */
 ingredientSchema.statics.findByName = async function(name) {
@@ -89,9 +89,9 @@ ingredientSchema.statics.findByName = async function(name) {
  * updates confirmations of ingredient containing an allergen
  * field means the string of contains_neg or contains_pos to know if it's a negative oder positive confirmation
  * function needed for help_us route
- * @param name
- * @param allergen
- * @param field
+ * @param {string} name - name of ingredient
+ * @param {string} allergen - name of allergen
+ * @param {string} field - 'contains_pos' or 'contains_neg'
  * @returns {Promise<void>}
  */
 ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
@@ -113,7 +113,7 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
 
 /**
  * inserts document in ingredient collection
- * @param object
+ * @param {Object} object - object to insert
  * @returns {Promise<*>}
  */
 ingredientSchema.statics.insert = async function(
@@ -122,7 +122,7 @@ ingredientSchema.statics.insert = async function(
 };
 /**
  * removes the first matching object from ingredient collection
- * @param object
+ * @param {Object} object - object to remove
  * @returns {Promise<*>}
  */
 ingredientSchema.statics.removeOne = async function(
@@ -131,7 +131,7 @@ ingredientSchema.statics.removeOne = async function(
 };
 /**
  * finds and returns the first matching object with @param object
- * @param object
+ * @param {Object} object - object to find
  * @returns {Promise<*>}
  */
 ingredientSchema.statics.findOneIngredient = async function(
@@ -140,7 +140,7 @@ ingredientSchema.statics.findOneIngredient = async function(
 };
 /**
  * finds and returns the first matching object with same name as @param name
- * @param name
+ * @param {string} name - name of ingredient to find
  * @returns {Promise<*>}
  */
 ingredientSchema.statics.findOneIngredientFuzzy = async function(
