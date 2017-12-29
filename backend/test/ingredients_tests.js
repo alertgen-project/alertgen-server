@@ -155,8 +155,8 @@ describe('ingredients', () => {
       });
 });
 
-after(() => {
+after((done) => {
   server.close(() => {
-    this.connectionFactory.closeConnection();
+    connectionFactory.closeConnection().then(()=>{done();});
   });
 });

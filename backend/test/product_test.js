@@ -40,11 +40,10 @@ describe('product route tests', () => {
     console.log(res.body);
     res.should.have.status(200);
   });
-
 });
 
 after(() => {
   server.close(() => {
-    this.connectionFactory.closeConnection();
+    connectionFactory.closeConnection();
   });
 });
