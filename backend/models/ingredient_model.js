@@ -191,5 +191,6 @@ module.exports = {
   updateIngredientAllergenConfirmation,
   increaseIngredientAllergen,
   decreaseIngredientAllergen,
+  allergens,
   Ingredient: mongoose.model('Ingredient', ingredientSchema),
 };

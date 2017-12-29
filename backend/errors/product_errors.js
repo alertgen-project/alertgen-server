@@ -16,6 +16,13 @@ const ProductNotFoundError = erroz({
   template: 'The requested product cannot be found in the database',
 });
 
+const InvalidAllergen = erroz({
+  name: 'InvalidAllergen',
+  code: 'InvalidAllergen',
+  statusCode: 400,
+  template: 'The allergens in the request are invalid',
+});
+
 module.exports = {
-  ProductWrongParameterError, ProductNotFoundError
+  ProductWrongParameterError, ProductNotFoundError, InvalidAllergen
 };

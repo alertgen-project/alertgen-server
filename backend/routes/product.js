@@ -8,6 +8,7 @@ const RouteUtil = require('./route_util.js');
 const ProductErrors = require('../errors/product_errors.js');
 const {findOneByBarcode, findOne} = require('../models/product_model');
 const {findOneIngredientFuzzy} = require('../models/ingredient_model');
+const allergensArr = require('../models/ingredient_model').allergens;
 const log = require('../logger/logger.js').getLog('product.js');
 
 async function isAllergicToProduct(ctx) {
@@ -17,6 +18,13 @@ async function isAllergicToProduct(ctx) {
   const product = ctx.query.product;
   const allergens = RouteUtil.toArray(ctx.query.allergens);
   log.debug('Using Queryparameters:', product, allergens);
+  // checking if allergens in the request are valid
+  allergens.forEach((allergen)=>{
+    if (!allergensArr.includes(allergen)) {
+      log.error('Invalid allergen in request: '+ allergen);
+      ctx.throw(new ProductErrors.InvalidAllergen);
+    }
+  });
   // request data from db
   try {
     if (product.match('[0-9]+') && product.length > 5) {
