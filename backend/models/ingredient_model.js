@@ -13,7 +13,7 @@ const lock = new AsyncLock();
 mongoose.Promise = Promise;
 
 /**
- *
+ * Function calculates the percentage of containing allergen with the negative and positive confirmations
  * @param contains_neg
  * @param contains_pos
  * @returns {number}
@@ -72,7 +72,7 @@ allergens.forEach(allergen => {
 const ingredientSchema = new Schema(schema, {runSettersOnQuery: true});
 
 /**
- *
+ * Finds documents in mongoDb by name
  * @param name
  * @returns {Promise<Query|void|*|number>}
  */
@@ -86,7 +86,9 @@ ingredientSchema.statics.findByName = async function(name) {
 };
 
 /**
- *
+ * updates confirmations of ingredient containing an allergen
+ * field means the string of contains_neg or contains_pos to know if it's a negative oder positive confirmation
+ * function needed for help_us route
  * @param name
  * @param allergen
  * @param field
@@ -109,21 +111,38 @@ ingredientSchema.statics.updateIngredientAllergenConfirmation = async function(
   });
 };
 
+/**
+ * inserts document in ingredient collection
+ * @param object
+ * @returns {Promise<*>}
+ */
 ingredientSchema.statics.insert = async function(
     object) {
   return await this.create(object);
 };
-
+/**
+ * removes the first matching object from ingredient collection
+ * @param object
+ * @returns {Promise<*>}
+ */
 ingredientSchema.statics.removeOne = async function(
     object) {
   return await this.findOneAndRemove(object);
 };
-
+/**
+ * finds and returns the first matching object with @param object
+ * @param object
+ * @returns {Promise<*>}
+ */
 ingredientSchema.statics.findOneIngredient = async function(
     object) {
   return await this.findOne(object);
 };
-
+/**
+ * finds and returns the first matching object with same name as @param name
+ * @param name
+ * @returns {Promise<*>}
+ */
 ingredientSchema.statics.findOneIngredientFuzzy = async function(
     name) {
   return await this.findOne({name: new RegExp(name, 'i')});
@@ -172,6 +191,10 @@ async function increaseIngredientAllergen(ingredient, allergen) {
       contains_pos);
 }
 
+/**
+ * establishes connection to mongoDB and returns IngredientsModel with connection
+ * @returns {Promise<void>}
+ */
 async function getIngredientsModel() {
   try {
     const connection = await connectionFactory.getConnection();
