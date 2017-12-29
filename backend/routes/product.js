@@ -18,13 +18,21 @@ async function isAllergicToProduct(ctx) {
   const allergens = RouteUtil.toArray(ctx.query.allergens);
   log.debug('Using Queryparameters:', product, allergens);
   // request data from db
-  if (product.match('[0-9]+') && product.length > 5) {
-    ctx.body = await checkContainingAllergen(await findOneByBarcode(product), allergens, ctx);
-    return ctx.body;
+  try {
+    if (product.match('[0-9]+') && product.length > 5) {
+      ctx.body = await checkContainingAllergen(await findOneByBarcode(product),
+          allergens, ctx);
+      return ctx.body;
+    }
+    else {
+      ctx.body = await checkContainingAllergen(await findOne({name: product}),
+          allergens, ctx);
+      return ctx.body;
+    }
   }
-  else {
-    ctx.body = await checkContainingAllergen(await findOne({name: product}), allergens, ctx);
-    return ctx.body;
+  catch(err) {
+    log.error(err);
+    ctx.throw(err);
   }
 }
 
