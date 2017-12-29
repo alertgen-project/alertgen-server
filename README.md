@@ -13,7 +13,7 @@ By sending a request to the route "/product", barcodes or products can be checke
 GET-Request with barcode or product name and list of allergens as query parameters.
 
 ```http
-GET /product?product=123123113&allergens=gluten&allergens=soy HTTP/1.1
+GET /product?product=nutella&allergens=gluten&allergens=soy HTTP/1.1
 Host: allergy-check.informatik.hs-augsburg.de
 Content-Type: application/json; charset=utf-8
 ```
@@ -22,7 +22,9 @@ Content-Type: application/json; charset=utf-8
 
 JSON with product object containing boolean of all and detail object with specific booleans for allergens.
 
-{"barcode": "12324234", all: boolean, detail: {gluten: true, lactose: false}}
+```json
+{"barcode":"0009800895250","all":false,"detail":{"gluten":false,"soy":false}}
+```
 
 ###### Possible Errors:
 
@@ -39,7 +41,7 @@ The route "/productcategory" can be used to request substitute products for prod
 GET-Request with product category and list of allergens as query parameters.
 
 ```http
-GET /productcategory?productCategory=pizza&allergens=gluten&allergens=lactose HTTP/1.1
+GET /productcategory?productCategory=juices&allergens=gluten&allergens=milk HTTP/1.1
 Host: allergy-check.informatik.hs-augsburg.de
 Content-Type: application/json; charset=utf-8
 ```
@@ -48,7 +50,9 @@ Content-Type: application/json; charset=utf-8
 
 JSON with array of product names which do not contain the requested allergens.
 
-{"products": [{productName: "bla", barcode: 12344},{productName: "bla", barcode: 12344},{productName: "bla", barcode: 12344}]}
+```json
+[{"name":"orange juice with pulp - good & delish","barcode":"0049022644793"}]
+```
 
 ###### Possible Errors:
 
@@ -72,6 +76,10 @@ Content-Type: application/json; charset=utf-8
 ###### Response:
 
 JSON with array of ingredient objects which contain objects of the allergens with a boolean field "containing" and a percentage with the probability that the product contains the allergen.
+
+```json
+[{"soy sauce":{"gluten":{"containing":false,"contains_percent":0},"sesame":{"containing":false,"contains_percent":0.2},"milk":{"containing":false,"contains_percent":0}}},{"butter":{"gluten":{"containing":false,"contains_percent":0},"sesame":{"containing":false,"contains_percent":0},"milk":{"containing":true,"contains_percent":0}}},{"tempeh":{"gluten":{"containing":false,"contains_percent":0},"sesame":{"containing":false,"contains_percent":0.2},"milk":{"containing":false,"contains_percent":0}}},{"seitan":{"gluten":{"containing":true,"contains_percent":1},"sesame":{"containing":false,"contains_percent":0.3},"milk":{"containing":false,"contains_percent":0}}},{"wheat":{"gluten":{"containing":true,"contains_percent":1},"sesame":{"containing":false,"contains_percent":0},"milk":{"containing":false,"contains_percent":0}}}]
+```
 
 ###### Possible Errors:
 
