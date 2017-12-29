@@ -10,6 +10,11 @@ const {findOneByBarcode, findOne} = require('../models/product_model');
 const {findOneIngredientFuzzy} = require('../models/ingredient_model');
 const log = require('../logger/logger.js').getLog('product.js');
 
+/**
+ * logic of /product route
+ * @param ctx
+ * @returns {Promise<*>}
+ */
 async function isAllergicToProduct(ctx) {
   if (!ctx.query.product || !ctx.query.allergens) {
     ctx.throw(new ProductErrors.ProductWrongParameterError);
@@ -36,6 +41,15 @@ async function isAllergicToProduct(ctx) {
   }
 }
 
+/**
+ * function iterates throw the requested allergens and checks if these are included in the product
+ * it creates and returns a result object which is in fact the response body of the route
+ * the ctx parameter is used to throw an ProductNotFoundError if the requested product wasn't found in the database
+ * @param productFromDb
+ * @param allergens
+ * @param ctx
+ * @returns {Promise<{barcode: *|string|barcode|{type, required, unique}}>}
+ */
 async function checkContainingAllergen(productFromDb, allergens, ctx) {
   if (productFromDb === null || productFromDb === undefined) {
     ctx.throw(new ProductErrors.ProductNotFoundError);
