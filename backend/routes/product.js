@@ -19,12 +19,12 @@ async function isAllergicToProduct(ctx) {
   const allergens = RouteUtil.toArray(ctx.query.allergens);
   log.debug('Using Queryparameters:', product, allergens);
   // checking if allergens in the request are valid
-  allergens.forEach((allergen)=>{
+  await Promise.all(allergens.map(async (allergen)=>{
     if (!allergensArr.includes(allergen)) {
       log.error('Invalid allergen in request: '+ allergen);
       ctx.throw(new ProductErrors.InvalidAllergen);
     }
-  });
+  }));
   // request data from db
   try {
     if (product.match('[0-9]+') && product.length > 5) {
@@ -57,13 +57,13 @@ async function checkContainingAllergen(productFromDb, allergens, ctx) {
     ingredientsFromDb.push(await findOneIngredientFuzzy(ingredient));
   }));
   await Promise.all(ingredientsFromDb.map(async (ingredient) => {
-    for (let i = 0; i < allergens.length; i++) {
-      if (ingredient[allergens[i]].contains === true) {
+    await Promise.all(allergens.map(async (allergen)=>{
+      if (ingredient[allergen].contains === true) {
         all = true;
-        detail[allergens[i]] = true;
+        detail[allergen] = true;
       }
-      else detail[allergens[i]] = detail[allergens[i]] === true;
-    }
+      else detail[allergen] = detail[allergen] === true;
+    }));
   }));
   result.all = all;
   result.detail = detail;
