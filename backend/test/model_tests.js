@@ -20,6 +20,13 @@ const testIngredientCRUD = {
   },
 };
 
+const testProduct = {
+  barcode: '123120000',
+  name: 'pizza ristorante',
+  ingredients: ['wheat', 'water', 'tomato'],
+  categories: ['past']
+};
+
 describe('Ingredient Model Tests', () => {
 
   it('Should insert a test-object, find it, update it and remove it',
@@ -97,18 +104,11 @@ describe('Ingredient Model Tests', () => {
 
 describe('Product Model Tests', () => {
 
-  const testProduct = {
-    barcode: 123123111,
-    name: 'pizza ristorante',
-    ingredients: ['wheat', 'water', 'tomato'],
-    category: ['pastries']
-  };
-
   it('Should insert a test product, find it by barcode, find it by category and remove it', async () => {
-    (await ProductModel.insert(testProduct)).barcode.should.be.equal(123123111);
-    (await ProductModel.findOneByBarcode(123123111)).barcode.should.be.equal(123123111);
-    (await ProductModel.findProductsOfCategory('pastries'))[0].barcode.should.be.equal(123123111);
-    (await ProductModel.removeOne(testProduct)).barcode.should.be.equal(123123111);
+    (await ProductModel.insert(testProduct)).barcode.should.be.equal('123120000');
+    (await ProductModel.findOneByBarcode('123120000')).barcode.should.be.equal('123120000');
+    (await ProductModel.findProductsOfCategory('past'))[0].barcode.should.be.equal('123120000');
+    (await ProductModel.removeOne(testProduct)).barcode.should.be.equal('123120000');
   });
 });
 
@@ -136,6 +136,9 @@ afterEach(async () => {
   await IngredientsModel.removeOne({name: testIngredientName});
 });
 
-after(() => {
-  connectionFactory.closeConnection();
+after((done) => {
+  ProductModel.removeOne(testProduct).then(()=>{
+    connectionFactory.closeConnection();
+    done();
+  });
 });

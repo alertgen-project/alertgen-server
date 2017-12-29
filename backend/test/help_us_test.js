@@ -226,6 +226,6 @@ afterEach(async () => {
 
 after(() => {
   server.close(() => {
-    this.connectionFactory.closeConnection();
+    connectionFactory.closeConnection();
   });
 });
