@@ -23,37 +23,52 @@ async function retrieveProductsWithoutAllergens(ctx) {
   const allergensQueryParameter = RouteUtil.toArray(ctx.query.allergens);
   log.debug('Using Queryparameters:', productCategoryQueryParameter,
       allergensQueryParameter);
-  const productsWithoutAllergens = [];
   const productDocuments = await findProductsOfCategory(
       productCategoryQueryParameter);
   if (!productDocuments || productDocuments.length === 0) {
     ctx.throw(new ProductCategoryNotFoundError(
         {category: productCategoryQueryParameter}));
   }
-  for (let productDocument of productDocuments) {
+  const products = addIngredientDocumentsRequests(productDocuments);
+  await resolveIngredientDocumentRequests(products);
+  return ctx.body = removeProductsWithAllergens(products,
+      allergensQueryParameter, ctx).map(productInformation => {
+    return {
+      name: productInformation.name, barcode: productInformation.barcode,
+    };
+  });
+}
+
+function removeProductsWithAllergens(products, allergensQueryParameter, ctx) {
+  return ctx.body = products.filter(product => {
     let containsAllergen = false;
-    for (let [indexOfIngredientDocument, ingredientDocument] of (await Promise.all(
-        productDocument.ingredients.map(findOneIngredientFuzzy))).entries()) {
-      if (!ingredientDocument) {
-        ctx.throw(new IngredientNotIndexedError(
-            {ingredient: productDocument.ingredients[indexOfIngredientDocument]}));
-      }
+    for (let [indexOfIngredientDocument, ingredientDocument] of product.ingredientDocuments.entries()) {
+      if (!ingredientDocument) ctx.throw(new IngredientNotIndexedError(
+          {ingredient: product.ingredients[indexOfIngredientDocument]}));
       for (let allergen of allergensQueryParameter) {
-        if (!ingredientDocument[allergen]) {
-          ctx.throw(new AllergenNotFoundError({allergen}));
-        }
-        if (ingredientDocument[allergen].contains) {
-          containsAllergen = true;
-        }
+        if (!ingredientDocument[allergen]) ctx.throw(
+            new AllergenNotFoundError({allergen}));
+        if (ingredientDocument[allergen].contains) containsAllergen = true;
       }
     }
-    if (!containsAllergen) {
-      productsWithoutAllergens.push(
-          {
-            productName: productDocument.name,
-            barcode: productDocument.barcode,
-          });
-    }
+    return !containsAllergen;
+  });
+}
+
+function addIngredientDocumentsRequests(productDocuments) {
+  return productDocuments.map((productDocument) => {
+    const {name, barcode, ingredients} = productDocument;
+    return {
+      name, barcode, ingredients,
+      ingredientDocuments: Promise.all(
+          productDocument.ingredients.map(findOneIngredientFuzzy)),
+    };
+  });
+}
+
+async function resolveIngredientDocumentRequests(products) {
+  for (let product of products) {
+    product.ingredientDocuments = await product.ingredientDocuments;
   }
-  return ctx.body = productsWithoutAllergens;
+  return products;
 }
