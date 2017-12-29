@@ -30,30 +30,59 @@ const productSchema = new Schema({
   }
 }, {runSettersOnQuery: true});
 
+/**
+ * inserts document in product collection
+ * @param object
+ * @returns {Promise<*>}
+ */
 productSchema.statics.insert = async function(
     object) {
   return await this.create(object);
 };
 
+/**
+ * removes the first document found matching @param object
+ * @param object
+ * @returns {Promise<*>}
+ */
 productSchema.statics.removeOne = async function(
     object) {
   return await this.findOneAndRemove(object);
 };
 
+/**
+ * returns the first document found matching @param object
+ * @param object
+ * @returns {Promise<*>}
+ */
 productSchema.statics.findOneProduct = async function(
     object) {
   return await this.findOne(object);
 };
 
+/**
+ * returns the first document where the barcode matches @param barcode
+ * @param barcode
+ * @returns {Promise<*>}
+ */
 productSchema.statics.findOneProductByBarcode = async function(
     barcode) {
   return await this.findOne({barcode: barcode});
 };
 
+/**
+ * returns array of products found matching the category of @param category
+ * @param category
+ * @returns {Promise<*>}
+ */
 productSchema.statics.findProductsOfCategory = async function (category) {
   return await this.find({categories: new RegExp(category, 'i')})
 };
 
+/**
+ * establishes connection to mongoDB and returns ProductModel with connection
+ * @returns {Promise<void>}
+ */
 async function getProductModel() {
   try {
     const connection = await connectionFactory.getConnection();
