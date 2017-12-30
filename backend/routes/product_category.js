@@ -72,7 +72,7 @@ function removeProductsWithAllergens(products, allergens, ctx) {
 /**
  * Adds to the producDocuments in the passed array a field ingredientDocuments
  * which contains the requested documents from the database
- * @param {Object} productDocuments the productDocuments to add requests to
+ * @param {Array<Object>} productDocuments the productDocuments to add requests to
  * @param {string} productDocuments.name name of the product
  * @param {string} productDocuments.barcode barcode of the product
  * @param {Array} productDocuments.ingredients names of the ingredients which are in the product
@@ -81,9 +81,9 @@ function removeProductsWithAllergens(products, allergens, ctx) {
  */
 function addIngredientDocumentsRequests(productDocuments) {
   return productDocuments.map((productDocument) => {
-    const {name, barcode, ingredients} = productDocument;
+    const {name, barcode} = productDocument;
     return {
-      name, barcode, ingredients,
+      name, barcode,
       ingredientDocuments: Promise.all(
           productDocument.ingredients.map(findOneIngredientFuzzy)),
     };
@@ -92,7 +92,7 @@ function addIngredientDocumentsRequests(productDocuments) {
 
 /**
  * Resolves the ingredientDocumentRequests in the passed array with products
- * @param {Array} products with the ingredientsDocuments to resolve
+ * @param {Array<Object>} products with the ingredientsDocuments to resolve
  * @returns {Promise<Object>} Promise to resolve the ingredientDocumentRequests
  */
 async function resolveIngredientDocumentRequests(products) {
