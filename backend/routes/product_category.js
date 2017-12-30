@@ -65,7 +65,7 @@ function removeProductsWithAllergens(products, allergens, ctx) {
         if (ingredientDocument[allergen].contains) containsAllergen = true;
       }
     }
-    return !containsAllergen;
+    return !containsAllergen; // filter remove the object if the iteration returns false
   });
 }
 
