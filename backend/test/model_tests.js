@@ -10,7 +10,8 @@ const ProductModel = require('../models/product_model');
 const {connectionFactory} = require('../models/connection_factory');
 
 const testIngredientName = '7357f2u17';
-const testIngredientUpdate = new IngredientsModel.Ingredient({name: testIngredientName});
+const testIngredientUpdate = new IngredientsModel.Ingredient(
+    {name: testIngredientName});
 const testIngredientCRUD = {
   name: testIngredientName, gluten: {
     contains: false,
@@ -25,14 +26,22 @@ const testProduct = {
   barcode: '123120000',
   name: 'pizza ristorante',
   ingredients: ['wheat', 'water', 'tomato'],
-  categories: [testCategory]
+  categories: [testCategory],
+};
+const testCategory2 = 'testpasta';
+const testProduct2 = {
+  barcode: '123122222',
+  name: 'spaghetti dinkel',
+  ingredients: ['wheat', 'water'],
+  categories: [testCategory2],
 };
 
 describe('Ingredient Model Tests', () => {
 
   it('Should insert a test-object, find it, update it and remove it',
       async () => {
-        (await IngredientsModel.insert(testIngredientCRUD)).name.should.be.equal(
+        (await IngredientsModel.insert(
+            testIngredientCRUD)).name.should.be.equal(
             testIngredientName);
         (await IngredientsModel.findByName(
             testIngredientName))[0].name.should.be.equal(
@@ -61,7 +70,8 @@ describe('Ingredient Model Tests', () => {
       async () => {
         const allergen = 'gluten';
         let resultAllergen;
-        (await IngredientsModel.insert(testIngredientUpdate)).name.should.be.equal(
+        (await IngredientsModel.insert(
+            testIngredientUpdate)).name.should.be.equal(
             testIngredientName);
         resultAllergen = (await IngredientsModel.increaseIngredientAllergen(
             testIngredientName, allergen))[allergen];
@@ -105,14 +115,50 @@ describe('Ingredient Model Tests', () => {
 
 describe('Product Model Tests', () => {
 
-  it('Should insert a test product, find it by barcode, find it by category and remove it', async () => {
-    (await ProductModel.insert(testProduct)).barcode.should.be.equal('123120000');
-    (await ProductModel.findOneByBarcode('123120000')).barcode.should.be.equal('123120000');
-    (await ProductModel.findProductsOfCategory(testCategory))[0].barcode.should.be.equal('123120000');
-    (await ProductModel.removeOne(testProduct)).barcode.should.be.equal('123120000');
-  });
+  describe(
+      'insert, findOneByBarcode, findProductsOfCategory and removeOne tests',
+      () => {
+        it('Should insert a test product, find it by barcode, find it by category and remove it',
+            async () => {
+              (await ProductModel.insert(testProduct)).barcode.should.be.equal(
+                  '123120000');
+              (await ProductModel.findOneByBarcode(
+                  '123120000')).barcode.should.be.equal('123120000');
+              (await ProductModel.findProductsOfCategory(
+                  testCategory))[0].barcode.should.be.equal('123120000');
+              (await ProductModel.removeOne(
+                  testProduct)).barcode.should.be.equal('123120000');
+            });
+      });
+  describe(
+      'Error tests',
+      () => {
+        it('Should throw an error if the same product is inserted twice',
+            async () => {
+              (await ProductModel.insert(testProduct)).barcode.should.be.equal(
+                  '123120000');
+              ProductModel.insert(testProduct).should.eventually.throw();
+              (await ProductModel.removeOne(
+                  testProduct)).barcode.should.be.equal(
+                  '123120000');
+            });
+      });
+  describe(
+      'insert, findOne, and removeOne tests',
+      () => {
+        it('should insert a product and find it with findOne() and remove it',
+            async () => {
+              (await ProductModel.insert(testProduct2)).barcode.should.be.equal(
+                  '123122222');
+              (await ProductModel.findOne(
+                  testProduct2)).barcode.should.be.equal(
+                  '123122222');
+              (await ProductModel.removeOne(
+                  testProduct2)).barcode.should.be.equal(
+                  '123122222');
+            });
+      });
 });
-
 
 function getIncreaseUpdateRequests(numberOfRequests, ingredientName) {
   const updateRequests = [];
@@ -138,8 +184,10 @@ afterEach(async () => {
 });
 
 after((done) => {
-  ProductModel.removeOne(testProduct).then(()=>{
-    connectionFactory.closeConnection();
-    done();
+  ProductModel.removeOne(testProduct).then(() => {
+    ProductModel.removeOne(testProduct2).then(() => {
+      connectionFactory.closeConnection();
+      done();
+    });
   });
 });
