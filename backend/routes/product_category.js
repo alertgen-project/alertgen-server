@@ -38,7 +38,7 @@ async function retrieveProductsWithoutAllergens(ctx) {
   }
   return ctx.body = removeProductsWithAllergens(
       await resolveIngredientDocumentRequests(
-          addIngredientDocumentsRequests(productDocuments)),
+          addIngredientDocumentRequests(productDocuments)),
       allergensQueryParameter, ctx).map(productInformation => {
     return {
       name: productInformation.name, barcode: productInformation.barcode,
@@ -65,7 +65,7 @@ function removeProductsWithAllergens(products, allergens, ctx) {
         if (ingredientDocument[allergen].contains) containsAllergen = true;
       }
     }
-    return !containsAllergen; // filter remove the object if the iteration returns false
+    return !containsAllergen; // filter removes the object if the iteration returns false
   });
 }
 
@@ -79,7 +79,7 @@ function removeProductsWithAllergens(products, allergens, ctx) {
  * @param {Array} productDocuments.ingredientDocuments requests of ingredientdocuments which are still resolving
  * @returns {Array<Object>} array with productDocuments where document has multiple ingredient-requests to resolve
  */
-function addIngredientDocumentsRequests(productDocuments) {
+function addIngredientDocumentRequests(productDocuments) {
   return productDocuments.map((productDocument) => {
     const {name, barcode} = productDocument;
     return {
