@@ -52,7 +52,7 @@ async function tryToInsert(document, model) {
   } catch (err) {
     log.error(err);
     log.info('could not index:', document.name);
-    return null;
+    return false;
   }
 }
 
