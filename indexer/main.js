@@ -40,7 +40,6 @@ async function indexJSON(modelToIndex) {
     pendingRequests = await startIndexing(documents, ProductModel);
   }
   await Promise.all(pendingRequests);
-  //await waitForIndexing(pendingRequests);
   log.info('finished indexing: ' + modelToIndex);
 }
 
