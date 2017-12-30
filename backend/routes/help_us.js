@@ -14,6 +14,13 @@ const {Ingredient, increaseIngredientAllergen, decreaseIngredientAllergen, inser
 const AsyncLock = require('async-lock');
 const lock = new AsyncLock();
 
+/**
+ * Tries to update the in the query-parameter passed ingredients allergens if a
+ * document for it already exists in the database. Creates a new document,
+ * if no document to update has been found and enters the feedBack-information in it.
+ * @param {Object} ctx Koa's context object which is used to handle errors and send the response
+ * @returns {Promise<void>} Promise handled by Koa
+ */
 async function postFeedback(ctx) {
   if (!ctx.query.ingredient || !ctx.query.allergen || !ctx.query.contains) {
     ctx.throw(new HelpUsWrongParameterError());
@@ -46,10 +53,9 @@ async function postFeedback(ctx) {
       const ingredient = new Ingredient(
           {name: ingredientQueryParameter});
       const allergen = ingredient[allergenQueryParameter];
-      if (!allergen) {
+      if (!allergen)
         ctx.throw(new AllergenNotFoundError(
             {allergen: allergenQueryParameter}));
-      }
       if (containsQueryParameter) {
         allergen.contains_pos = 1;
         allergen.contains_percent = 1;

@@ -39,24 +39,22 @@ async function indexJSON(modelToIndex) {
   if (modelToIndex === 'products') {
     pendingRequests = await startIndexing(documents, ProductModel);
   }
-  await waitForIndexing(pendingRequests);
+  await Promise.all(pendingRequests);
+  //await waitForIndexing(pendingRequests);
   log.info('finished indexing: ' + modelToIndex);
 }
 
 /**
- * Startes indexing the passed documents in a database with the help
+ * Starts indexing the passed documents in a database with the help
  * of the passed model
  * @param {Object} documents documents to index
  * @param {Object} model model which is used for the databaseAccess
- * @returns {Promise<Array>} Array with Documents which have requests to resolve
+ * @returns {Promise<Array>} Array with requests to resolve
  */
 async function startIndexing(documents, model) {
-  const documentsWithRequests = [];
-  for (let document of documents) {
-    documentsWithRequests.push(
-        {name: document.name, promise: tryToInsert(document, model)});
-  }
-  return documentsWithRequests;
+  return documents.map(document => {
+    return tryToInsert(document, model)
+  });
 }
 
 /**
@@ -76,16 +74,4 @@ async function tryToInsert(document, model) {
     log.info('could not index:', document.name);
     return false;
   }
-}
-
-/**
- * Waits util the promises in the passed requestObjects are resolved
- * @param {Array<Object>} pendingRequests documents with promises to resolve
- * @returns {Promise<Object>} requestObjects with resolved requests
- */
-async function waitForIndexing(pendingRequests) {
-  for (let request of pendingRequests) {
-    await request.promise;
-  }
-  return pendingRequests
 }
