@@ -18,9 +18,9 @@ const {AllergenNotFoundError, IngredientNotIndexedError} = require(
 /**
  * Contains the logic of the /product_category service. Searches
  * for products in the passed category with do not contain passed glutens.
- * @param ctx koa's context-object. Used for error handling,
+ * @param {Object}ctx koa's context-object. Used for error handling,
  * acquiring query-parameter and sending the response
- * @returns {Promise<any[]>} promise which is handled by koa
+ * @returns {Promise<any[]>} the response of the query call to the rest-api
  */
 async function retrieveProductsWithoutAllergens(ctx) {
   if (!ctx.query.productCategory || !ctx.query.allergens) {
@@ -48,10 +48,10 @@ async function retrieveProductsWithoutAllergens(ctx) {
 
 /**
  * Removes the products which contain passed allergens from the array
- * @param products array with products
- * @param allergens allergens which the returned products should not contain
- * @param ctx koa's ctx object for handling errors
- * @returns  {array} an array without products which contain passed allergens
+ * @param {Array<Object>} products array with products
+ * @param {Array<Object>} allergens allergens which the returned products should not contain
+ * @param {Object} ctx koa's ctx object for handling errors
+ * @returns {Array<Object>} an array without products which contain passed allergens
  */
 function removeProductsWithAllergens(products, allergens, ctx) {
   return ctx.body = products.filter(product => {
@@ -72,12 +72,12 @@ function removeProductsWithAllergens(products, allergens, ctx) {
 /**
  * Adds to the producDocuments in the passed array a field ingredientDocuments
  * which contains the requested documents from the database
- * @param {object} productDocuments the productDocuments to add requests to
+ * @param {Object} productDocuments the productDocuments to add requests to
  * @param {string} productDocuments.name name of the product
  * @param {string} productDocuments.barcode barcode of the product
- * @param {array} productDocuments.ingredients names of the ingredients which are in the product
- * @param {array} productDocuments.ingredientDocuments requests of ingredientdocuments which are still resolving
- * @returns {array} array with productDocuments where document has multiple ingredient-requests to resolve
+ * @param {Array} productDocuments.ingredients names of the ingredients which are in the product
+ * @param {Array} productDocuments.ingredientDocuments requests of ingredientdocuments which are still resolving
+ * @returns {Array<Object>} array with productDocuments where document has multiple ingredient-requests to resolve
  */
 function addIngredientDocumentsRequests(productDocuments) {
   return productDocuments.map((productDocument) => {
@@ -93,7 +93,7 @@ function addIngredientDocumentsRequests(productDocuments) {
 /**
  * Resolves the ingredientDocumentRequests in the passed array with products
  * @param {Array} products with the ingredientsDocuments to resolve
- * @returns {Promise<*>} Promise to resolve the ingredientDocumentRequests
+ * @returns {Promise<Object>} Promise to resolve the ingredientDocumentRequests
  */
 async function resolveIngredientDocumentRequests(products) {
   for (let product of products) {

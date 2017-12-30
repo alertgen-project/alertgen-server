@@ -9,32 +9,47 @@ const log = require('../backend/logger/logger.js').
     getLog('main.js');
 const {connectionFactory} = require('../backend/models/connection_factory');
 
-// "main-function"
+/**
+ * Main-function, get the models which are to index and starts the indexing-process.
+ * Closes the database after the indexing-process is done.
+ */
 (async () => {
   const modelsToIndex = config.get('toIndex');
   for (let model of modelsToIndex) {
-    await index(model);
+    await indexJSON(model);
   }
   await connectionFactory.closeConnection();
 })();
 
-async function index(modelToIndex) {
+/**
+ * Indexes a json-file with an array of documents into the database
+ * @param {string} modelToIndex string-representation of the model-data which is to index.
+ * is the same as the filename to parse and the key which stores the array of
+ * documents to index in the json-file.
+ * @returns {Promise<void>}
+ */
+async function indexJSON(modelToIndex) {
   const documents = JSON.parse(
       (await readFile('./data/' + modelToIndex + '.json')).toString(
           'ascii'))[modelToIndex];
-  let pendingDocs;
+  let pendingRequests;
   if (modelToIndex === 'ingredients') {
-    pendingDocs = await startIndexing(documents, IngredientsModel);
-    console.log(pendingDocs);
+    pendingRequests= await startIndexing(documents, IngredientsModel);
   }
   if (modelToIndex === 'products') {
-    pendingDocs = await startIndexing(documents, ProductModel);
-    console.log(pendingDocs);
+    pendingRequests = await startIndexing(documents, ProductModel);
   }
-  await waitForIndexing(pendingDocs);
+  await waitForIndexing(pendingRequests);
   log.info('finished indexing: ' + modelToIndex);
 }
 
+/**
+ * Startes indexing the passed documents in a database with the help
+ * of the passed model
+ * @param {Object} documents documents to index
+ * @param {Object} model model which is used for the databaseAccess
+ * @returns {Promise<Array>} Array with Documents which have requests to resolve
+ */
 async function startIndexing(documents, model) {
   const documentsWithRequests = [];
   for (let document of documents) {
@@ -44,9 +59,16 @@ async function startIndexing(documents, model) {
   return documentsWithRequests;
 }
 
+/**
+ * Tries to insert the passed document with help of the passed model
+ * into the database
+ * @param document document to insert
+ * @param model model which servers as databaseAccess
+ * @returns {Promise<boolean>}
+ */
 async function tryToInsert(document, model) {
   try {
-    await model.insert(document)
+    await model.insert(document);
     log.info('indexed:', document.name);
     return true;
   } catch (err) {
@@ -56,8 +78,14 @@ async function tryToInsert(document, model) {
   }
 }
 
-async function waitForIndexing(documents) {
-  for (let document of documents) {
-    await document.promise;
+/**
+ * Waits util the promises in the passed requestObjects are resolved
+ * @param {Array<Object>} pendingRequests documents with promises to resolve
+ * @returns {Promise<Object>} requestObjects with resolved requests
+ */
+async function waitForIndexing(pendingRequests) {
+  for (let request of pendingRequests) {
+    await request.promise;
   }
+  return pendingRequests
 }
