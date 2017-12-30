@@ -12,16 +12,6 @@ const lock = new AsyncLock();
 // use ES6 native Promises
 mongoose.Promise = Promise;
 
-/**
- * Function calculates the percentage of containing allergen with the negative and positive confirmations
- * @param contains_neg
- * @param contains_pos
- * @returns {number}
- */
-const calcContainsPercentage = (contains_neg, contains_pos) => {
-  return contains_pos / (contains_pos + contains_neg);
-};
-
 const allergenAttributes = {
   contains: {
     type: Boolean,
@@ -70,6 +60,16 @@ allergens.forEach(allergen => {
   schema[allergen] = allergenAttributes;
 });
 const ingredientSchema = new Schema(schema, {runSettersOnQuery: true});
+
+/**
+ * Function calculates the percentage of containing allergen with the negative and positive confirmations
+ * @param contains_neg
+ * @param contains_pos
+ * @returns {number}
+ */
+const calcContainsPercentage = (contains_neg, contains_pos) => {
+  return contains_pos / (contains_pos + contains_neg);
+};
 
 /**
  * Finds documents in mongoDb by name

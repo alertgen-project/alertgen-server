@@ -18,7 +18,7 @@ const {AllergenNotFoundError, IngredientNotIndexedError} = require(
 /**
  * Contains the logic of the /product_category service. Searches
  * for products in the passed category with do not contain passed glutens.
- * @param {Object}ctx koa's context-object. Used for error handling,
+ * @param {Object} ctx koa's context-object. Used for error handling,
  * acquiring query-parameter and sending the response
  * @returns {Promise<any[]>} the response of the query call to the rest-api
  */
