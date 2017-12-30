@@ -32,7 +32,7 @@ const productSchema = new Schema({
 
 /**
  * inserts document in product collection
- * @param object
+ * @param {Object} object - object to insert
  * @returns {Promise<*>}
  */
 productSchema.statics.insert = async function(
@@ -42,7 +42,7 @@ productSchema.statics.insert = async function(
 
 /**
  * removes the first document found matching @param object
- * @param object
+ * @param {Object} object - object to remove
  * @returns {Promise<*>}
  */
 productSchema.statics.removeOne = async function(
@@ -52,7 +52,7 @@ productSchema.statics.removeOne = async function(
 
 /**
  * returns the first document found matching @param object
- * @param object
+ * @param {Object} object - object to find
  * @returns {Promise<*>}
  */
 productSchema.statics.findOneProduct = async function(
@@ -62,7 +62,7 @@ productSchema.statics.findOneProduct = async function(
 
 /**
  * returns the first document where the barcode matches @param barcode
- * @param barcode
+ * @param {string} barcode - barcode of product to find
  * @returns {Promise<*>}
  */
 productSchema.statics.findOneProductByBarcode = async function(
@@ -72,7 +72,7 @@ productSchema.statics.findOneProductByBarcode = async function(
 
 /**
  * returns array of products found matching the category of @param category
- * @param category
+ * @param {string} category - category of products to find
  * @returns {Promise<*>}
  */
 productSchema.statics.findProductsOfCategory = async function (category) {

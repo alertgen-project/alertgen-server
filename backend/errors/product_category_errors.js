@@ -12,7 +12,7 @@ const ProductCategoryWrongParameterError = erroz({
 const ProductCategoryNotFoundError = erroz({
   name: 'CategoryNotFound',
   code: 'CategoryNotFound',
-  statusCode: 400,
+  statusCode: 404,
   template: 'The category you requested with the name "%category" contains no products.',
 });
 
