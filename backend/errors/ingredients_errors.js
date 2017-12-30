@@ -12,14 +12,14 @@ const IngredientsWrongParameterError = erroz({
 const AllergenNotFoundError = erroz({
   name: 'AllergenNotFoundError',
   code: 'AllergenNotFoundError',
-  statusCode: 400,
+  statusCode: 404,
   template: 'The allergen you requested with the name "%allergen" is not listed in our database.',
 });
 
 const IngredientNotIndexedError = erroz({
   name: 'IngredientNotIndexedError',
   code: 'IngredientNotIndexedError',
-  statusCode: 400,
+  statusCode: 404,
   template: 'We don\'t have any data about your requested Ingredient: %ingredient.',
 });
 

@@ -20,7 +20,7 @@ const ProductWrongParameterError = erroz({
 const ProductNotFoundError = erroz({
   name: 'ProductNotFound',
   code: 'ProductNotFound',
-  statusCode: 400,
+  statusCode: 404,
   template: 'The requested product cannot be found in the database',
 });
 
