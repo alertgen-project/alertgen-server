@@ -103,7 +103,9 @@ Content-Type: application/json; charset=utf-8
 
 ###### Response:
 
-HTTP-Code: 200
+```json
+{"message": "wheat updated"}
+```
 
 ###### Possible Errors:
 
