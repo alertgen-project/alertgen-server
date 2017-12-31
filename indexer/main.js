@@ -14,6 +14,11 @@ const {connectionFactory} = require('../backend/models/connection_factory');
  * Closes the database after the indexing-process is done.
  */
 (async () => {
+  try {
+    await connectionFactory.getConnection();
+  } catch (err) {
+    process.exit(1);
+  }
   const modelsToIndex = config.get('toIndex');
   for (let model of modelsToIndex) {
     await indexJSON(model);
@@ -34,7 +39,7 @@ async function indexJSON(modelToIndex) {
           'ascii'))[modelToIndex];
   let pendingRequests;
   if (modelToIndex === 'ingredients') {
-    pendingRequests= await startIndexing(documents, IngredientsModel);
+    pendingRequests = await startIndexing(documents, IngredientsModel);
   }
   if (modelToIndex === 'products') {
     pendingRequests = await startIndexing(documents, ProductModel);
@@ -52,7 +57,7 @@ async function indexJSON(modelToIndex) {
  */
 async function startIndexing(documents, model) {
   return documents.map(document => {
-    return tryToInsert(document, model)
+    return tryToInsert(document, model);
   });
 }
 
