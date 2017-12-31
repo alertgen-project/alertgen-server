@@ -10,7 +10,8 @@ const log = require('../backend/logger/logger.js').
 const {connectionFactory} = require('../backend/models/connection_factory');
 
 /**
- * Main-function, get the models which are to index and starts the indexing-process.
+ * Main-function, gets the models to index and starts the indexing-process.
+ * Shuts the indexer down if establishing the initial connection failed.
  * Closes the database after the indexing-process is done.
  */
 (async () => {
