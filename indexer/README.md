@@ -81,7 +81,7 @@ which couldn't be indexed because their unique fields are already indexed via it
 remaining documents in that case. It currently can't reindex documents and won't remove
 any documents from the database.
 
-## How start indexing?
+## How to start indexing?
 
 ```
 cd ./allergy-check/indexer
