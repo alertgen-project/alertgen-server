@@ -44,7 +44,7 @@ The file products.json would therefore contain:
 
 ## Configuration
 
-The configuration-file default.json is located in the ./indexer/config directory.
+The configuration file default.json is located in the ./indexer/config directory.
 
 ```json
 {
@@ -70,10 +70,10 @@ The configuration-file default.json is located in the ./indexer/config directory
 ## Where is the data going to be indexed?
 
 We currently support two type of models (ingredients and products)
- which use different collections with the name of the model as their collectionname.
- The structure of those models is declared in the ingredient_model.js and
- the product_model.js of the ./backend/models (REST-API) folder. The used mongodb
- and its target database can be defined in the configuration.
+which use different collections with the name of the model as their collectionname.
+The structure of those models is declared in the ingredient_model.js and
+the product_model.js of the ./backend/models (REST-API) folder. The used mongodb
+and its target database can be defined in the configuration.
 
 ## What happens if a document is already indexed in the database?
 The indexer informs the user about documents
