@@ -74,8 +74,7 @@ async function tryToInsert(document, model) {
     log.info('indexed:', document.name);
     return true;
   } catch (err) {
-    log.error(err);
-    log.info('could not index:', document.name);
+    log.error({err: err});
     return false;
   }
 }
