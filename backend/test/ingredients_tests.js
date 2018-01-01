@@ -145,9 +145,9 @@ describe('ingredients', () => {
         it('it should return an error message', (done) => {
           chai.request(server).
               get('/ingredients').
-              query({allergens: 'test', allergens: 'test'}).
+              query({ingredients: 'test', allergens: 'test'}).
               end((err, res) => {
-                res.should.have.status(400);
+                res.should.have.status(404);
                 (res.text.length > 40).should.be.true;
                 done();
               });
