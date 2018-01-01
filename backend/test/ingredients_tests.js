@@ -5,6 +5,7 @@ const chaiHttp = require('chai-http');
 const server = require('../server.js');
 const IngredientsErrors = require('../errors/ingredients_errors.js');
 const {connectionFactory} = require('../models/connection_factory');
+const notAvailableParameter = 'FAIL';
 
 chai.use(chaiHttp);
 
@@ -79,7 +80,7 @@ describe('ingredients', () => {
   describe(
       '/GET /ingredients',
       () => {
-        it('it should return an error message', (done) => {
+        it('it should return an error message with statuscode 400', (done) => {
           chai.request(server).
               get('/ingredients').
               end((err, res) => {
@@ -93,12 +94,16 @@ describe('ingredients', () => {
       });
 
   describe(
-      '/GET /ingredients?ingredients=DelicousPickle2&allergens=FAIL',
+      '/GET /ingredients?ingredients=DelicousPickle2&allergens=' +
+      notAvailableParameter,
       () => {
-        it('it should return an error message', (done) => {
+        it('it should return an error message with statuscode 404', (done) => {
           chai.request(server).
-              get('/ingredients?ingredients=DelicousPickle2&allergens=FAIL').
-              query({ingredients: 'DelicousPickle2', allergens: 'FAIL'}).
+              get('/ingredients').
+              query({
+                ingredients: 'DelicousPickle2',
+                allergens: notAvailableParameter,
+              }).
               end((err, res) => {
                 res.should.have.status(404);
                 (res.text.length > 40).should.be.true;
@@ -110,12 +115,12 @@ describe('ingredients', () => {
       });
 
   describe(
-      '/GET /ingredients?ingredients=FAIL',
+      '/GET /ingredients?ingredients=' + notAvailableParameter,
       () => {
-        it('it should return an error message', (done) => {
+        it('it should return an error message with statuscode 400', (done) => {
           chai.request(server).
               get('/ingredients').
-              query({ingredients: 'FAIL'}).
+              query({ingredients: notAvailableParameter}).
               end((err, res) => {
                 res.should.have.status(400);
                 (res.text.length > 40).should.be.true;
@@ -125,12 +130,12 @@ describe('ingredients', () => {
       });
 
   describe(
-      '/GET /ingredients?allergens=test',
+      '/GET /ingredients?allergens=' + notAvailableParameter,
       () => {
-        it('it should return an error message', (done) => {
+        it('it should return an error message with statuscode 400', (done) => {
           chai.request(server).
               get('/ingredients').
-              query({allergens: 'test'}).
+              query({allergens: notAvailableParameter}).
               end((err, res) => {
                 res.should.have.status(400);
                 (res.text.length > 40).should.be.true;
@@ -140,12 +145,17 @@ describe('ingredients', () => {
       });
 
   describe(
-      '/GET /ingredients?allergens=test?ingredients=test',
+      '/GET /ingredients?allergens=' + notAvailableParameter + '?ingredients=' +
+      notAvailableParameter,
       () => {
-        it('it should return an error message', (done) => {
+        it('it should return an error message with statuscode 404', (done) => {
           chai.request(server).
               get('/ingredients').
-              query({ingredients: 'test', allergens: 'test'}).
+              query(
+                  {
+                    ingredients: notAvailableParameter,
+                    allergens: notAvailableParameter,
+                  }).
               end((err, res) => {
                 res.should.have.status(404);
                 (res.text.length > 40).should.be.true;
@@ -157,6 +167,6 @@ describe('ingredients', () => {
 
 after((done) => {
   server.close(() => {
-    connectionFactory.closeConnection().then(()=>{done();});
+    connectionFactory.closeConnection().then(() => {done();});
   });
 });

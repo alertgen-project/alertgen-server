@@ -12,6 +12,7 @@ const {connectionFactory} = require('../models/connection_factory');
 const {insert, findOneIngredientFuzzy, removeOne, Ingredient} = require(
     '../models/ingredient_model');
 
+const notAvailableParameter = 'FAIL';
 const testIngredientName = '4564456456test435345345';
 const testIngredient = new Ingredient({name: testIngredientName});
 
@@ -178,14 +179,14 @@ describe('ingredients', () => {
 
   describe(
       '/POST /helpus?ingredient=' + testIngredientName +
-      '&allergen=gluten&contains=WRONGPARAMETER', () => {
+      '&allergen=gluten&contains=' + notAvailableParameter, () => {
         it('it should respond with an error message', (done) => {
           chai.request(server).
               post('/helpus').
               query({
                 ingredient: testIngredientName,
                 allergen: 'gluten',
-                contains: 'WRONGPARAMETER',
+                contains: notAvailableParameter,
               }).
               end((err, res) => {
                 res.should.have.status(400);
@@ -199,20 +200,21 @@ describe('ingredients', () => {
 
   describe(
       '/POST /helpus?ingredient=' + testIngredientName +
-      '&allergen=WRONGPARAMETER&contains=true', () => {
+      '&allergen=' + notAvailableParameter + '&contains=true', () => {
         it('it should respond with an error message', (done) => {
           chai.request(server).
               post('/helpus').
               query({
                 ingredient: testIngredientName,
-                allergen: 'WRONGPARAMETER',
+                allergen: notAvailableParameter,
                 contains: 'true',
               }).
               end((err, res) => {
                 res.should.have.status(404);
                 (res.text.length > 40).should.be.true;
                 res.text.should.equal(
-                    'The allergen you requested with the name "WRONGPARAMETER" is not listed in our database.');
+                    'The allergen you requested with the name "' +
+                    notAvailableParameter + '" is not listed in our database.');
                 done();
               });
         });
