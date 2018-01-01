@@ -209,7 +209,7 @@ describe('ingredients', () => {
                 contains: 'true',
               }).
               end((err, res) => {
-                res.should.have.status(400);
+                res.should.have.status(404);
                 (res.text.length > 40).should.be.true;
                 res.text.should.equal(
                     'The allergen you requested with the name "WRONGPARAMETER" is not listed in our database.');

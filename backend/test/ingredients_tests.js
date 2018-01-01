@@ -93,14 +93,14 @@ describe('ingredients', () => {
       });
 
   describe(
-      '/GET /ingredients',
+      '/GET /ingredients?ingredients=DelicousPickle2&allergens=FAIL',
       () => {
         it('it should return an error message', (done) => {
           chai.request(server).
               get('/ingredients?ingredients=DelicousPickle2&allergens=FAIL').
               query({ingredients: 'DelicousPickle2', allergens: 'FAIL'}).
               end((err, res) => {
-                res.should.have.status(400);
+                res.should.have.status(404);
                 (res.text.length > 40).should.be.true;
                 res.text.should.equal(
                     'The allergen you requested with the name "FAIL" is not listed in our database.');
@@ -110,12 +110,12 @@ describe('ingredients', () => {
       });
 
   describe(
-      '/GET /ingredients?ingredients=test',
+      '/GET /ingredients?ingredients=FAIL',
       () => {
         it('it should return an error message', (done) => {
           chai.request(server).
               get('/ingredients').
-              query({ingredients: 'test'}).
+              query({ingredients: 'FAIL'}).
               end((err, res) => {
                 res.should.have.status(400);
                 (res.text.length > 40).should.be.true;
