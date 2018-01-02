@@ -10,10 +10,10 @@ const connectionCachingLockKey = 'connection_caching';
 class MongoDBConnectionFactory {
 
   /**
-   * factory function: creates a connection to the configured mongo-db
+   * factory function: creates a connection to the configured mongoDB
    * and references it as a state. Won't create a new connection if the state is already
    * referenced. Returns the created connection or the state connection.
-   * @returns {Promise<*|null>}
+   * @returns {Promise<Object>} the acquired mongoDB-connection
    */
   async getConnection() {
     await lock.acquire(connectionCachingLockKey, async () => {
@@ -37,9 +37,8 @@ class MongoDBConnectionFactory {
   }
 
   /**
-   * closes the state connection if one has been referenced. Returns true
-   * if a connection has been closed, else false
-   * @returns {Promise<boolean>}
+   * closes the state connection if one has been referenced.
+   * @returns {Promise<boolean>} Returns true if a connection has been closed, else false
    */
   async closeConnection() {
     return await lock.acquire(connectionCachingLockKey, async () => {

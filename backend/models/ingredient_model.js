@@ -12,15 +12,6 @@ const lock = new AsyncLock();
 // use ES6 native Promises
 mongoose.Promise = Promise;
 
-/**
- * Function calculates the percentage of containing allergen with the negative and positive confirmations
- * @param {number} contains_neg - negative confirmations
- * @param {number} contains_pos - positive confirmations
- * @returns {number} percentage of possible contamination with allergen
- */
-const calcContainsPercentage = (contains_neg, contains_pos) => {
-  return contains_pos / (contains_pos + contains_neg);
-};
 
 const allergenAttributes = {
   contains: {
@@ -70,6 +61,16 @@ allergens.forEach(allergen => {
   schema[allergen] = allergenAttributes;
 });
 const ingredientSchema = new Schema(schema, {runSettersOnQuery: true});
+
+/**
+ * Function calculates the percentage of containing allergen with the negative and positive confirmations
+ * @param contains_neg
+ * @param contains_pos
+ * @returns {number}
+ */
+const calcContainsPercentage = (contains_neg, contains_pos) => {
+  return contains_pos / (contains_pos + contains_neg);
+};
 
 /**
  * Finds documents in mongoDb by name
@@ -148,21 +149,46 @@ ingredientSchema.statics.findOneIngredientFuzzy = async function(
   return await this.findOne({name: new RegExp(name, 'i')});
 };
 
-async function insert(object) {
+/**
+ * Retrieves the ingredientModel with a applied connection.
+ * tries to insert the passed document afterwards.
+ * @param {Object} document document to insert
+ * @returns {Promise<*>}
+ */
+async function insert(document) {
   const model = await getIngredientsModel();
-  return await model.insert(object);
+  return await model.insert(document);
 }
 
-async function removeOne(object) {
+/**
+ * Retrieves the ingredientModel with a applied connection and removes
+ * a passed document with the help of the model.
+ * @param {Object} document document to remove
+ * @returns {Promise<*>} the removed document
+ */
+async function removeOne(document) {
   const model = await getIngredientsModel();
-  return await model.removeOne(object);
+  return await model.removeOne(document);
 }
 
+/**
+ * Retrieves the ingredientModel with a applied connection and finds
+ * a document which is like the passed object with the help of the model.
+ * @param {Object} object used to find the document .
+ * @returns {Promise<*>} the found document
+ */
 async function findOne(object) {
   const model = await getIngredientsModel();
   return await model.findOneIngredient(object);
 }
 
+/**
+ * Retrieves the ingredientModel with a applied connection and finds
+ * a document which has the passed name with the help of the model.
+ * @param {string} name of the document to find
+ * to find the document
+ * @returns {Promise<*>} the found document
+ */
 async function findOneIngredientFuzzy(name) {
   const model = await getIngredientsModel();
   return await model.findOneIngredientFuzzy(name);
@@ -173,18 +199,29 @@ async function findByName(name) {
   return await model.findByName(name);
 }
 
+/**
+ * Retrieves the ingredientModel with a applied connection and updates
+ * an allergen of a document which has the passed name with the help of the model.
+ * @param {string} name of the document to find
+ * @param {string} allergen name of the allergen in the found document to update
+ * @param {string} field field to increase. Possible values are contains_pos and contains_neg
+ * to find the document
+ * @returns {Promise<*>} the updated document or false if the document was not found
+ */
 async function updateIngredientAllergenConfirmation(name, allergen, field) {
   const model = await getIngredientsModel();
   return await model.updateIngredientAllergenConfirmation(name, allergen,
       field);
 }
 
-async function decreaseIngredientAllergen(ingredient, allergen) {
-  const model = await getIngredientsModel();
-  return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
-      contains_neg);
-}
-
+/**
+ * Retrieves the ingredientModel with a applied connection and updates
+ * an allergen of a document which has the passed name with the help of the model.
+ * Increases the field contains_pos of the allergen with the passed name.
+ * @param name of the document to find
+ * @param allergen name of the allergen in the found document to update
+ * @returns {Promise<*>} the updated document or false if the document was not found
+ */
 async function increaseIngredientAllergen(ingredient, allergen) {
   const model = await getIngredientsModel();
   return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
@@ -192,7 +229,23 @@ async function increaseIngredientAllergen(ingredient, allergen) {
 }
 
 /**
- * establishes connection to mongoDB and returns IngredientsModel with connection
+ * Retrieves the ingredientModel with a applied connection and updates
+ * an allergen of a document which has the passed name with the help of the model.
+ * Increases the field contains_neg of the allergen with the passed name.
+ * @param name of the document to find
+ * @param allergen name of the allergen in the found document to update
+ * to find the document
+ * @returns {Promise<*>} the updated document or false if the document was not found
+ */
+async function decreaseIngredientAllergen(ingredient, allergen) {
+  const model = await getIngredientsModel();
+  return await model.updateIngredientAllergenConfirmation(ingredient, allergen,
+      contains_neg);
+}
+
+/**
+ * Retrieves a connection and returns a IngredientsModel which has the connection
+ * applied to it.
  * @returns {Promise<void>}
  */
 async function getIngredientsModel() {
