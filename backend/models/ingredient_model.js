@@ -82,7 +82,7 @@ ingredientSchema.statics.findByName = async function(name) {
     return this.find({name: new RegExp(name, 'i')});
   }
   catch (err) {
-    log.error(err);
+    log.error({err: err});
   }
 };
 
@@ -253,7 +253,7 @@ async function getIngredientsModel() {
     const connection = await connectionFactory.getConnection();
     return connection.model('Ingredient', ingredientSchema);
   } catch (err) {
-    log.error(err);
+    log.error({err: err});
     throw err;
   }
 }

@@ -10,10 +10,16 @@ const log = require('../backend/logger/logger.js').
 const {connectionFactory} = require('../backend/models/connection_factory');
 
 /**
- * Main-function, get the models which are to index and starts the indexing-process.
- * Closes the database after the indexing-process is done.
+ * Main-function, gets the models to index and starts the indexing process.
+ * Shuts the indexer down if establishing the initial connection failed.
+ * Closes the database connection after the indexing process is done.
  */
 (async () => {
+  try {
+    await connectionFactory.getConnection();
+  } catch (err) {
+    process.exit(1);
+  }
   const modelsToIndex = config.get('toIndex');
   for (let model of modelsToIndex) {
     await indexJSON(model);
@@ -34,7 +40,7 @@ async function indexJSON(modelToIndex) {
           'ascii'))[modelToIndex];
   let pendingRequests;
   if (modelToIndex === 'ingredients') {
-    pendingRequests= await startIndexing(documents, IngredientsModel);
+    pendingRequests = await startIndexing(documents, IngredientsModel);
   }
   if (modelToIndex === 'products') {
     pendingRequests = await startIndexing(documents, ProductModel);
@@ -52,7 +58,7 @@ async function indexJSON(modelToIndex) {
  */
 async function startIndexing(documents, model) {
   return documents.map(document => {
-    return tryToInsert(document, model)
+    return tryToInsert(document, model);
   });
 }
 
@@ -69,8 +75,7 @@ async function tryToInsert(document, model) {
     log.info('indexed:', document.name);
     return true;
   } catch (err) {
-    log.error(err);
-    log.info('could not index:', document.name);
+    log.error({err: err});
     return false;
   }
 }

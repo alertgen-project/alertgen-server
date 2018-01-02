@@ -27,8 +27,7 @@ class MongoDBConnectionFactory {
           this.conn = mongoose.connection;
         } catch (err) {
           this.conn = null;
-          console.error(err);
-          log.error(err);
+          log.error({err: err});
           throw err;
         }
       }

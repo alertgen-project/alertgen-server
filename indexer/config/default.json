@@ -6,9 +6,6 @@
     "user": "admin",
     "pw": "halloMongo;120"
   },
-  "server": {
-    "port": 8080
-  },
   "toIndex": [
     "products", "ingredients"
   ],
