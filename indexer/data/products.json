@@ -19,6 +19,12 @@
       "ingredients": ["orange juice", "orange juice pulp"]
     },
     {
+      "name": "Deutsche Markenbutter mild gesäuert — ja! — 250 g",
+      "categories": ["butters"],
+      "barcode": "4388840102433",
+      "ingredients": ["butter"]
+    },
+    {
       "name": "Erdnusscreme - KG Fancy Food Handels GmbH & Co. - 350 g",
       "categories": ["butters", "peanut butters"],
       "barcode": "23154131",
