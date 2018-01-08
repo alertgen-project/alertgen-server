@@ -358,10 +358,10 @@
         "contains_neg": 10
       },
       "milk": {
-        "contains": true,
-        "contains_percent": 0,
-        "contains_pos": 10,
-        "contains_neg": 0
+        "contains": false,
+        "contains_percent": 0.2,
+        "contains_pos": 2,
+        "contains_neg": 8
       },
       "nuts": {
         "contains": false,
