@@ -47,7 +47,7 @@ async function isAllergicToProduct(ctx) {
     }
   }
   catch (err) {
-    log.error(err);
+    log.error({err: err});
     ctx.throw(err);
   }
 }
@@ -69,19 +69,18 @@ async function checkContainingAllergen(productFromDb, allergens, ctx) {
   let all = false;
   let detail = {};
   const ingredients = productFromDb.ingredients;
-  const ingredientsFromDb = [];
-  await Promise.all(ingredients.map(async (ingredient) => {
-    ingredientsFromDb.push(await findOneIngredientFuzzy(ingredient));
+  let ingredientsFromDb = await Promise.all(ingredients.map((ingredient) => {
+    return findOneIngredientFuzzy(ingredient);
   }));
-  await Promise.all(ingredientsFromDb.map(async (ingredient) => {
-    await Promise.all(allergens.map(async (allergen) => {
+  ingredientsFromDb.forEach((ingredient) => {
+    allergens.forEach((allergen) => {
       if (ingredient[allergen].contains === true) {
         all = true;
         detail[allergen] = true;
       }
       else detail[allergen] = detail[allergen] === true;
-    }));
-  }));
+    });
+  });
   result.all = all;
   result.detail = detail;
   return result;
