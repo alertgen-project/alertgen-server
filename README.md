@@ -41,7 +41,7 @@ The route "/productcategory" can be used to request substitute products for prod
 GET-Request with product category and list of allergens as query parameters.
 
 ```http
-GET /productcategory?productCategory=juices&allergens=gluten&allergens=milk HTTP/1.1
+GET /productcategory?productCategory=butters&allergens=milk HTTP/1.1
 Host: allergy-check.informatik.hs-augsburg.de
 Content-Type: application/json; charset=utf-8
 ```
@@ -51,7 +51,8 @@ Content-Type: application/json; charset=utf-8
 JSON with array of product names which do not contain the requested allergens.
 
 ```json
-[{"name":"orange juice with pulp - good & delish","barcode":"0049022644793"}]
+[{"name":"erdnusscreme - kg fancy food handels gmbh & co. - 350 g","barcode":"23154131"},
+{"name":"Deutsche Markenbutter mild gesäuert — ja! — 250 g","barcode":"4388840102433"}]
 ```
 
 ###### Possible Errors:
