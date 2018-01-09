@@ -24,6 +24,10 @@ const ProductNotFoundError = erroz({
   template: 'The requested product cannot be found in the database',
 });
 
+/**
+ * Error which should be thrown when requested allergens do not match allergens in database
+ * @type {Function}
+ */
 const InvalidAllergen = erroz({
   name: 'InvalidAllergen',
   code: 'InvalidAllergen',
