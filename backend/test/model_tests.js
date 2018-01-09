@@ -8,8 +8,11 @@ chai.should();
 const IngredientsModel = require('../models/ingredient_model');
 const ProductModel = require('../models/product_model');
 const {connectionFactory} = require('../models/connection_factory');
+const {getRandomInt} = require('./test_util');
 
-const testIngredientName = '7357f2u17';
+const testIngredientName = '7357f2u17' +
+    getRandomInt(0, 10000000);
+;
 const testIngredientUpdate = new IngredientsModel.Ingredient(
     {name: testIngredientName});
 const testIngredientCRUD = {
