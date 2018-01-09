@@ -218,7 +218,7 @@ async function updateIngredientAllergenConfirmation(name, allergen, field) {
  * Retrieves the ingredientModel with a applied connection and updates
  * an allergen of a document which has the passed name with the help of the model.
  * Increases the field contains_pos of the allergen with the passed name.
- * @param name of the document to find
+ * @param ingredient of the ingredient document to find
  * @param allergen name of the allergen in the found document to update
  * @returns {Promise<*>} the updated document or false if the document was not found
  */
@@ -232,7 +232,7 @@ async function increaseIngredientAllergen(ingredient, allergen) {
  * Retrieves the ingredientModel with a applied connection and updates
  * an allergen of a document which has the passed name with the help of the model.
  * Increases the field contains_neg of the allergen with the passed name.
- * @param name of the document to find
+ * @param ingredient of the ingredient document to find
  * @param allergen name of the allergen in the found document to update
  * to find the document
  * @returns {Promise<*>} the updated document or false if the document was not found
