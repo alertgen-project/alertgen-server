@@ -11,9 +11,11 @@ const HelpUsErrors = require('../errors/help_us_errors.js');
 const {connectionFactory} = require('../models/connection_factory');
 const {insert, findOneIngredientFuzzy, removeOne, Ingredient} = require(
     '../models/ingredient_model');
+const {getRandomInt} = require('./test_util');
 
 const notAvailableParameter = 'FAIL';
-const testIngredientName = '4564456456test435345345' + getRandomInt(0, 10000000);
+const testIngredientName = '4564456456test435345345' +
+    getRandomInt(0, 10000000);
 const testIngredient = new Ingredient({name: testIngredientName});
 
 describe('ingredients', () => {
@@ -220,12 +222,6 @@ describe('ingredients', () => {
         });
       });
 });
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
 
 afterEach(async () => {
   // make sure created objects are not in the database anymore
