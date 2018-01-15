@@ -10,6 +10,7 @@ const log = require('../backend/logger/logger.js').
     getLog('main.js');
 const {connectionFactory} = require('../backend/models/connection_factory');
 const StreamArray = require('stream-json/utils/StreamArray');
+const MAX_PARALLEL_REQUESTS = config.get('maxParallelRequests');
 
 /**
  * Main-function, reads the models to index from the configuration and starts the indexing process.
@@ -121,29 +122,39 @@ async function chooseModelParseAsyncAndIndexJSON(modelName) {
 /**
  * Parses the .json-file of the passed model asynchronously
  * and starts indexing the documents immediately after they have been parsed.
+ * Only allows a configured amount of parallel requests. Awaits the requests if
+ * that number is reached.
  * Resolves when all database-requests of the file were processed.
  * @param {Object} modelName name of the model, used for accessing .json file
  * @param {Object} model model which is used for the databaseAccess
- * @returns {Promise<Array>} Array with booleans which show if the indexing of
- *  the different documents has been successful. null if parsing the json-file failed.
+ * @returns {Promise<boolean>} returns true if the indexer is finished
  */
 async function parseFileAsyncAndIndex(model, modelName) {
   const pendingInsertRequests = [];
   const stream = StreamArray.make();
+  const readStream = fs.createReadStream('./data/' + modelName + '.json');
   try {
-    stream.output.on('data', (document) => {
+    stream.output.on('readable', async () => {
+      let document = stream.output.read();
       if (document) {
+        if(pendingInsertRequests.length > MAX_PARALLEL_REQUESTS){
+          stream.input.pause();
+          await Promise.all(pendingInsertRequests);
+          pendingInsertRequests.length = 0;
+          stream.input.resume();
+        }
         pendingInsertRequests.push(tryToInsertDocument(document.value, model));
       }
     });
-    fs.createReadStream('./data/' + modelName + '.json').pipe(stream.input);
+    readStream.pipe(stream.input);
   } catch (err) {
     log.error({err: err});
     return null;
   }
   return new Promise((resolve, reject) => {
     stream.output.on('end', async () => {
-      resolve(await Promise.all(pendingInsertRequests));
+      await Promise.all(pendingInsertRequests);
+      resolve(true);
     });
     stream.output.on('error', err => reject(err));
   });
