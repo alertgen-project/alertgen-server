@@ -9,7 +9,7 @@ const log = require('../backend/logger/logger.js').
 const {connectionFactory} = require('../backend/models/connection_factory');
 const StreamArray = require('stream-json/utils/StreamArray');
 const MAX_PARALLEL_REQUESTS = config.get('maxParallelRequests');
-let indexedDocuments = 0;
+let documentsTriedToIndex = 0, documentsIndexed = 0;
 
 /**
  * Main-function, reads the models to index from the configuration and starts the indexing process.
@@ -27,7 +27,7 @@ let indexedDocuments = 0;
   for (let modelName of modelNames) {
     await chooseModelParseAsyncAndIndexJSON(modelName);
   }
-  log.info('Indexing took:', new Date().getTime() - startTime, 'ms,', 'indexed:', indexedDocuments, 'documents');
+  log.info('Indexing took:', new Date().getTime() - startTime, 'ms,', 'tried to index:', documentsTriedToIndex, 'documents,',  'indexed:', documentsIndexed, 'documents');
   await connectionFactory.closeConnection();
 })();
 
@@ -42,6 +42,7 @@ async function tryToInsertDocument(document, model) {
   try {
     await model.insert(document);
     log.info('indexed:', document.name);
+    documentsIndexed++;
     return true;
   } catch (err) {
     log.error({err: err});
@@ -95,7 +96,7 @@ async function parseFileAsyncAndIndex(model, modelName) {
           pendingInsertRequests.length = 0;
           jsonStreamArray.input.resume();
         }
-        indexedDocuments++;
+        documentsTriedToIndex++;
         pendingInsertRequests.push(tryToInsertDocument(document.value, model));
       }
     });
