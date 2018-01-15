@@ -61,7 +61,9 @@ The configuration file default.json is located in the ./indexer/config directory
     "count": "2"
   },
   // holds only several documents of the parsed json-file in memory, parses a whole file before indexing if false.
-  "asyncFileRead": true
+  "asyncFileRead": true,
+  // amount of maximal parallel requests in async-read-mode, pauses reading until the requests are finished
+  "maxParallelRequests": 30
 }
 ```
 
