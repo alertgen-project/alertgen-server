@@ -15,6 +15,5 @@
     "period": "1w",
     "count": "2"
   },
-  "asyncFileRead": true,
   "maxParallelRequests": 30
 }
