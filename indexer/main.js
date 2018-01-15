@@ -125,7 +125,7 @@ async function chooseModelParseAsyncAndIndexJSON(modelName) {
  * @param {Object} modelName name of the model, used for accessing .json file
  * @param {Object} model model which is used for the databaseAccess
  * @returns {Promise<Array>} Array with booleans which show if the indexing of
- *  the different documents has been successful.
+ *  the different documents has been successful. null if parsing the json-file failed.
  */
 async function parseFileAsyncAndIndex(model, modelName) {
   const pendingInsertRequests = [];
@@ -139,7 +139,7 @@ async function parseFileAsyncAndIndex(model, modelName) {
     fs.createReadStream('./data/' + modelName + '.json').pipe(stream.input);
   } catch (err) {
     log.error({err: err});
-    return [];
+    return null;
   }
   return new Promise((resolve, reject) => {
     stream.output.on('end', async () => {
