@@ -12,7 +12,7 @@ const {connectionFactory} = require('../backend/models/connection_factory');
 const StreamArray = require('stream-json/utils/StreamArray');
 
 /**
- * Main-function, gets the models to index and starts the indexing process.
+ * Main-function, reads the models to index from the configuration and starts the indexing process.
  * Shuts the indexer down if establishing the initial connection failed.
  * Closes the database connection after the indexing process is done.
  */
@@ -41,7 +41,7 @@ const StreamArray = require('stream-json/utils/StreamArray');
 
 /**
  * Indexes a json-file with an array of documents into the database.
- * Parses the whole model-json-file before the indexing process for each model starts.
+ * Parses the whole model.json-file before the indexing process for each model starts.
  * @param {string} modelName string-representation of the model-data which is to index. (filename without .json)
  * @returns {Promise<void>}
  */
@@ -67,8 +67,8 @@ async function chooseModelParseAndIndexJSON(modelName) {
 }
 
 /**
- * Maps the passed documents to insert-requests towards the database and returns
- * an array containing the request-promises.
+ * Maps the passed documents to insert-requests and returns
+ * the array which contains the request-promises.
  * @param {Object} documents documents to index
  * @param {Object} model model which is used for the databaseAccess
  * @returns {Promise<Array>} Array with requests to resolve
@@ -119,9 +119,9 @@ async function chooseModelParseAsyncAndIndexJSON(modelName) {
 }
 
 /**
- * Parses the json-file of the passed model with an array of documents asynchronously
- * and starts indexing those documents immediately after they have been parsed.
- * Resolves when all database-requests were processed.
+ * Parses the .json-file of the passed model asynchronously
+ * and starts indexing the documents immediately after they have been parsed.
+ * Resolves when all database-requests of the file were processed.
  * @param {Object} modelName name of the model, used for accessing .json file
  * @param {Object} model model which is used for the databaseAccess
  * @returns {Promise<Array>} Array with booleans which show if the indexing of
