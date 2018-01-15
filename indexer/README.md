@@ -60,7 +60,7 @@ The configuration file default.json is located in the ./indexer/config directory
     "period": "1w",
     "count": "2"
   },
-  // hold only parts of the parsed json-file in memory, parses a whole file before indexing else.
+  // holds only a document of the parsed json-file in memory, parses a whole file before indexing if false.
   "asyncFileRead": true
 }
 ```
