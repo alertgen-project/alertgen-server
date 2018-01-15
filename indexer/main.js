@@ -1,5 +1,6 @@
-const config = require('config');
+'use strict';
 
+const config = require('config');
 const IngredientsModel = require('../backend/models/ingredient_model.js');
 const ProductModel = require('../backend/models/product_model.js');
 const fs = require('fs');
