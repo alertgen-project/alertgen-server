@@ -13,10 +13,6 @@ services:
        - AUTH=yes
        - MONGODB_ADMIN_USER=admin
        - MONGODB_ADMIN_PASS=halloMongo;120
-       #- MONGODB_APPLICATION_DATABASE=sample
-       #- MONGODB_APPLICATION_USER=aashrey
-       #- MONGODB_APPLICATION_PASS=admin123
-
    alertgen:
      depends_on:
        - mongo_db
