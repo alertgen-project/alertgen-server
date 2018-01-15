@@ -1,4 +1,4 @@
-# AlertGen Indexer
+# AlertGen's Streaming-Indexer
 
 Indexes documents, which are declared in lists of json files in the
 
@@ -60,8 +60,8 @@ The configuration file default.json is located in the ./indexer/config directory
     "period": "1w",
     "count": "2"
   },
-  // amount of maximal parallel requests while async-parsing, pauses the
-  // stream until the requests are finished
+  // amount of maximal parallel requests towards the database while async-streaming the .json file,
+  // pauses the stream until the requests are finished if the maximum is reached.
   "maxParallelRequests": 30
 }
 ```
