@@ -59,7 +59,9 @@ The configuration file default.json is located in the ./indexer/config directory
     "level": "trace", // log-options, we use bunyan for logging
     "period": "1w",
     "count": "2"
-  }
+  },
+  // hold only parts of the parsed json-file in memory, parses a whole file before indexing else.
+  "asyncFileRead": true
 }
 ```
 
