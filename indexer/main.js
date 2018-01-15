@@ -35,9 +35,15 @@ const {connectionFactory} = require('../backend/models/connection_factory');
  * @returns {Promise<void>}
  */
 async function indexJSON(modelToIndex) {
-  const documents = JSON.parse(
-      (await readFile('./data/' + modelToIndex + '.json')).toString(
-          'ascii'))[modelToIndex];
+  let documents;
+  try {
+    documents = JSON.parse(
+        (await readFile('./data/' + modelToIndex + '.json')).toString(
+            'ascii'))[modelToIndex];
+  } catch (err) {
+    log.error({err: err});
+    return;
+  }
   let pendingRequests;
   if (modelToIndex === 'ingredients') {
     pendingRequests = await startIndexing(documents, IngredientsModel);
