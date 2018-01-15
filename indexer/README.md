@@ -9,23 +9,20 @@ Indexes documents, which are declared in lists of json files in the
 A json-file used for indexing documents has the following structure:
 
 ```json
-{
-  "fileNameWithout.json": [
+[
     {
       "document1": "data1"
     },
     {
        "document2": "data2"
     }
-  ]
-}
+]
 ```
 
 The file products.json would therefore contain:
 
 ```json
-{
-  "products": [
+[
     {
       "name": "Spaghetti - Asda - 500 g",
       "categories": ["pastas"],
@@ -38,8 +35,7 @@ The file products.json would therefore contain:
       "barcode": "0009800895250",
       "ingredients": ["sugar", "palm oil", "hazelnut", "cocoa", "skim milk", "reduced minerals whey", "lecithin", "vanillin"]
     }
-  ]
-}
+ ]
 ```
 
 ## Configuration

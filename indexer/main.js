@@ -39,7 +39,7 @@ async function indexJSON(modelToIndex) {
   try {
     documents = JSON.parse(
         (await readFile('./data/' + modelToIndex + '.json')).toString(
-            'ascii'))[modelToIndex];
+            'ascii'));
   } catch (err) {
     log.error({err: err});
     return;

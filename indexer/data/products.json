@@ -1,40 +1,87 @@
-{
-  "products": [
-    {
-      "name": "Spaghetti - Asda - 500 g",
-      "categories": ["pastas"],
-      "barcode": "5051413183144",
-      "ingredients": ["white cornflour", "yellow cornflour", "rice flour", "diglyceride", "monoglyceride"]
-    },
-    {
-      "name": "Nutella",
-      "categories": ["spreads"],
-      "barcode": "0009800895250",
-      "ingredients": ["sugar", "palm oil", "hazelnut", "cocoa", "skim milk", "reduced minerals whey", "lecithin", "vanillin"]
-    },
-    {
-      "name": "Orange Juice With Pulp - Good & Delish",
-      "categories": ["juices"],
-      "barcode": "0049022644793",
-      "ingredients": ["orange juice", "orange juice pulp"]
-    },
-    {
-      "name": "Deutsche Markenbutter mild gesäuert -- ja! -- 250g",
-      "categories": ["butters"],
-      "barcode": "4388840102433",
-      "ingredients": ["butter"]
-    },
-    {
-      "name": "Erdnusscreme - KG Fancy Food Handels GmbH & Co. - 350 g",
-      "categories": ["butters", "peanut butters"],
-      "barcode": "23154131",
-      "ingredients": ["peanuts", "sugar", "salt", "canola oil"]
-    },
-    {
-      "name": "Toblerone - 3.52 OZ (100 g)",
-      "categories": ["sweets", "chocolate"],
-      "barcode": "0070221011116",
-      "ingredients": ["milk", "milk fat", "sugar", "honey", "almonds", "egg whites", "soy lecithin", "cocoa butter", "vanillin"]
-    }
-  ]
-}
+[
+  {
+    "name": "Spaghetti - Asda - 500 g",
+    "categories": [
+      "pastas"
+    ],
+    "barcode": "5051413183144",
+    "ingredients": [
+      "white cornflour",
+      "yellow cornflour",
+      "rice flour",
+      "diglyceride",
+      "monoglyceride"
+    ]
+  },
+  {
+    "name": "Nutella",
+    "categories": [
+      "spreads"
+    ],
+    "barcode": "0009800895250",
+    "ingredients": [
+      "sugar",
+      "palm oil",
+      "hazelnut",
+      "cocoa",
+      "skim milk",
+      "reduced minerals whey",
+      "lecithin",
+      "vanillin"
+    ]
+  },
+  {
+    "name": "Orange Juice With Pulp - Good & Delish",
+    "categories": [
+      "juices"
+    ],
+    "barcode": "0049022644793",
+    "ingredients": [
+      "orange juice",
+      "orange juice pulp"
+    ]
+  },
+  {
+    "name": "Deutsche Markenbutter mild gesäuert -- ja! -- 250g",
+    "categories": [
+      "butters"
+    ],
+    "barcode": "4388840102433",
+    "ingredients": [
+      "butter"
+    ]
+  },
+  {
+    "name": "Erdnusscreme - KG Fancy Food Handels GmbH & Co. - 350 g",
+    "categories": [
+      "butters",
+      "peanut butters"
+    ],
+    "barcode": "23154131",
+    "ingredients": [
+      "peanuts",
+      "sugar",
+      "salt",
+      "canola oil"
+    ]
+  },
+  {
+    "name": "Toblerone - 3.52 OZ (100 g)",
+    "categories": [
+      "sweets",
+      "chocolate"
+    ],
+    "barcode": "0070221011116",
+    "ingredients": [
+      "milk",
+      "milk fat",
+      "sugar",
+      "honey",
+      "almonds",
+      "egg whites",
+      "soy lecithin",
+      "cocoa butter",
+      "vanillin"
+    ]
+  }
+]

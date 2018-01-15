@@ -1,2435 +1,2434 @@
-{
-  "ingredients": [
-    {
-      "name": "rice flour",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      }
+[
+  {
+    "name": "rice flour",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
     },
-    {
-      "name": "yellow cornflour",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      }
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
     },
-    {
-      "name": "white cornflour",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      }
-    },
-    {
-      "name": "diglyceride",
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      }
-    },
-    {
-      "name": "monoglyceride",
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      }
-    },
-    {
-      "name": "sugar"
-    },
-    {
-      "name": "palm oil",
-      "nuts": {
-        "contains": true,
-        "contains_percent": 0.5,
-        "contains_pos": 5,
-        "contains_neg": 5
-      }
-    },
-    {
-      "name": "cocoa"
-    },
-    {
-      "name": "skim milk",
-      "milk": {
-        "contains": true,
-        "contains_percent": 0.8,
-        "contains_pos": 8,
-        "contains_neg": 2
-      }
-    },
-    {
-      "name": "reduced minerals whey",
-      "milk": {
-        "contains": true,
-        "contains_percent": 0.8,
-        "contains_pos": 8,
-        "contains_neg": 2
-      }
-    },
-    {
-      "name": "vanillin"
-    },
-    {
-      "name": "orange juice"
-    },
-    {
-      "name": "orange juice pulp"
-    },
-    {
-      "name": "peanuts",
-      "peanuts": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      }
-    },
-    {
-      "name": "canola oil"
-    },
-    {
-      "name": "salt"
-    },
-    {
-      "name": "milk",
-      "milk": {
-        "contains": true,
-        "contains_percent": 0.8,
-        "contains_pos": 8,
-        "contains_neg": 2
-      }
-    },
-    {
-      "name": "milk fat",
-      "milk": {
-        "contains": true,
-        "contains_percent": 0.5,
-        "contains_pos": 5,
-        "contains_neg": 5
-      }
-    },
-    {
-      "name": "soy lecithin",
-      "soy": {
-        "contains": true,
-        "contains_percent": 0.8,
-        "contains_pos": 8,
-        "contains_neg": 2
-      }
-    },
-    {
-      "name": "almonds",
-      "nuts": {
-        "contains": true,
-        "contains_percent": 0.8,
-        "contains_pos": 8,
-        "contains_neg": 2
-      }
-    },
-    {
-      "name": "cocoa butter"
-    },
-    {
-      "name": "egg whites",
-      "eggs": {
-        "contains": true,
-        "contains_percent": 0.8,
-        "contains_pos": 8,
-        "contains_neg": 2
-      }
-    },
-    {
-      "name": "honey"
-    },
-    {
-      "name": "wheat",
-      "gluten": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "butter",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "hazelnut",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "sesame seed",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": true,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "soybeans",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": true,
-        "contains_percent": 0.9,
-        "contains_pos": 9,
-        "contains_neg": 1
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "seitan",
-      "gluten": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "yeast",
-      "gluten": {
-        "contains": true,
-        "contains_percent": 0.9,
-        "contains_pos": 9,
-        "contains_neg": 1
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "soy sauce",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "tofu",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "tempeh",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": true,
-        "contains_percent": 0.9,
-        "contains_pos": 9,
-        "contains_neg": 1
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "tvp",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": true,
-        "contains_percent": 0.9,
-        "contains_pos": 9,
-        "contains_neg": 1
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "okara",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": true,
-        "contains_percent": 0.9,
-        "contains_pos": 9,
-        "contains_neg": 1
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "lactoglobolin",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": true,
-        "contains_percent": 0.9,
-        "contains_pos": 9,
-        "contains_neg": 1
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "celery extract",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 1
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.4,
-        "contains_pos": 4,
-        "contains_neg": 6
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "tahini",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": true,
-        "contains_percent": 0.7,
-        "contains_pos": 7,
-        "contains_neg": 3
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.4,
-        "contains_pos": 4,
-        "contains_neg": 6
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "lecithin",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "nuts": {
-        "contains": true,
-        "contains_percent": 0.6,
-        "contains_pos": 6,
-        "contains_neg": 4
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.4,
-        "contains_pos": 4,
-        "contains_neg": 6
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "walnut oil",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "nuts": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.4,
-        "contains_pos": 4,
-        "contains_neg": 6
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "crab meal",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.5,
-        "contains_pos": 0,
-        "contains_neg": 0
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.4,
-        "contains_pos": 4,
-        "contains_neg": 6
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "shrimp paste",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.4,
-        "contains_pos": 4,
-        "contains_neg": 6
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0.3,
-        "contains_pos": 3,
-        "contains_neg": 7
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.4,
-        "contains_pos": 4,
-        "contains_neg": 6
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0.5,
-        "contains_pos": 5,
-        "contains_neg": 5
-      },
-      "__v": 0
-    },
-    {
-      "name": "eilecithin",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": true,
-        "contains_percent": 0.9,
-        "contains_pos": 9,
-        "contains_neg": 1
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.4,
-        "contains_pos": 4,
-        "contains_neg": 6
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "__v": 0
-    },
-    {
-      "name": "sulfur dioxide so2 ",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "sodium sulfite",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "lupine seeds",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": true,
-        "contains_percent": 1,
-        "contains_pos": 10,
-        "contains_neg": 0
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
-    },
-    {
-      "name": "sushimi",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "milk": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 10
-      },
-      "molluscs": {
-        "contains": true,
-        "contains_percent": 0.7,
-        "contains_pos": 7,
-        "contains_neg": 3
-      },
-      "__v": 0
-    },
-    {
-      "name": "kefir",
-      "gluten": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "crustaceans": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "eggs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "fish": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "peanuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "soy": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "milk": {
-        "contains": true,
-        "contains_percent": 0.9,
-        "contains_pos": 9,
-        "contains_neg": 1
-      },
-      "nuts": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "celery": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "mustard": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "sesame": {
-        "contains": false,
-        "contains_percent": 0.2,
-        "contains_pos": 2,
-        "contains_neg": 8
-      },
-      "sulphites": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "lupin": {
-        "contains": false,
-        "contains_percent": 0.1,
-        "contains_pos": 1,
-        "contains_neg": 9
-      },
-      "molluscs": {
-        "contains": false,
-        "contains_percent": 0,
-        "contains_pos": 0,
-        "contains_neg": 10
-      },
-      "__v": 0
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
     }
-  ]
-}
+  },
+  {
+    "name": "yellow cornflour",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    }
+  },
+  {
+    "name": "white cornflour",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    }
+  },
+  {
+    "name": "diglyceride",
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    }
+  },
+  {
+    "name": "monoglyceride",
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    }
+  },
+  {
+    "name": "sugar"
+  },
+  {
+    "name": "palm oil",
+    "nuts": {
+      "contains": true,
+      "contains_percent": 0.5,
+      "contains_pos": 5,
+      "contains_neg": 5
+    }
+  },
+  {
+    "name": "cocoa"
+  },
+  {
+    "name": "skim milk",
+    "milk": {
+      "contains": true,
+      "contains_percent": 0.8,
+      "contains_pos": 8,
+      "contains_neg": 2
+    }
+  },
+  {
+    "name": "reduced minerals whey",
+    "milk": {
+      "contains": true,
+      "contains_percent": 0.8,
+      "contains_pos": 8,
+      "contains_neg": 2
+    }
+  },
+  {
+    "name": "vanillin"
+  },
+  {
+    "name": "orange juice"
+  },
+  {
+    "name": "orange juice pulp"
+  },
+  {
+    "name": "peanuts",
+    "peanuts": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    }
+  },
+  {
+    "name": "canola oil"
+  },
+  {
+    "name": "salt"
+  },
+  {
+    "name": "milk",
+    "milk": {
+      "contains": true,
+      "contains_percent": 0.8,
+      "contains_pos": 8,
+      "contains_neg": 2
+    }
+  },
+  {
+    "name": "milk fat",
+    "milk": {
+      "contains": true,
+      "contains_percent": 0.5,
+      "contains_pos": 5,
+      "contains_neg": 5
+    }
+  },
+  {
+    "name": "soy lecithin",
+    "soy": {
+      "contains": true,
+      "contains_percent": 0.8,
+      "contains_pos": 8,
+      "contains_neg": 2
+    }
+  },
+  {
+    "name": "almonds",
+    "nuts": {
+      "contains": true,
+      "contains_percent": 0.8,
+      "contains_pos": 8,
+      "contains_neg": 2
+    }
+  },
+  {
+    "name": "cocoa butter"
+  },
+  {
+    "name": "egg whites",
+    "eggs": {
+      "contains": true,
+      "contains_percent": 0.8,
+      "contains_pos": 8,
+      "contains_neg": 2
+    }
+  },
+  {
+    "name": "honey"
+  },
+  {
+    "name": "wheat",
+    "gluten": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "butter",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "hazelnut",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "sesame seed",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": true,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "soybeans",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": true,
+      "contains_percent": 0.9,
+      "contains_pos": 9,
+      "contains_neg": 1
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "seitan",
+    "gluten": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "yeast",
+    "gluten": {
+      "contains": true,
+      "contains_percent": 0.9,
+      "contains_pos": 9,
+      "contains_neg": 1
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "soy sauce",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "tofu",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "tempeh",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": true,
+      "contains_percent": 0.9,
+      "contains_pos": 9,
+      "contains_neg": 1
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "tvp",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": true,
+      "contains_percent": 0.9,
+      "contains_pos": 9,
+      "contains_neg": 1
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "okara",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": true,
+      "contains_percent": 0.9,
+      "contains_pos": 9,
+      "contains_neg": 1
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "lactoglobolin",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": true,
+      "contains_percent": 0.9,
+      "contains_pos": 9,
+      "contains_neg": 1
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "celery extract",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 1
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.4,
+      "contains_pos": 4,
+      "contains_neg": 6
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "tahini",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": true,
+      "contains_percent": 0.7,
+      "contains_pos": 7,
+      "contains_neg": 3
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.4,
+      "contains_pos": 4,
+      "contains_neg": 6
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "lecithin",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "nuts": {
+      "contains": true,
+      "contains_percent": 0.6,
+      "contains_pos": 6,
+      "contains_neg": 4
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.4,
+      "contains_pos": 4,
+      "contains_neg": 6
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "walnut oil",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "nuts": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.4,
+      "contains_pos": 4,
+      "contains_neg": 6
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "crab meal",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.5,
+      "contains_pos": 0,
+      "contains_neg": 0
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.4,
+      "contains_pos": 4,
+      "contains_neg": 6
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "shrimp paste",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.4,
+      "contains_pos": 4,
+      "contains_neg": 6
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0.3,
+      "contains_pos": 3,
+      "contains_neg": 7
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.4,
+      "contains_pos": 4,
+      "contains_neg": 6
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0.5,
+      "contains_pos": 5,
+      "contains_neg": 5
+    },
+    "__v": 0
+  },
+  {
+    "name": "eilecithin",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": true,
+      "contains_percent": 0.9,
+      "contains_pos": 9,
+      "contains_neg": 1
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.4,
+      "contains_pos": 4,
+      "contains_neg": 6
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "__v": 0
+  },
+  {
+    "name": "sulfur dioxide so2 ",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "sodium sulfite",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "lupine seeds",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": true,
+      "contains_percent": 1,
+      "contains_pos": 10,
+      "contains_neg": 0
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  },
+  {
+    "name": "sushimi",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "milk": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 10
+    },
+    "molluscs": {
+      "contains": true,
+      "contains_percent": 0.7,
+      "contains_pos": 7,
+      "contains_neg": 3
+    },
+    "__v": 0
+  },
+  {
+    "name": "kefir",
+    "gluten": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "crustaceans": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "eggs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "fish": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "peanuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "soy": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "milk": {
+      "contains": true,
+      "contains_percent": 0.9,
+      "contains_pos": 9,
+      "contains_neg": 1
+    },
+    "nuts": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "celery": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "mustard": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "sesame": {
+      "contains": false,
+      "contains_percent": 0.2,
+      "contains_pos": 2,
+      "contains_neg": 8
+    },
+    "sulphites": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "lupin": {
+      "contains": false,
+      "contains_percent": 0.1,
+      "contains_pos": 1,
+      "contains_neg": 9
+    },
+    "molluscs": {
+      "contains": false,
+      "contains_percent": 0,
+      "contains_pos": 0,
+      "contains_neg": 10
+    },
+    "__v": 0
+  }
+]
+
