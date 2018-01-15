@@ -82,31 +82,31 @@ async function chooseModelParseAsyncAndIndexJSON(modelName) {
  */
 async function parseFileAsyncAndIndex(model, modelName) {
   const pendingInsertRequests = [];
-  const stream = StreamArray.make();
+  const jsonStreamArray = StreamArray.make();
   try {
     const readStream = fs.createReadStream('./data/' + modelName + '.json');
-    stream.output.on('readable', async () => {
-      let document = stream.output.read();
+    jsonStreamArray.output.on('readable', async () => {
+      let document = jsonStreamArray.output.read();
       if (document) {
         if (pendingInsertRequests.length > MAX_PARALLEL_REQUESTS) {
-          stream.input.pause();
+          jsonStreamArray.input.pause();
           await Promise.all(pendingInsertRequests);
           pendingInsertRequests.length = 0;
-          stream.input.resume();
+          jsonStreamArray.input.resume();
         }
         pendingInsertRequests.push(tryToInsertDocument(document.value, model));
       }
     });
-    readStream.pipe(stream.input);
+    readStream.pipe(jsonStreamArray.input);
   } catch (err) {
     log.error({err: err});
     return false;
   }
   return new Promise((resolve, reject) => {
-    stream.output.on('end', async () => {
+    jsonStreamArray.output.on('end', async () => {
       await Promise.all(pendingInsertRequests);
       resolve(true);
     });
-    stream.output.on('error', err => reject(err));
+    jsonStreamArray.output.on('error', err => reject(err));
   });
 }
