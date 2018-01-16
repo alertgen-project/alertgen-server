@@ -27,7 +27,9 @@ let documentsTriedToIndex = 0, documentsIndexed = 0;
   for (let modelName of modelNames) {
     await chooseModelParseAsyncAndIndexJSON(modelName);
   }
-  log.info('Indexing took:', new Date().getTime() - startTime, 'ms,', 'tried to index:', documentsTriedToIndex, 'documents,',  'indexed:', documentsIndexed, 'documents');
+  log.info('Indexing took:', new Date().getTime() - startTime, 'ms,',
+      'tried to index:', documentsTriedToIndex, 'documents,', 'indexed:',
+      documentsIndexed, 'documents');
   await connectionFactory.closeConnection();
 })();
 
@@ -88,7 +90,7 @@ async function parseFileAsyncAndIndex(model, modelName) {
   try {
     const readStream = fs.createReadStream('./data/' + modelName + '.json');
     jsonStreamArray.output.on('readable', async () => {
-      let document = jsonStreamArray.output.read();
+      const document = jsonStreamArray.output.read();
       if (document) {
         if (pendingInsertRequests.length > MAX_PARALLEL_REQUESTS) {
           jsonStreamArray.input.pause();
