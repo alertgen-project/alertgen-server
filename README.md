@@ -130,7 +130,7 @@ Content-Type: application/json; charset=utf-8
 - MongoDB (Database)
 - Docker
 
-## LICENSE
+## License
 
 Unlicense
 
