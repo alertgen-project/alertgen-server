@@ -1,4 +1,4 @@
-# Project AlertGen
+# Project AlertGen - alertgen-server
 
 This project provides users with an API to identify allergens in products and ingredients. In addition, substitute products for products containing allergens can be requested.
 
@@ -130,4 +130,9 @@ Content-Type: application/json; charset=utf-8
 - MongoDB (Database)
 - Docker
 
- :speak_no_evil:
+## LICENSE
+
+Unlicense
+
+
+:speak_no_evil:
