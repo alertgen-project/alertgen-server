@@ -11,13 +11,14 @@ services:
      network_mode: "bridge"
      environment:
        - AUTH=yes
-       - MONGODB_ADMIN_USER=admin
-       - MONGODB_ADMIN_PASS=halloMongo;120
+       - MONGODB_ADMIN_USER=${ADMIN_USER}
+       - MONGODB_ADMIN_PASS=${ADMIN_PASS}
    alertgen:
      depends_on:
        - mongo_db
      image: alertgen
      volumes:
+       - /var/conf/alertgen:/usr/share/node_app/config
        - /var/log/alertgen:/usr/share/node_app/logs
      ports:
        - "80:8080"
